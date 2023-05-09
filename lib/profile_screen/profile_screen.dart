@@ -1,13 +1,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:flutx/flutx.dart';
+import 'package:nb_utils/nb_utils.dart';
 import 'package:nirbhaya_service/BodyRequest/user_details_request_body.dart';
+import 'package:nirbhaya_service/BodyRequest/volunteer_request.dart';
 import 'package:nirbhaya_service/Screens/about_us_screen.dart';
+import 'package:nirbhaya_service/Utils/loader.dart';
 import 'package:nirbhaya_service/chat_bot/ChatScreen.dart';
 import 'package:nirbhaya_service/color_constant.dart';
 import 'package:get/get.dart';
 import 'package:nirbhaya_service/contoller/user_details_controller.dart';
+import 'package:nirbhaya_service/contoller/volunteer_select_controller.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import '../Screens/edit_profile_screen.dart';
 import '../Utils/preference.dart';
@@ -26,7 +31,9 @@ class ProfileScreen extends StatefulWidget {
 class ProfileScreenState extends State<ProfileScreen> {
 
   PackageInfo? packageInfo;
+  bool? volunteerStatus=false;
   final userDetailsController=Get.put(UserDetailsController());
+  final volunteerController=Get.put(VolunteerController());
   final List locale = [
     {'name': 'English', 'locale': const Locale('en', 'US')},
     {'name': 'हिंदी', 'locale': const Locale('hi', 'IN')},
@@ -209,10 +216,42 @@ class ProfileScreenState extends State<ProfileScreen> {
                   }),
 
               const Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildSingleSetting('Volunteer'.tr, 'would you like to Volunteer?'.tr,
+                      FeatherIcons.user, appBlack,(){
+                        // buildLanguageDialog(context);
+                      }),
+                  FlutterSwitch(
+                    width: 60.0,
+                    height: 30.0,
+                    value: volunteerStatus!,
+                    borderRadius: 30.0,
+                    padding: 5.0,
+                    activeColor: blackColor,
+                    onToggle: (val) {
+                      setState(() {
+                        volunteerStatus = val;
+                        if(volunteerStatus==true){
+                          volunteerApi("Yes");
+                        }else{
+                          volunteerApi("No");
+                        }
+
+                      });
+                    },
+                  ),
+                ],
+              ),
+
+              const Divider(),
               _buildSingleSetting('language'.tr, 'changeYourLanguage'.tr,
                   FeatherIcons.settings, appBlack,(){
                     buildLanguageDialog(context);
                   }),
+
+
               // const Divider(),
               // _buildSingleSetting(
               //     'Notification',
@@ -238,6 +277,18 @@ class ProfileScreenState extends State<ProfileScreen> {
       ),
     );
   }
-
+ void volunteerApi(String status)async{
+    VolunteerRequest request=VolunteerRequest(
+      userId: Preferences.getUserId().toString(),
+      volunteer: status
+    );
+   volunteerController.volunteerApi(request).then((value){
+     if(value!=null){
+       if(value.status==true){
+         CustomLoader.message(value.message.toString());
+       }
+     }
+   });
+ }
 
 }
