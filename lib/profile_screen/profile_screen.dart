@@ -33,6 +33,9 @@ class ProfileScreenState extends State<ProfileScreen> {
   PackageInfo? packageInfo;
   bool? volunteerStatus=false;
   final userDetailsController=Get.put(UserDetailsController());
+  String? volunteer;
+
+
   final volunteerController=Get.put(VolunteerController());
   final List locale = [
     {'name': 'English', 'locale': const Locale('en', 'US')},
@@ -52,7 +55,13 @@ class ProfileScreenState extends State<ProfileScreen> {
   }
   void userDetailsApi()async{
     await userDetailsController.updateProfile();
+   volunteer= userDetailsController.getUserDetailsData[0].volunteer;
+   setState(() {});
+   debugPrint("volunteer $volunteer");
   }
+
+
+
 
   buildLanguageDialog(BuildContext context) {
     showDialog(
@@ -226,7 +235,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                   FlutterSwitch(
                     width: 60.0,
                     height: 30.0,
-                    value: volunteerStatus!,
+                    value: volunteer=="Yes"?true:volunteer=="No"?false:false,
                     borderRadius: 30.0,
                     padding: 5.0,
                     activeColor: blackColor,
@@ -285,6 +294,7 @@ class ProfileScreenState extends State<ProfileScreen> {
    volunteerController.volunteerApi(request).then((value){
      if(value!=null){
        if(value.status==true){
+         userDetailsApi();
          CustomLoader.message(value.message.toString());
        }
      }

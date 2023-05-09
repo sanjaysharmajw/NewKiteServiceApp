@@ -1,10 +1,10 @@
 class UserDetailsModels {
   UserDetailsModels({
-      bool? status, 
-      List<UserDetailsData>? data,}){
+    bool? status,
+    List<UserDetailsData>? data,}){
     _status = status;
     _data = data;
-}
+  }
 
   UserDetailsModels.fromJson(dynamic json) {
     _status = json['status'];
@@ -17,11 +17,11 @@ class UserDetailsModels {
   }
   bool? _status;
   List<UserDetailsData>? _data;
-UserDetailsModels copyWith({  bool? status,
-  List<UserDetailsData>? data,
-}) => UserDetailsModels(  status: status ?? _status,
-  data: data ?? _data,
-);
+  UserDetailsModels copyWith({  bool? status,
+    List<UserDetailsData>? data,
+  }) => UserDetailsModels(  status: status ?? _status,
+    data: data ?? _data,
+  );
   bool? get status => _status;
   List<UserDetailsData>? get data => _data;
 
@@ -38,52 +38,53 @@ UserDetailsModels copyWith({  bool? status,
 
 class UserDetailsData {
   UserDetailsData({
-      String? id, 
-      String? firstName, 
-      String? lastName, 
-      String? emailId, 
-      String? mobileNumber, 
-      String? gender, 
-      String? password, 
-      dynamic alternateContactNo, 
-      String? emergencyContactNo, 
-      String? userType, 
-      dynamic aadharNumber, 
-      dynamic panNumber, 
-      dynamic profileImage, 
-      List<Documents>? documents, 
-      dynamic maritalStatus, 
-      String? citizenship, 
-      String? failAttempt, 
-      String? isLock, 
-      String? address, 
-      Dldetails? dldetails, 
-      String? city, 
-      String? state, 
-      String? pincode, 
-      String? resetPassword, 
-      String? status, 
-      PermanentAddress? permanentAddress, 
-      dynamic presentAddress, 
-      String? sameAddress, 
-      String? createdAt, 
-      String? updatedAt, 
-      String? createdBy, 
-      String? updatedBy, 
-      String? dob, 
-      dynamic fcmtoken, 
-      dynamic coordinatorContactNo, 
-      dynamic coordinatorName, 
-      dynamic organizationName, 
-      String? dlNumber, 
-      String? dlExpiryDate, 
-      String? dlMobileNumber, 
-      String? accidentalHistory, 
-      String? accidentalDiscription, 
-      String? available24by7, 
-      String? shiftTimeFrom, 
-      String? shiftTimeTo, 
-      dynamic profilePercentage,}){
+    String? id,
+    String? firstName,
+    String? lastName,
+    String? emailId,
+    String? mobileNumber,
+    String? gender,
+    String? password,
+    dynamic alternateContactNo,
+    String? emergencyContactNo,
+    String? userType,
+    dynamic aadharNumber,
+    dynamic panNumber,
+    dynamic profileImage,
+    List<Documents>? documents,
+    dynamic maritalStatus,
+    String? citizenship,
+    String? failAttempt,
+    String? isLock,
+    String? address,
+    Dldetails? dldetails,
+    String? city,
+    String? state,
+    String? pincode,
+    String? resetPassword,
+    String? status,
+    PermanentAddress? permanentAddress,
+    dynamic presentAddress,
+    String? sameAddress,
+    String? createdAt,
+    String? updatedAt,
+    String? createdBy,
+    String? updatedBy,
+    String? dob,
+    dynamic fcmtoken,
+    dynamic coordinatorContactNo,
+    dynamic coordinatorName,
+    dynamic organizationName,
+    String? dlNumber,
+    String? dlExpiryDate,
+    String? dlMobileNumber,
+    String? accidentalHistory,
+    String? accidentalDiscription,
+    String? available24by7,
+    String? shiftTimeFrom,
+    String? shiftTimeTo,
+    String? volunteer,
+    dynamic profilePercentage,}){
     _id = id;
     _firstName = firstName;
     _lastName = lastName;
@@ -129,8 +130,9 @@ class UserDetailsData {
     _available24by7 = available24by7;
     _shiftTimeFrom = shiftTimeFrom;
     _shiftTimeTo = shiftTimeTo;
+    _volunteer = volunteer;
     _profilePercentage = profilePercentage;
-}
+  }
 
   UserDetailsData.fromJson(dynamic json) {
     _id = json['_id'];
@@ -183,6 +185,7 @@ class UserDetailsData {
     _available24by7 = json['available24by7'];
     _shiftTimeFrom = json['shift_time_from'];
     _shiftTimeTo = json['shift_time_to'];
+    _volunteer = json['volunteer'];
     _profilePercentage = json['profile_percentage'];
   }
   String? _id;
@@ -230,100 +233,103 @@ class UserDetailsData {
   String? _available24by7;
   String? _shiftTimeFrom;
   String? _shiftTimeTo;
+  String? _volunteer;
   dynamic _profilePercentage;
   UserDetailsData copyWith({  String? id,
-  String? firstName,
-  String? lastName,
-  String? emailId,
-  String? mobileNumber,
-  String? gender,
-  String? password,
-  dynamic alternateContactNo,
-  String? emergencyContactNo,
-  String? userType,
-  dynamic aadharNumber,
-  dynamic panNumber,
-  dynamic profileImage,
-  List<Documents>? documents,
-  dynamic maritalStatus,
-  String? citizenship,
-  String? failAttempt,
-  String? isLock,
-  String? address,
-  Dldetails? dldetails,
-  String? city,
-  String? state,
-  String? pincode,
-  String? resetPassword,
-  String? status,
-  PermanentAddress? permanentAddress,
-  dynamic presentAddress,
-  String? sameAddress,
-  String? createdAt,
-  String? updatedAt,
-  String? createdBy,
-  String? updatedBy,
-  String? dob,
-  dynamic fcmtoken,
-  dynamic coordinatorContactNo,
-  dynamic coordinatorName,
-  dynamic organizationName,
-  String? dlNumber,
-  String? dlExpiryDate,
-  String? dlMobileNumber,
-  String? accidentalHistory,
-  String? accidentalDiscription,
-  String? available24by7,
-  String? shiftTimeFrom,
-  String? shiftTimeTo,
-  dynamic profilePercentage,
-}) => UserDetailsData(  id: id ?? _id,
-  firstName: firstName ?? _firstName,
-  lastName: lastName ?? _lastName,
-  emailId: emailId ?? _emailId,
-  mobileNumber: mobileNumber ?? _mobileNumber,
-  gender: gender ?? _gender,
-  password: password ?? _password,
-  alternateContactNo: alternateContactNo ?? _alternateContactNo,
-  emergencyContactNo: emergencyContactNo ?? _emergencyContactNo,
-  userType: userType ?? _userType,
-  aadharNumber: aadharNumber ?? _aadharNumber,
-  panNumber: panNumber ?? _panNumber,
-  profileImage: profileImage ?? _profileImage,
-  documents: documents ?? _documents,
-  maritalStatus: maritalStatus ?? _maritalStatus,
-  citizenship: citizenship ?? _citizenship,
-  failAttempt: failAttempt ?? _failAttempt,
-  isLock: isLock ?? _isLock,
-  address: address ?? _address,
-  dldetails: dldetails ?? _dldetails,
-  city: city ?? _city,
-  state: state ?? _state,
-  pincode: pincode ?? _pincode,
-  resetPassword: resetPassword ?? _resetPassword,
-  status: status ?? _status,
-  permanentAddress: permanentAddress ?? _permanentAddress,
-  presentAddress: presentAddress ?? _presentAddress,
-  sameAddress: sameAddress ?? _sameAddress,
-  createdAt: createdAt ?? _createdAt,
-  updatedAt: updatedAt ?? _updatedAt,
-  createdBy: createdBy ?? _createdBy,
-  updatedBy: updatedBy ?? _updatedBy,
-  dob: dob ?? _dob,
-  fcmtoken: fcmtoken ?? _fcmtoken,
-  coordinatorContactNo: coordinatorContactNo ?? _coordinatorContactNo,
-  coordinatorName: coordinatorName ?? _coordinatorName,
-  organizationName: organizationName ?? _organizationName,
-  dlNumber: dlNumber ?? _dlNumber,
-  dlExpiryDate: dlExpiryDate ?? _dlExpiryDate,
-  dlMobileNumber: dlMobileNumber ?? _dlMobileNumber,
-  accidentalHistory: accidentalHistory ?? _accidentalHistory,
-  accidentalDiscription: accidentalDiscription ?? _accidentalDiscription,
-  available24by7: available24by7 ?? _available24by7,
-  shiftTimeFrom: shiftTimeFrom ?? _shiftTimeFrom,
-  shiftTimeTo: shiftTimeTo ?? _shiftTimeTo,
-  profilePercentage: profilePercentage ?? _profilePercentage,
-);
+    String? firstName,
+    String? lastName,
+    String? emailId,
+    String? mobileNumber,
+    String? gender,
+    String? password,
+    dynamic alternateContactNo,
+    String? emergencyContactNo,
+    String? userType,
+    dynamic aadharNumber,
+    dynamic panNumber,
+    dynamic profileImage,
+    List<Documents>? documents,
+    dynamic maritalStatus,
+    String? citizenship,
+    String? failAttempt,
+    String? isLock,
+    String? address,
+    Dldetails? dldetails,
+    String? city,
+    String? state,
+    String? pincode,
+    String? resetPassword,
+    String? status,
+    PermanentAddress? permanentAddress,
+    dynamic presentAddress,
+    String? sameAddress,
+    String? createdAt,
+    String? updatedAt,
+    String? createdBy,
+    String? updatedBy,
+    String? dob,
+    dynamic fcmtoken,
+    dynamic coordinatorContactNo,
+    dynamic coordinatorName,
+    dynamic organizationName,
+    String? dlNumber,
+    String? dlExpiryDate,
+    String? dlMobileNumber,
+    String? accidentalHistory,
+    String? accidentalDiscription,
+    String? available24by7,
+    String? shiftTimeFrom,
+    String? shiftTimeTo,
+    String? volunteer,
+    dynamic profilePercentage,
+  }) => UserDetailsData(  id: id ?? _id,
+    firstName: firstName ?? _firstName,
+    lastName: lastName ?? _lastName,
+    emailId: emailId ?? _emailId,
+    mobileNumber: mobileNumber ?? _mobileNumber,
+    gender: gender ?? _gender,
+    password: password ?? _password,
+    alternateContactNo: alternateContactNo ?? _alternateContactNo,
+    emergencyContactNo: emergencyContactNo ?? _emergencyContactNo,
+    userType: userType ?? _userType,
+    aadharNumber: aadharNumber ?? _aadharNumber,
+    panNumber: panNumber ?? _panNumber,
+    profileImage: profileImage ?? _profileImage,
+    documents: documents ?? _documents,
+    maritalStatus: maritalStatus ?? _maritalStatus,
+    citizenship: citizenship ?? _citizenship,
+    failAttempt: failAttempt ?? _failAttempt,
+    isLock: isLock ?? _isLock,
+    address: address ?? _address,
+    dldetails: dldetails ?? _dldetails,
+    city: city ?? _city,
+    state: state ?? _state,
+    pincode: pincode ?? _pincode,
+    resetPassword: resetPassword ?? _resetPassword,
+    status: status ?? _status,
+    permanentAddress: permanentAddress ?? _permanentAddress,
+    presentAddress: presentAddress ?? _presentAddress,
+    sameAddress: sameAddress ?? _sameAddress,
+    createdAt: createdAt ?? _createdAt,
+    updatedAt: updatedAt ?? _updatedAt,
+    createdBy: createdBy ?? _createdBy,
+    updatedBy: updatedBy ?? _updatedBy,
+    dob: dob ?? _dob,
+    fcmtoken: fcmtoken ?? _fcmtoken,
+    coordinatorContactNo: coordinatorContactNo ?? _coordinatorContactNo,
+    coordinatorName: coordinatorName ?? _coordinatorName,
+    organizationName: organizationName ?? _organizationName,
+    dlNumber: dlNumber ?? _dlNumber,
+    dlExpiryDate: dlExpiryDate ?? _dlExpiryDate,
+    dlMobileNumber: dlMobileNumber ?? _dlMobileNumber,
+    accidentalHistory: accidentalHistory ?? _accidentalHistory,
+    accidentalDiscription: accidentalDiscription ?? _accidentalDiscription,
+    available24by7: available24by7 ?? _available24by7,
+    shiftTimeFrom: shiftTimeFrom ?? _shiftTimeFrom,
+    shiftTimeTo: shiftTimeTo ?? _shiftTimeTo,
+    volunteer: volunteer ?? _volunteer,
+    profilePercentage: profilePercentage ?? _profilePercentage,
+  );
   String? get id => _id;
   String? get firstName => _firstName;
   String? get lastName => _lastName;
@@ -369,6 +375,7 @@ class UserDetailsData {
   String? get available24by7 => _available24by7;
   String? get shiftTimeFrom => _shiftTimeFrom;
   String? get shiftTimeTo => _shiftTimeTo;
+  String? get volunteer => _volunteer;
   dynamic get profilePercentage => _profilePercentage;
 
   Map<String, dynamic> toJson() {
@@ -424,6 +431,7 @@ class UserDetailsData {
     map['available24by7'] = _available24by7;
     map['shift_time_from'] = _shiftTimeFrom;
     map['shift_time_to'] = _shiftTimeTo;
+    map['volunteer'] = _volunteer;
     map['profile_percentage'] = _profilePercentage;
     return map;
   }
@@ -432,15 +440,15 @@ class UserDetailsData {
 
 class PermanentAddress {
   PermanentAddress({
-      String? address, 
-      dynamic city, 
-      dynamic state, 
-      dynamic pincode,}){
+    String? address,
+    dynamic city,
+    dynamic state,
+    dynamic pincode,}){
     _address = address;
     _city = city;
     _state = state;
     _pincode = pincode;
-}
+  }
 
   PermanentAddress.fromJson(dynamic json) {
     _address = json['address'];
@@ -452,15 +460,15 @@ class PermanentAddress {
   dynamic _city;
   dynamic _state;
   dynamic _pincode;
-PermanentAddress copyWith({  String? address,
-  dynamic city,
-  dynamic state,
-  dynamic pincode,
-}) => PermanentAddress(  address: address ?? _address,
-  city: city ?? _city,
-  state: state ?? _state,
-  pincode: pincode ?? _pincode,
-);
+  PermanentAddress copyWith({  String? address,
+    dynamic city,
+    dynamic state,
+    dynamic pincode,
+  }) => PermanentAddress(  address: address ?? _address,
+    city: city ?? _city,
+    state: state ?? _state,
+    pincode: pincode ?? _pincode,
+  );
   String? get address => _address;
   dynamic get city => _city;
   dynamic get state => _state;
@@ -479,15 +487,15 @@ PermanentAddress copyWith({  String? address,
 
 class Dldetails {
   Dldetails({
-      String? dlNumber, 
-      String? photo, 
-      String? dlExpiryDate, 
-      String? dlMobileNumber, 
-      String? accidentalHistory, 
-      String? accidentalDiscription, 
-      String? available24by7, 
-      String? shiftTimeFrom, 
-      String? shiftTimeTo,}){
+    String? dlNumber,
+    String? photo,
+    String? dlExpiryDate,
+    String? dlMobileNumber,
+    String? accidentalHistory,
+    String? accidentalDiscription,
+    String? available24by7,
+    String? shiftTimeFrom,
+    String? shiftTimeTo,}){
     _dlNumber = dlNumber;
     _photo = photo;
     _dlExpiryDate = dlExpiryDate;
@@ -497,7 +505,7 @@ class Dldetails {
     _available24by7 = available24by7;
     _shiftTimeFrom = shiftTimeFrom;
     _shiftTimeTo = shiftTimeTo;
-}
+  }
 
   Dldetails.fromJson(dynamic json) {
     _dlNumber = json['dl_number'];
@@ -519,25 +527,27 @@ class Dldetails {
   String? _available24by7;
   String? _shiftTimeFrom;
   String? _shiftTimeTo;
-Dldetails copyWith({  String? dlNumber,
-  String? photo,
-  String? dlExpiryDate,
-  String? dlMobileNumber,
-  String? accidentalHistory,
-  String? accidentalDiscription,
-  String? available24by7,
-  String? shiftTimeFrom,
-  String? shiftTimeTo,
-}) => Dldetails(  dlNumber: dlNumber ?? _dlNumber,
-  photo: photo ?? _photo,
-  dlExpiryDate: dlExpiryDate ?? _dlExpiryDate,
-  dlMobileNumber: dlMobileNumber ?? _dlMobileNumber,
-  accidentalHistory: accidentalHistory ?? _accidentalHistory,
-  accidentalDiscription: accidentalDiscription ?? _accidentalDiscription,
-  available24by7: available24by7 ?? _available24by7,
-  shiftTimeFrom: shiftTimeFrom ?? _shiftTimeFrom,
-  shiftTimeTo: shiftTimeTo ?? _shiftTimeTo,
-);
+  String? volunteer;
+  Dldetails copyWith({  String? dlNumber,
+    String? photo,
+    String? dlExpiryDate,
+    String? dlMobileNumber,
+    String? accidentalHistory,
+    String? accidentalDiscription,
+    String? available24by7,
+    String? shiftTimeFrom,
+    String? shiftTimeTo,
+    String? volunteer,
+  }) => Dldetails(  dlNumber: dlNumber ?? _dlNumber,
+    photo: photo ?? _photo,
+    dlExpiryDate: dlExpiryDate ?? _dlExpiryDate,
+    dlMobileNumber: dlMobileNumber ?? _dlMobileNumber,
+    accidentalHistory: accidentalHistory ?? _accidentalHistory,
+    accidentalDiscription: accidentalDiscription ?? _accidentalDiscription,
+    available24by7: available24by7 ?? _available24by7,
+    shiftTimeFrom: shiftTimeFrom ?? _shiftTimeFrom,
+    shiftTimeTo: shiftTimeTo ?? _shiftTimeTo,
+  );
   String? get dlNumber => _dlNumber;
   String? get photo => _photo;
   String? get dlExpiryDate => _dlExpiryDate;
@@ -547,6 +557,7 @@ Dldetails copyWith({  String? dlNumber,
   String? get available24by7 => _available24by7;
   String? get shiftTimeFrom => _shiftTimeFrom;
   String? get shiftTimeTo => _shiftTimeTo;
+
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -559,6 +570,7 @@ Dldetails copyWith({  String? dlNumber,
     map['available24by7'] = _available24by7;
     map['shift_time_from'] = _shiftTimeFrom;
     map['shift_time_to'] = _shiftTimeTo;
+
     return map;
   }
 
@@ -566,11 +578,11 @@ Dldetails copyWith({  String? dlNumber,
 
 class Documents {
   Documents({
-      String? idNumber, 
-      String? photo,}){
+    String? idNumber,
+    String? photo,}){
     _idNumber = idNumber;
     _photo = photo;
-}
+  }
 
   Documents.fromJson(dynamic json) {
     _idNumber = json['id_number'];
@@ -578,11 +590,11 @@ class Documents {
   }
   String? _idNumber;
   String? _photo;
-Documents copyWith({  String? idNumber,
-  String? photo,
-}) => Documents(  idNumber: idNumber ?? _idNumber,
-  photo: photo ?? _photo,
-);
+  Documents copyWith({  String? idNumber,
+    String? photo,
+  }) => Documents(  idNumber: idNumber ?? _idNumber,
+    photo: photo ?? _photo,
+  );
   String? get idNumber => _idNumber;
   String? get photo => _photo;
 

@@ -17,6 +17,7 @@ class Preferences {
   static const String idService = 'ID_SERVICE';
   static const String serviceId = 'ServiceId';
   static const String mobileNumber = 'MobileNumber';
+  static const String volunteer = 'volunteer';
 
   static Future<void> setPreferences() async {
     instance = await SharedPreferences.getInstance();
@@ -68,6 +69,11 @@ class Preferences {
   static dynamic getUserId() {
     return Preferences.instance!.get(userId);
   }
+
+  static dynamic getVolStatus() {
+    return Preferences.instance!.get(volunteer);
+  }
+
 
   static Future<bool> setLat(String value) {
     return Preferences.instance!.setString(lat, value);
@@ -135,6 +141,10 @@ class Preferences {
 
   static dynamic getSubRegion() {
     return Preferences.instance!.get(subRegion);
+  }
+
+  static Future<bool> setVolStatus(String value) {
+    return Preferences.instance!.setString(volunteer, value);
   }
 
   ///Singleton factory

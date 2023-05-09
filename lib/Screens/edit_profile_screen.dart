@@ -59,6 +59,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
       updateProfileController.emergencyController.value.text=widget.userDetailsData.emergencyContactNo.toString();
       updateProfileController.selectDobController.value.text=widget.userDetailsData.dob.toString();
       gender=widget.userDetailsData.gender.toString();
+
     });
   }
 

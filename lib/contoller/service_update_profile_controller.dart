@@ -22,6 +22,7 @@ class ServiceUpdateProfileController extends GetxController{
   final addressController=TextEditingController().obs;
   final emergencyController=TextEditingController().obs;
   final selectDobController=TextEditingController().obs;
+  final volunteerStatusController = TextEditingController().obs;
 
   Future<UpdateProfileModels?> updateProfile(String gender ) async {
     UpdateProfileUpdateRequestBody requestBody=UpdateProfileUpdateRequestBody(

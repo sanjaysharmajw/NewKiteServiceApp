@@ -25,6 +25,10 @@ class UserDetailsController extends GetxController{
     UserDetailsRequestBody requestBody=UserDetailsRequestBody(
         mobileNumber: mobileNo
     );
+
+
+
+
     try {
       final response = await http.post(Uri.parse(APIConstant.userDetails),
         headers: headerController.headerToken,
@@ -33,6 +37,10 @@ class UserDetailsController extends GetxController{
       debugPrint('userdetails');
       debugPrint(jsonEncode(requestBody));
       debugPrint(response.body);
+
+      var volStatus = Preferences.getVolStatus().toString();
+      debugPrint('volStatus $volStatus');
+
       Map<String, dynamic> responseBody = json.decode(response.body);
       if (response.statusCode == 200) {
         isLoading.value = false;
