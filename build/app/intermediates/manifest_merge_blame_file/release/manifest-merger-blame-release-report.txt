@@ -1,0 +1,292 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.nirbhaya_service"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+11-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:4:5-78
+11-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:4:22-76
+12    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+12-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:5:5-80
+12-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:5:22-78
+13    <uses-permission android:name="android.permission.CAMERA" />
+13-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:6:5-65
+13-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:6:22-62
+14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+14-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:7:5-81
+14-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:7:22-78
+15    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+15-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:8:5-80
+15-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:8:22-77
+16    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+16-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:10:5-77
+16-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:10:22-74
+17    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+17-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:11:5-84
+17-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:11:22-82
+18    <uses-permission android:name="android.permission.INTERNET" />
+18-->[:nb_utils] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/nb_utils/intermediates/merged_manifest/release/AndroidManifest.xml:9:5-67
+18-->[:nb_utils] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/nb_utils/intermediates/merged_manifest/release/AndroidManifest.xml:9:22-64
+19    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+19-->[:nb_utils] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/nb_utils/intermediates/merged_manifest/release/AndroidManifest.xml:10:5-79
+19-->[:nb_utils] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/nb_utils/intermediates/merged_manifest/release/AndroidManifest.xml:10:22-76
+20
+21    <queries>
+21-->[:file_picker] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/file_picker/intermediates/merged_manifest/release/AndroidManifest.xml:11:5-17:15
+22        <intent>
+22-->[:file_picker] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/file_picker/intermediates/merged_manifest/release/AndroidManifest.xml:12:9-16:18
+23            <action android:name="android.intent.action.GET_CONTENT" />
+23-->[:file_picker] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/file_picker/intermediates/merged_manifest/release/AndroidManifest.xml:13:13-72
+23-->[:file_picker] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/file_picker/intermediates/merged_manifest/release/AndroidManifest.xml:13:21-69
+24
+25            <data android:mimeType="*/*" />
+25-->[:file_picker] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/file_picker/intermediates/merged_manifest/release/AndroidManifest.xml:15:13-44
+25-->[:file_picker] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/file_picker/intermediates/merged_manifest/release/AndroidManifest.xml:15:19-41
+26        </intent>
+27        <!-- Needs to be explicitly declared on Android R+ -->
+28        <package android:name="com.google.android.apps.maps" />
+28-->[com.google.android.gms:play-services-maps:18.1.0] /Users/sanjaysharma/.gradle/caches/transforms-3/a0e34175b89fa528462076cc4208822f/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:33:9-64
+28-->[com.google.android.gms:play-services-maps:18.1.0] /Users/sanjaysharma/.gradle/caches/transforms-3/a0e34175b89fa528462076cc4208822f/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:33:18-61
+29    </queries>
+30
+31    <uses-feature
+31-->[com.google.android.gms:play-services-maps:18.1.0] /Users/sanjaysharma/.gradle/caches/transforms-3/a0e34175b89fa528462076cc4208822f/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:26:5-28:35
+32        android:glEsVersion="0x00020000"
+32-->[com.google.android.gms:play-services-maps:18.1.0] /Users/sanjaysharma/.gradle/caches/transforms-3/a0e34175b89fa528462076cc4208822f/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:27:9-41
+33        android:required="true" />
+33-->[com.google.android.gms:play-services-maps:18.1.0] /Users/sanjaysharma/.gradle/caches/transforms-3/a0e34175b89fa528462076cc4208822f/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:28:9-32
+34
+35    <permission
+35-->[androidx.core:core:1.9.0] /Users/sanjaysharma/.gradle/caches/transforms-3/5f80b20db3afa86c72a9766b008d752d/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+36        android:name="com.example.nirbhaya_service.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+36-->[androidx.core:core:1.9.0] /Users/sanjaysharma/.gradle/caches/transforms-3/5f80b20db3afa86c72a9766b008d752d/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+37        android:protectionLevel="signature" />
+37-->[androidx.core:core:1.9.0] /Users/sanjaysharma/.gradle/caches/transforms-3/5f80b20db3afa86c72a9766b008d752d/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+38
+39    <uses-permission android:name="com.example.nirbhaya_service.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+39-->[androidx.core:core:1.9.0] /Users/sanjaysharma/.gradle/caches/transforms-3/5f80b20db3afa86c72a9766b008d752d/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+39-->[androidx.core:core:1.9.0] /Users/sanjaysharma/.gradle/caches/transforms-3/5f80b20db3afa86c72a9766b008d752d/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+40    <uses-permission
+40-->[com.twilio:audioswitch:1.1.7] /Users/sanjaysharma/.gradle/caches/transforms-3/86594bde478c356bceccdc5f92a43b0e/transformed/jetified-audioswitch-1.1.7/AndroidManifest.xml:9:5-11:38
+41        android:name="android.permission.BLUETOOTH"
+41-->[com.twilio:audioswitch:1.1.7] /Users/sanjaysharma/.gradle/caches/transforms-3/86594bde478c356bceccdc5f92a43b0e/transformed/jetified-audioswitch-1.1.7/AndroidManifest.xml:10:9-52
+42        android:maxSdkVersion="30" />
+42-->[com.twilio:audioswitch:1.1.7] /Users/sanjaysharma/.gradle/caches/transforms-3/86594bde478c356bceccdc5f92a43b0e/transformed/jetified-audioswitch-1.1.7/AndroidManifest.xml:11:9-35
+43    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+43-->[com.twilio:audioswitch:1.1.7] /Users/sanjaysharma/.gradle/caches/transforms-3/86594bde478c356bceccdc5f92a43b0e/transformed/jetified-audioswitch-1.1.7/AndroidManifest.xml:12:5-76
+43-->[com.twilio:audioswitch:1.1.7] /Users/sanjaysharma/.gradle/caches/transforms-3/86594bde478c356bceccdc5f92a43b0e/transformed/jetified-audioswitch-1.1.7/AndroidManifest.xml:12:22-73
+44    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+44-->[com.twilio:audioswitch:1.1.7] /Users/sanjaysharma/.gradle/caches/transforms-3/86594bde478c356bceccdc5f92a43b0e/transformed/jetified-audioswitch-1.1.7/AndroidManifest.xml:13:5-80
+44-->[com.twilio:audioswitch:1.1.7] /Users/sanjaysharma/.gradle/caches/transforms-3/86594bde478c356bceccdc5f92a43b0e/transformed/jetified-audioswitch-1.1.7/AndroidManifest.xml:13:22-77
+45
+46    <application
+47        android:name="android.app.Application"
+47-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:17:9-42
+48        android:allowBackup="false"
+48-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:15:8-35
+49        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+49-->[androidx.core:core:1.9.0] /Users/sanjaysharma/.gradle/caches/transforms-3/5f80b20db3afa86c72a9766b008d752d/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+50        android:fullBackupOnly="false"
+50-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:16:8-38
+51        android:icon="@mipmap/ic_launcher"
+51-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:18:9-43
+52        android:label="N Service" >
+52-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:14:9-34
+53        <activity
+53-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:19:9-39:20
+54            android:name="com.example.nirbhaya_service.MainActivity"
+54-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:20:13-41
+55            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+55-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:24:13-163
+56            android:exported="true"
+56-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:21:13-36
+57            android:hardwareAccelerated="true"
+57-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:25:13-47
+58            android:launchMode="singleTop"
+58-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:22:13-43
+59            android:theme="@style/LaunchTheme"
+59-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:23:13-47
+60            android:windowSoftInputMode="adjustResize" >
+60-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:26:13-55
+61
+62            <!--
+63                 Specifies an Android theme to apply to this Activity as soon as
+64                 the Android process has started. This theme is visible to the user
+65                 while the Flutter UI initializes. After that, this theme continues
+66                 to determine the Window background behind the Flutter UI.
+67            -->
+68            <meta-data
+68-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:31:13-34:17
+69                android:name="io.flutter.embedding.android.NormalTheme"
+69-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:32:15-70
+70                android:resource="@style/NormalTheme" />
+70-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:33:15-52
+71
+72            <intent-filter>
+72-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:35:13-38:29
+73                <action android:name="android.intent.action.MAIN" />
+73-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:36:17-68
+73-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:36:25-66
+74
+75                <category android:name="android.intent.category.LAUNCHER" />
+75-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:37:17-76
+75-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:37:27-74
+76            </intent-filter>
+77        </activity>
+78        <!--
+79             Don't delete the meta-data below.
+80             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+81        -->
+82        <meta-data
+82-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:42:9-44:33
+83            android:name="flutterEmbedding"
+83-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:43:13-44
+84            android:value="2" />
+84-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:44:13-30
+85        <meta-data
+85-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:45:8-46:69
+86            android:name="com.google.android.geo.API_KEY"
+86-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:45:19-64
+87            android:value="AIzaSyAmOl-QJnc2Spwuh8GAoqx9Z3Wz-ez73V8" />
+87-->/Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/android/app/src/main/AndroidManifest.xml:46:12-67
+88
+89        <service
+89-->[:geolocator_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:12:9-16:56
+90            android:name="com.baseflow.geolocator.GeolocatorLocationService"
+90-->[:geolocator_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:13:13-77
+91            android:enabled="true"
+91-->[:geolocator_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:14:13-35
+92            android:exported="false"
+92-->[:geolocator_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:15:13-37
+93            android:foregroundServiceType="location" />
+93-->[:geolocator_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:16:13-53
+94
+95        <provider
+95-->[:image_picker_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:10:9-18:20
+96            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+96-->[:image_picker_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-82
+97            android:authorities="com.example.nirbhaya_service.flutter.image_provider"
+97-->[:image_picker_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:12:13-74
+98            android:exported="false"
+98-->[:image_picker_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:13:13-37
+99            android:grantUriPermissions="true" >
+99-->[:image_picker_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:14:13-47
+100            <meta-data
+100-->[:image_picker_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:15:13-17:75
+101                android:name="android.support.FILE_PROVIDER_PATHS"
+101-->[:image_picker_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:16:17-67
+102                android:resource="@xml/flutter_image_picker_file_paths" />
+102-->[:image_picker_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:17:17-72
+103        </provider>
+104
+105        <activity
+105-->[:url_launcher_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:10:9-13:74
+106            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+106-->[:url_launcher_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-74
+107            android:exported="false"
+107-->[:url_launcher_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:12:13-37
+108            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+108-->[:url_launcher_android] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:13:13-71
+109
+110        <service
+110-->[:location] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:13:9-17:56
+111            android:name="com.lyokone.location.FlutterLocationService"
+111-->[:location] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:14:13-71
+112            android:enabled="true"
+112-->[:location] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:15:13-35
+113            android:exported="false"
+113-->[:location] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:16:13-37
+114            android:foregroundServiceType="location" />
+114-->[:location] /Users/sanjaysharma/Documents/Nirbhaya Service backup/nirbhaya_service_app/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:17:13-53
+115
+116        <activity
+116-->[com.google.android.gms:play-services-auth:20.4.0] /Users/sanjaysharma/.gradle/caches/transforms-3/fd63fa755a0c7f97a7fa210b01829849/transformed/jetified-play-services-auth-20.4.0/AndroidManifest.xml:23:9-27:75
+117            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+117-->[com.google.android.gms:play-services-auth:20.4.0] /Users/sanjaysharma/.gradle/caches/transforms-3/fd63fa755a0c7f97a7fa210b01829849/transformed/jetified-play-services-auth-20.4.0/AndroidManifest.xml:24:13-93
+118            android:excludeFromRecents="true"
+118-->[com.google.android.gms:play-services-auth:20.4.0] /Users/sanjaysharma/.gradle/caches/transforms-3/fd63fa755a0c7f97a7fa210b01829849/transformed/jetified-play-services-auth-20.4.0/AndroidManifest.xml:25:13-46
+119            android:exported="false"
+119-->[com.google.android.gms:play-services-auth:20.4.0] /Users/sanjaysharma/.gradle/caches/transforms-3/fd63fa755a0c7f97a7fa210b01829849/transformed/jetified-play-services-auth-20.4.0/AndroidManifest.xml:26:13-37
+120            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+120-->[com.google.android.gms:play-services-auth:20.4.0] /Users/sanjaysharma/.gradle/caches/transforms-3/fd63fa755a0c7f97a7fa210b01829849/transformed/jetified-play-services-auth-20.4.0/AndroidManifest.xml:27:13-72
+121        <!--
+122            Service handling Google Sign-In user revocation. For apps that do not integrate with
+123            Google Sign-In, this service will never be started.
+124        -->
+125        <service
+125-->[com.google.android.gms:play-services-auth:20.4.0] /Users/sanjaysharma/.gradle/caches/transforms-3/fd63fa755a0c7f97a7fa210b01829849/transformed/jetified-play-services-auth-20.4.0/AndroidManifest.xml:33:9-37:51
+126            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+126-->[com.google.android.gms:play-services-auth:20.4.0] /Users/sanjaysharma/.gradle/caches/transforms-3/fd63fa755a0c7f97a7fa210b01829849/transformed/jetified-play-services-auth-20.4.0/AndroidManifest.xml:34:13-89
+127            android:exported="true"
+127-->[com.google.android.gms:play-services-auth:20.4.0] /Users/sanjaysharma/.gradle/caches/transforms-3/fd63fa755a0c7f97a7fa210b01829849/transformed/jetified-play-services-auth-20.4.0/AndroidManifest.xml:35:13-36
+128            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+128-->[com.google.android.gms:play-services-auth:20.4.0] /Users/sanjaysharma/.gradle/caches/transforms-3/fd63fa755a0c7f97a7fa210b01829849/transformed/jetified-play-services-auth-20.4.0/AndroidManifest.xml:36:13-107
+129            android:visibleToInstantApps="true" /> <!-- Needs to be explicitly declared on P+ -->
+129-->[com.google.android.gms:play-services-auth:20.4.0] /Users/sanjaysharma/.gradle/caches/transforms-3/fd63fa755a0c7f97a7fa210b01829849/transformed/jetified-play-services-auth-20.4.0/AndroidManifest.xml:37:13-48
+130        <uses-library
+130-->[com.google.android.gms:play-services-maps:18.1.0] /Users/sanjaysharma/.gradle/caches/transforms-3/a0e34175b89fa528462076cc4208822f/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:39:9-41:40
+131            android:name="org.apache.http.legacy"
+131-->[com.google.android.gms:play-services-maps:18.1.0] /Users/sanjaysharma/.gradle/caches/transforms-3/a0e34175b89fa528462076cc4208822f/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:40:13-50
+132            android:required="false" />
+132-->[com.google.android.gms:play-services-maps:18.1.0] /Users/sanjaysharma/.gradle/caches/transforms-3/a0e34175b89fa528462076cc4208822f/transformed/jetified-play-services-maps-18.1.0/AndroidManifest.xml:41:13-37
+133
+134        <activity
+134-->[com.google.android.gms:play-services-base:18.1.0] /Users/sanjaysharma/.gradle/caches/transforms-3/24bd5ae211488322aa8c48f41a7bee4d/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
+135            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+135-->[com.google.android.gms:play-services-base:18.1.0] /Users/sanjaysharma/.gradle/caches/transforms-3/24bd5ae211488322aa8c48f41a7bee4d/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:19-85
+136            android:exported="false"
+136-->[com.google.android.gms:play-services-base:18.1.0] /Users/sanjaysharma/.gradle/caches/transforms-3/24bd5ae211488322aa8c48f41a7bee4d/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:22:19-43
+137            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+137-->[com.google.android.gms:play-services-base:18.1.0] /Users/sanjaysharma/.gradle/caches/transforms-3/24bd5ae211488322aa8c48f41a7bee4d/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:21:19-78
+138
+139        <meta-data
+139-->[com.google.android.gms:play-services-basement:18.1.0] /Users/sanjaysharma/.gradle/caches/transforms-3/f46b9773282b7a3d38863a46e0e0b5d1/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+140            android:name="com.google.android.gms.version"
+140-->[com.google.android.gms:play-services-basement:18.1.0] /Users/sanjaysharma/.gradle/caches/transforms-3/f46b9773282b7a3d38863a46e0e0b5d1/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+141            android:value="@integer/google_play_services_version" />
+141-->[com.google.android.gms:play-services-basement:18.1.0] /Users/sanjaysharma/.gradle/caches/transforms-3/f46b9773282b7a3d38863a46e0e0b5d1/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+142
+143        <uses-library
+143-->[androidx.window:window:1.0.0-beta04] /Users/sanjaysharma/.gradle/caches/transforms-3/dee59bb480020f42d53c2ea15e4501f7/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+144            android:name="androidx.window.extensions"
+144-->[androidx.window:window:1.0.0-beta04] /Users/sanjaysharma/.gradle/caches/transforms-3/dee59bb480020f42d53c2ea15e4501f7/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+145            android:required="false" />
+145-->[androidx.window:window:1.0.0-beta04] /Users/sanjaysharma/.gradle/caches/transforms-3/dee59bb480020f42d53c2ea15e4501f7/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+146        <uses-library
+146-->[androidx.window:window:1.0.0-beta04] /Users/sanjaysharma/.gradle/caches/transforms-3/dee59bb480020f42d53c2ea15e4501f7/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+147            android:name="androidx.window.sidecar"
+147-->[androidx.window:window:1.0.0-beta04] /Users/sanjaysharma/.gradle/caches/transforms-3/dee59bb480020f42d53c2ea15e4501f7/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+148            android:required="false" />
+148-->[androidx.window:window:1.0.0-beta04] /Users/sanjaysharma/.gradle/caches/transforms-3/dee59bb480020f42d53c2ea15e4501f7/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+149
+150        <provider
+150-->[androidx.emoji2:emoji2:1.0.0] /Users/sanjaysharma/.gradle/caches/transforms-3/bd44fb57d7c3686a718759dd3e583490/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
+151            android:name="androidx.startup.InitializationProvider"
+151-->[androidx.emoji2:emoji2:1.0.0] /Users/sanjaysharma/.gradle/caches/transforms-3/bd44fb57d7c3686a718759dd3e583490/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
+152            android:authorities="com.example.nirbhaya_service.androidx-startup"
+152-->[androidx.emoji2:emoji2:1.0.0] /Users/sanjaysharma/.gradle/caches/transforms-3/bd44fb57d7c3686a718759dd3e583490/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
+153            android:exported="false" >
+153-->[androidx.emoji2:emoji2:1.0.0] /Users/sanjaysharma/.gradle/caches/transforms-3/bd44fb57d7c3686a718759dd3e583490/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
+154            <meta-data
+154-->[androidx.emoji2:emoji2:1.0.0] /Users/sanjaysharma/.gradle/caches/transforms-3/bd44fb57d7c3686a718759dd3e583490/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+155                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+155-->[androidx.emoji2:emoji2:1.0.0] /Users/sanjaysharma/.gradle/caches/transforms-3/bd44fb57d7c3686a718759dd3e583490/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
+156                android:value="androidx.startup" />
+156-->[androidx.emoji2:emoji2:1.0.0] /Users/sanjaysharma/.gradle/caches/transforms-3/bd44fb57d7c3686a718759dd3e583490/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
+157            <meta-data
+157-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/sanjaysharma/.gradle/caches/transforms-3/da12c36cbc191d2ddc924c1ef309570f/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+158                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+158-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/sanjaysharma/.gradle/caches/transforms-3/da12c36cbc191d2ddc924c1ef309570f/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+159                android:value="androidx.startup" />
+159-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/sanjaysharma/.gradle/caches/transforms-3/da12c36cbc191d2ddc924c1ef309570f/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+160        </provider>
+161    </application>
+162
+163</manifest>

@@ -1,0 +1,1 @@
+const chooseServiceImage = "images/car.jpg";
