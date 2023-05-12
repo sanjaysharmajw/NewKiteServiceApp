@@ -30,7 +30,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
               Get.back();
             },child: Image.asset('assets/back_icons.png',width: 17,height: 17)),
             const SizedBox(height: 25),
-            const MyText(text: 'About Us', fontName: 'Gilroy',
+             MyText(text: 'about_us'.tr, fontName: 'Gilroy',
                 fontSize: 20, fontWeight: FontWeight.w800, textColor: appBlack),
             const SizedBox(height: 25),
             SingleChildScrollView(

@@ -46,6 +46,7 @@ class _OTPScreenState extends State<OTPScreen> {
     ScreenUtil.init(context, designSize: const Size(375, 812));
     return SafeArea(
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
       body: Center(
         child: SizedBox(
           height: double.infinity,

@@ -135,9 +135,9 @@ class _HomePageState extends State<SelectAddressMap> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
+         Padding(
           padding:  EdgeInsets.only(left: 30,right: 10,top: 15),
-          child:  MyText(text: 'Pick Address',
+          child:  MyText(text: 'pick_address'.tr,
               fontName: 'Gilroy',
               fontSize: 20,
               fontWeight: FontWeight.w600,
@@ -155,7 +155,7 @@ class _HomePageState extends State<SelectAddressMap> {
         ),
         MyButton(press: (){
           Get.to(SelectServiceScreen(placemark:  address = placemarks![0], latLng: _draggedLatlng,action: widget.action));
-        }, buttonText: 'Next'),
+        }, buttonText: 'next'.tr),
       ],
     );
   }

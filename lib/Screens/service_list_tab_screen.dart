@@ -34,10 +34,10 @@ class ServiceListTabScreenState extends State<ServiceListTabScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Padding(
+               Padding(
                 padding: EdgeInsets.only(left: 20, top: 20),
                 child: MyText(
-                    text: 'Service List',
+                    text: 'ServiceList'.tr,
                     fontName: 'Gilroy',
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
@@ -80,11 +80,11 @@ class ServiceListTabScreenState extends State<ServiceListTabScreen> {
 
   List<Tab> getTabs() {
     List<String> tabNames = [
-      'All',
-      'Pending',
-      'Accepted',
-      'Rejected',
-      'Completed',
+      'all'.tr,
+      'pending'.tr,
+      'accepted'.tr,
+      'rejected'.tr,
+      'completed'.tr,
     ];
 
     List<Tab> tabs = [];

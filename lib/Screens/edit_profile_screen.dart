@@ -1,6 +1,7 @@
 
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:nirbhaya_service/Models/user_details_models.dart';
 import 'package:nirbhaya_service/Utils/custom_bottom_nav.dart';
@@ -83,7 +84,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                           Get.back();
                         },child: Image.asset('assets/back_icons.png',width: 17,height: 17)),
                         const SizedBox(height: 25),
-                        const MyText(text: 'Update Profile', fontName: 'Gilroy',
+                         MyText(text: 'UpdateProfile'.tr, fontName: 'Gilroy',
                             fontSize: 20, fontWeight: FontWeight.w800, textColor: appBlack),
                         const SizedBox(height: 25),
                         // Column(
@@ -141,70 +142,100 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                         //   ],
                         // ),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'First Name', controller: updateProfileController.firstNameController.value,
+                        MyTextFieldForm(hintText: 'first_name'.tr, controller: updateProfileController.firstNameController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
-                                return "Enter your first name";
+                                return "enter_first_name".tr;
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16, readOnly: false, onTap: () {  }, keyboardType: TextInputType.text),
+                            }, fontSize: 16, readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[a-zA-Z\]")),
+                            FilteringTextInputFormatter.deny('  '),
+                          ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Last Name', controller: updateProfileController.lastNameController.value,
+                        MyTextFieldForm(hintText: 'last_name'.tr, controller: updateProfileController.lastNameController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
-                                return "Enter your last name";
+                                return "enter_last_name".tr;
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16, readOnly: false, onTap: () {  }, keyboardType: TextInputType.text),
+                            }, fontSize: 16, readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[a-zA-Z\]")),
+                            FilteringTextInputFormatter.deny('  '),
+                          ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Mobile Number', controller: updateProfileController.mobileController.value,
+                        MyTextFieldForm(hintText: 'mobile_number'.tr, controller: updateProfileController.mobileController.value,
                             validator: (value) {
                               if (value.toString().length!=10) {
-                                return "Enter 10 digits Mobile Number";
+                                return "enter_mobile_number".tr;
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text),
+                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[0-9]")),
+                            FilteringTextInputFormatter.deny(RegExp(r'^0+')),
+                            LengthLimitingTextInputFormatter(10),
+                          ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Email ID', controller: updateProfileController.emailController.value,
+                        MyTextFieldForm(hintText: 'email'.tr, controller: updateProfileController.emailController.value,
                             validator: (value) {
                               Pattern pattern = r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+';
                               RegExp regex = RegExp(pattern as String);
                               if (!regex.hasMatch(value)) {
-                                return 'Please enter a valid email address.';
+                                return 'enter_valid_email'.tr;
                               } else {
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text),
+                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.deny(' '),
+                          ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Address', controller: updateProfileController.addressController.value,
+                        MyTextFieldForm(hintText: 'address'.tr, controller: updateProfileController.addressController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
-                                return "Enter Your Address";
+                                return "enter_your_address".tr;
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text),
+                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[A-Za-z0-9'\.\-\s\,\ ]")),
+                            FilteringTextInputFormatter.deny('  ')
+                          ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Emergency Contact Number', controller: updateProfileController.emergencyController.value,
+                        MyTextFieldForm(hintText: 'emergency_contact_number'.tr, controller: updateProfileController.emergencyController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
-                                return "Enter Your Emergency Contact Number";
+                                return "enter_emergency_contact_number".tr;
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () { }, keyboardType: TextInputType.text),
+                            }, fontSize: 16,readOnly: false, onTap: () { }, keyboardType: TextInputType.text,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[0-9]")),
+                            FilteringTextInputFormatter.deny(RegExp(r'^0+')),
+                            LengthLimitingTextInputFormatter(10),
+                          ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Select DOB', controller: updateProfileController.selectDobController.value,
+                        MyTextFieldForm(hintText: 'select_DOB'.tr, controller: updateProfileController.selectDobController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
-                                return "Enter 10 digits Mobile Number";
+                                return "select_dob".tr;
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: true, onTap: () { showDialogPicker(context); }, keyboardType: TextInputType.text),
+                            }, fontSize: 16,readOnly: true, onTap: () { showDialogPicker(context); }, keyboardType: TextInputType.text, inputFormatters: [],),
                         const SizedBox(height: 5),
                       ],
                     ),
@@ -214,18 +245,21 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
+                     Padding(
                       padding:  EdgeInsets.symmetric(horizontal: 30),
-                      child:  MyText(text: 'Select Gender', fontName: 'Gilroy',
+                      child:  MyText(text: 'select_gender'.tr, fontName: 'Gilroy',
                           fontSize: 16, fontWeight: FontWeight.w800, textColor: appBlack),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Expanded(child: RadioListTile(
-                            title: const Text("Male",style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
+                          Expanded(
+
+                            child: RadioListTile(
+
+                            title:  Text("male".tr,style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
                             value: "male",
                             activeColor: appBlue,
                             groupValue: gender,
@@ -235,9 +269,12 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               });
                             },
                           ),),
-                          Expanded(child: RadioListTile(
-                            visualDensity: const VisualDensity(horizontal: -4),
-                            title: const Text("Female",style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
+
+                          Expanded(
+
+                              child: RadioListTile(
+                            //visualDensity: const VisualDensity(horizontal: -4),
+                            title:  Text("female".tr,style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
                             value: "female",
                             groupValue: gender,
                             activeColor: appBlue,
@@ -248,7 +285,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                             },
                           )),
                           Expanded(child: RadioListTile(
-                            title: const Text("Other",style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
+                            title: Text("other".tr,style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
                             value: "other",
                             groupValue: gender,
                             activeColor: appBlue,
@@ -267,7 +304,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                   if(formKey.currentState!.validate()){
                     updateProfileApi(gender.toString());
                   }
-                }, buttonText: 'Update'),
+                }, buttonText: 'update'.tr),
               ],
             );
           })

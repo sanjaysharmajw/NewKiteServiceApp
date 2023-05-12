@@ -160,7 +160,7 @@ class ProfileScreenState extends State<ProfileScreen> {
               //   Get.back();
               // },child: Image.asset('assets/back_icons.png',width: 17,height: 17)),
               const SizedBox(height: 25),
-              const MyText(text: 'Profile', fontName: 'Gilroy',
+               MyText(text: 'Profile'.tr, fontName: 'Gilroy',
                   fontSize: 20, fontWeight: FontWeight.w800, textColor: appBlack),
               const SizedBox(height: 25),
 
@@ -219,7 +219,7 @@ class ProfileScreenState extends State<ProfileScreen> {
 
               FxSpacing.height(50),
 
-              _buildSingleSetting('Profile', 'Update your profile',
+              _buildSingleSetting('Profile'.tr, 'UpdateProfile'.tr,
                   FeatherIcons.messageCircle, appBlack,(){
                     Get.to(EditProfileScreen(userDetailsData: userDetailsController.getUserDetailsData[0]));
                   }),
@@ -228,7 +228,7 @@ class ProfileScreenState extends State<ProfileScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _buildSingleSetting('Volunteer'.tr, 'would you like to Volunteer?'.tr,
+                  _buildSingleSetting('volunteer'.tr, 'would_you_like_to_volunteer?'.tr,
                       FeatherIcons.user, appBlack,(){
                         // buildLanguageDialog(context);
                       }),
@@ -268,17 +268,17 @@ class ProfileScreenState extends State<ProfileScreen> {
               //     FeatherIcons.bell,
               //     appBlack),
               const Divider(),
-              _buildSingleSetting('Help', 'Contact Us',
+              _buildSingleSetting('help'.tr, 'contact_us'.tr,
                   FeatherIcons.messageCircle, appBlack,(){
                   Get.to(const ChatScreen());
                   }),
               const Divider(),
-              _buildSingleSetting('About', 'About the application',
+              _buildSingleSetting('about'.tr, 'about_the_application'.tr,
                   FeatherIcons.alertCircle, appBlack,(){
                 Get.to(const AboutUsScreen());
                   }),
               const Divider(),
-              _buildSingleSetting('Log Out', 'Exit from your account',
+              _buildSingleSetting('log_out'.tr, 'exit_from_your_account'.tr,
                   FeatherIcons.logOut, appBlack,(){logoutPopup(context);}),
             ],
           ),
