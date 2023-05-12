@@ -10,6 +10,7 @@ import 'package:nirbhaya_service/contoller/aws_controller_camera.dart';
 import 'package:nirbhaya_service/contoller/pick_photo_controller.dart';
 import 'package:nirbhaya_service/contoller/service_update_profile_controller.dart';
 import 'package:nirbhaya_service/widgets/ImagePickerDialog.dart';
+import '../Language/custom_text_input_formatter.dart';
 import '../Utils/loader.dart';
 import '../Utils/tools.dart';
 import '../color_constant.dart';
@@ -151,8 +152,9 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               }
                             }, fontSize: 16, readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
                           inputFormatters: [
-                            FilteringTextInputFormatter.allow(
-                                RegExp("[a-zA-Z\]")),
+                            engHindFormatter,
+                            //FilteringTextInputFormatter.allow(
+                              //  RegExp("[a-zA-Z\]")),
                             FilteringTextInputFormatter.deny('  '),
                           ],),
                         const SizedBox(height: 25),
@@ -165,8 +167,9 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               }
                             }, fontSize: 16, readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
                           inputFormatters: [
-                            FilteringTextInputFormatter.allow(
-                                RegExp("[a-zA-Z\]")),
+                            engHindFormatter,
+                            //FilteringTextInputFormatter.allow(
+                              //  RegExp("[a-zA-Z\]")),
                             FilteringTextInputFormatter.deny('  '),
                           ],),
                         const SizedBox(height: 25),
@@ -208,8 +211,9 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               }
                             }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
                           inputFormatters: [
+                            engHindFormatter,
                             FilteringTextInputFormatter.allow(
-                                RegExp("[A-Za-z0-9'\.\-\s\,\ ]")),
+                                RegExp("[0-9a-zA-Zऀ-ॿ'\.\-\s\\,\ ]")),
                             FilteringTextInputFormatter.deny('  ')
                           ],),
                         const SizedBox(height: 25),

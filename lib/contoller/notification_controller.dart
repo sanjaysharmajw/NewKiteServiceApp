@@ -22,7 +22,9 @@ class NotificationController extends GetxController{
       debugPrint('jsonEncode(notificationRequestBody)');
       debugPrint(jsonEncode(notificationRequestBody));
       debugPrint(response.body);
-      Map<String, dynamic> responseBody = json.decode(response.body);
+      const utf8Decoder = Utf8Decoder(allowMalformed: true);
+      final decodedBytes = utf8Decoder.convert(response.bodyBytes);
+      Map<String, dynamic> responseBody = json.decode(decodedBytes);
       if (response.statusCode == 200) {
         CustomLoader.closeLoader();
         return NotificationModels.fromJson(responseBody);
