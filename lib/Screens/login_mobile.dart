@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
@@ -29,6 +30,7 @@ class _LoginMobileState extends State<LoginMobile> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
       body: Form(
         key: formKey,
         child: Center(
@@ -51,7 +53,12 @@ class _LoginMobileState extends State<LoginMobile> {
                       }else{
                         return null;
                       }
-                    }, fontSize: 18, readOnly: false, onTap: () {  }, keyboardType: TextInputType.number),
+                    }, fontSize: 18, readOnly: false, onTap: () {  }, keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp("[0-9]")),
+                      FilteringTextInputFormatter.deny(RegExp(r'^0+')),
+                      LengthLimitingTextInputFormatter(10),
+                    ],),
                 ),
                  MyButton(press: () {
                    if (formKey.currentState!.validate()) {

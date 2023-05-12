@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:multi_select_flutter/bottom_sheet/multi_select_bottom_sheet.dart';
 import 'package:multi_select_flutter/util/multi_select_item.dart';
@@ -77,7 +78,12 @@ class _ServiceRegistrationState extends State<ServiceRegistration> {
                             }else{
                               return null;
                             }
-                          }, fontSize: 16, readOnly: false, onTap: () {  }, keyboardType: TextInputType.text),
+                          }, fontSize: 16, readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[a-zA-Z\]")),
+                            FilteringTextInputFormatter.deny('  '),
+                          ],),
                         const SizedBox(height: 25),
                         MyTextFieldWithIcon(hintText: 'Address', controller: addressController,
                           validator: (value) {
@@ -99,7 +105,7 @@ class _ServiceRegistrationState extends State<ServiceRegistration> {
                             }else{
                               return null;
                             }
-                          }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text),
+                          }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text, inputFormatters: [],),
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'Registration Number', controller: emergencyController,
                           validator: (value) {
@@ -108,7 +114,7 @@ class _ServiceRegistrationState extends State<ServiceRegistration> {
                             }else{
                               return null;
                             }
-                          }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.number),
+                          }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.number, inputFormatters: [],),
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'Work Timing (To)', controller: emergencyController,
                           validator: (value) {
@@ -117,7 +123,7 @@ class _ServiceRegistrationState extends State<ServiceRegistration> {
                             }else{
                               return null;
                             }
-                          }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text),
+                          }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text, inputFormatters: [],),
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'Work Timing (From)', controller: emergencyController,
                           validator: (value) {
@@ -126,7 +132,7 @@ class _ServiceRegistrationState extends State<ServiceRegistration> {
                             }else{
                               return null;
                             }
-                          }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text),
+                          }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text, inputFormatters: [],),
                         const SizedBox(height: 25),
 
                       ],

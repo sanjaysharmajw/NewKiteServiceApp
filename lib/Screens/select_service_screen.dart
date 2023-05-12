@@ -65,7 +65,7 @@ class _SelectServiceScreenState extends State<SelectServiceScreen> {
                 Get.back();
               },child: Image.asset('assets/back_icons.png',width: 17,height: 17)),
               const SizedBox(height: 20),
-              const MyText(text: 'Service Category', fontName: 'Gilroy',
+               MyText(text: 'service_category'.tr, fontName: 'Gilroy',
                   fontSize: 20, fontWeight: FontWeight.w700, textColor: Colors.black),
               const SizedBox(height: 20),
               Expanded(

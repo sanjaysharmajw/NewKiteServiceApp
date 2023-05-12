@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:nirbhaya_service/Utils/validators.dart';
 import 'package:nirbhaya_service/color_constant.dart';
 
@@ -11,15 +12,19 @@ class MyTextFieldForm extends StatelessWidget {
   final VoidCallback onTap;
   final int? maxLength;
   final TextInputType keyboardType;
-  const MyTextFieldForm(
+  List<TextInputFormatter>? inputFormatters;
+   MyTextFieldForm(
       {Key? key,
       required this.hintText,
       required this.controller,
-      required this.validator, required this.fontSize, required this.readOnly, required this.onTap, required this.keyboardType, this.maxLength})
+      required this.validator, required this.fontSize, required this.readOnly, required this.onTap,
+        required this.keyboardType, this.maxLength, required this.inputFormatters})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: inputFormatters,
+
       readOnly: readOnly,
       controller: controller,
       onTap: onTap,

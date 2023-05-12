@@ -16,7 +16,7 @@ Future<bool> logoutPopup(context) async {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Do you want to logout?"),
+                Text("do_you_want_to_log_out?".tr),
                 SizedBox(height: 20),
                 Row(
                   children: [
@@ -28,7 +28,7 @@ Future<bool> logoutPopup(context) async {
                           Get.to(const LoginMobile());
                           // exit(0);
                         },
-                        child:  Text("Yes"),
+                        child:  Text("yes".tr),
                         style: ElevatedButton.styleFrom(
                             primary: appBlue),
                       ),
@@ -40,7 +40,7 @@ Future<bool> logoutPopup(context) async {
                             print('no selected');
                             Navigator.of(context).pop();
                           },
-                          child: Text("No", style: TextStyle(color: Colors.black)),
+                          child: Text("no".tr, style: TextStyle(color: Colors.black)),
                           style: ElevatedButton.styleFrom(
                             primary: Colors.white,
                           ),

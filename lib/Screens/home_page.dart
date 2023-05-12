@@ -149,33 +149,33 @@ class _HomePageState extends State<HomePage> {
                             HomePageItems(
                               completed: 58,
                               backgroundColor: Colors.blue,
-                              title: 'All',
+                              title: 'all'.tr,
                               subtitle: allRequest!,
                             ),
                             HomePageItems(
                               completed: 45,
                               backgroundColor: Colors.red,
-                              title: 'Pending',
+                              title: 'pending'.tr,
                               subtitle: pendingRequest!,
                             ),
                             HomePageItems(
                               completed: 68,
                               backgroundColor: Colors.green,
-                              title: 'Accepted',
+                              title: 'accepted'.tr,
                               subtitle: acceptedRequest!,
                             ),
                             HomePageItems(
                               completed: 32,
                               backgroundColor: Colors.orange,
-                              title: 'Rejected',
+                              title: 'rejected'.tr,
                               subtitle: rejectedRequest!,
                             ),
                           ]),
                     ]),
                 Container(
                   margin: const EdgeInsets.only(left: 10, right: 10, top: 15),
-                  child: const MyText(
-                      text: 'Service Requests',
+                  child: MyText(
+                      text: 'service_request'.tr,
                       fontName: 'Gilroy',
                       fontSize: 14,
                       fontWeight: FontWeight.w500,

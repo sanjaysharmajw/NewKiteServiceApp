@@ -58,7 +58,7 @@ class ChatState extends State<ChatBot> {
                    Get.back();
                  },child: Image.asset('assets/back_icons.png',width: 17,height: 17)),
                  const SizedBox(height: 25),
-                 const MyText(text: 'Chat', fontName: 'Gilroy',
+                  MyText(text: 'chat'.tr, fontName: 'Gilroy',
                      fontSize: 20, fontWeight: FontWeight.w800, textColor: appBlack),
                  const SizedBox(height: 25),
                ],
@@ -85,10 +85,10 @@ class ChatState extends State<ChatBot> {
                         ],
                         controller: _controller,
                         style: const TextStyle(color: appWhiteColor,fontFamily: 'Gilroy'),
-                        decoration: const InputDecoration(
+                        decoration:  InputDecoration(
                           border: InputBorder.none,
                           hintStyle: TextStyle(color: appWhiteColor),
-                          hintText: 'Enter Something',
+                          hintText: 'enter_something'.tr,
                           contentPadding: EdgeInsets.only(right: 20,left: 20),
                         ),
                       ),

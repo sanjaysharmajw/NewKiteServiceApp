@@ -32,7 +32,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
               Get.back();
             },child: Image.asset('assets/back_icons.png',width: 17,height: 17)),
             const SizedBox(height: 25),
-            const MyText(text: 'Notification', fontName: 'Gilroy',
+             MyText(text: 'notification'.tr, fontName: 'Gilroy',
                 fontSize: 20, fontWeight: FontWeight.w800, textColor: appBlack),
             const SizedBox(height: 25),
             Expanded(

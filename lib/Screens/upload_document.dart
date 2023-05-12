@@ -103,7 +103,9 @@ class _UploadDocumentScreenState extends State<UploadDocumentScreen> with Single
                           }else{
                             return null;
                           }
-                        }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text),
+                        }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text, inputFormatters: [
+
+                      ],),
 
                   ],
                 ),

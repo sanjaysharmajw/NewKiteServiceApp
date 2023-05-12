@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:nirbhaya_service/Screens/home_page.dart';
@@ -54,7 +55,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text),
+                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[a-zA-Z\]")),
+                            FilteringTextInputFormatter.deny('  '),
+                          ],),
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'Mobile Number', controller: mobileController,
                             validator: (value) {
@@ -63,7 +69,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.number),
+                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.number,
+                          inputFormatters: [
+
+                            FilteringTextInputFormatter.allow(RegExp("[0-9]")),
+                            FilteringTextInputFormatter.deny(RegExp(r'^0+')),
+                            LengthLimitingTextInputFormatter(10),
+                          ],),
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'Email ID', controller: emailController,
                             validator: (value) {
@@ -74,7 +86,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               } else {
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.emailAddress),
+                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.emailAddress,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.deny('  '),
+                          ],),
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'Address', controller: addressController,
                             validator: (value) {
@@ -83,7 +98,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text),
+                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text, inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[A-Za-z0-9'\.\-\s\,\ ]")),
+                            FilteringTextInputFormatter.deny('  ')
+                          ],),
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'Emergency Number', controller: emergencyController,
                             validator: (value) {
@@ -92,7 +111,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.number),
+                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.number, inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp("[0-9]")),
+                            FilteringTextInputFormatter.deny(RegExp(r'^0+')),
+                            LengthLimitingTextInputFormatter(10),
+                          ],),
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'Select DOB', controller: selectDobController,
                             validator: (value) {
@@ -101,7 +124,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text),
+                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text, inputFormatters: [],),
                         const SizedBox(height: 5),
                       ],
                     ),
