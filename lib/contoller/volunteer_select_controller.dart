@@ -32,8 +32,5 @@ class VolunteerController extends GetxController{
     }
     return null;
   }
-
-
-
   }
 

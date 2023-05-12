@@ -246,13 +246,11 @@ class ProfileScreenState extends State<ProfileScreen> {
                         }else{
                           volunteerApi("No");
                         }
-
                       });
                     },
                   ),
                 ],
               ),
-
               const Divider(),
               _buildSingleSetting('language'.tr, 'changeYourLanguage'.tr,
                   FeatherIcons.settings, appBlack,(){
