@@ -19,6 +19,7 @@ import 'package:nirbhaya_service/contoller/update_add_service_list.dart';
 import 'package:nirbhaya_service/contoller/user_service_list_controller.dart';
 import 'package:nirbhaya_service/widgets/my_button_without_padding.dart';
 import '../BodyRequest/update_service_list_request_body.dart';
+import '../Language/custom_text_input_formatter.dart';
 import '../Utils/DataProvider.dart';
 import '../Utils/custom_theme.dart';
 import '../Utils/theme.dart';
@@ -274,8 +275,9 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             readOnly: false,
                             onTap: () {},
                             keyboardType: TextInputType.text, inputFormatters: [
-                          FilteringTextInputFormatter.allow(
-                              RegExp("[a-zA-Z\]")),
+                          engHindFormatter,
+                         // FilteringTextInputFormatter.allow(
+                           //   RegExp("[a-zA-Z\]")),
                           FilteringTextInputFormatter.deny('  '),
                         ],),
                         const SizedBox(height: 25),
@@ -294,8 +296,9 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             readOnly: false,
                             onTap: () {},
                             keyboardType: TextInputType.text, inputFormatters: [
-                          FilteringTextInputFormatter.allow(
-                              RegExp("[a-zA-Z\]")),
+                          engHindFormatter,
+                         // FilteringTextInputFormatter.allow(
+                           //   RegExp("[a-zA-Z\]")),
                           FilteringTextInputFormatter.deny('  '),
                         ],),
                         const SizedBox(height: 25),
@@ -357,8 +360,9 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             readOnly: false,
                             onTap: () {},
                             keyboardType: TextInputType.text, inputFormatters: [
-                          FilteringTextInputFormatter.allow(
-                              RegExp("[a-zA-Z\]")),
+                          engHindFormatter,
+                          //FilteringTextInputFormatter.allow(
+                             // RegExp("[a-zA-Z\]")),
                           FilteringTextInputFormatter.deny('  '),
                         ],),
                         const SizedBox(height: 25),
@@ -377,8 +381,9 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             readOnly: false,
                             onTap: () {},
                             keyboardType: TextInputType.text, inputFormatters: [
-                          FilteringTextInputFormatter.allow(
-                              RegExp("[a-zA-Z\]")),
+                          engHindFormatter,
+                         // FilteringTextInputFormatter.allow(
+                           //   RegExp("[a-zA-Z\]")),
                           FilteringTextInputFormatter.deny('  '),
                         ],),
                         const SizedBox(height: 25),
@@ -398,7 +403,7 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             onTap: () {},
                             keyboardType: TextInputType.text, inputFormatters: [
                           FilteringTextInputFormatter.allow(
-                              RegExp("[A-Za-z0-9'\.\-\s\,\ ]")),
+                              RegExp("[0-9a-zA-Zऀ-ॿ'\.\-\s\,\ ]")),
                           FilteringTextInputFormatter.deny('  ')
 
                         ],),

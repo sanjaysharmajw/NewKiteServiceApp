@@ -33,7 +33,9 @@ class AddServiceController extends GetxController{
       CustomLoader.showLoader("Please wait");
       final response = await http.post(Uri.parse(APIConstant.addServiceRequest),
         headers: headerController.headerToken, body: jsonEncode(addServiceRequestBody),);
-      Map<String, dynamic> responseBody = json.decode(response.body);
+      const utf8Decoder = Utf8Decoder(allowMalformed: true);
+      final decodedBytes = utf8Decoder.convert(response.bodyBytes);
+      Map<String, dynamic> responseBody = json.decode(decodedBytes);
       debugPrint('AddServiceRequest');
       debugPrint(jsonEncode(addServiceRequestBody));
       if (response.statusCode == 200) {

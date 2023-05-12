@@ -41,7 +41,9 @@ class UserDetailsController extends GetxController{
       var volStatus = Preferences.getVolStatus().toString();
       debugPrint('volStatus $volStatus');
 
-      Map<String, dynamic> responseBody = json.decode(response.body);
+      const utf8Decoder = Utf8Decoder(allowMalformed: true);
+      final decodedBytes = utf8Decoder.convert(response.bodyBytes);
+      Map<String, dynamic> responseBody = json.decode(decodedBytes);
       if (response.statusCode == 200) {
         isLoading.value = false;
         UserDetailsModels model = UserDetailsModels.fromJson(responseBody);

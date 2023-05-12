@@ -23,7 +23,9 @@ class UserServiceListController extends GetxController{
         headers: headerController.headerToken,
         body: jsonEncode(request),
       );
-      Map<String, dynamic> responseBody = json.decode(response.body);
+      const utf8Decoder = Utf8Decoder(allowMalformed: true);
+      final decodedBytes = utf8Decoder.convert(response.bodyBytes);
+      Map<String, dynamic> responseBody = json.decode(decodedBytes);
       debugPrint('userServiceList');
       debugPrint(response.body);
 

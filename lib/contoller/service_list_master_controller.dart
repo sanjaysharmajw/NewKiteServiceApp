@@ -29,7 +29,9 @@ class ServiceListMasterController extends GetxController{
           'status': 'Active'
         }),
       );
-      Map<String, dynamic> responseBody = json.decode(response.body);
+      const utf8Decoder = Utf8Decoder(allowMalformed: true);
+      final decodedBytes = utf8Decoder.convert(response.bodyBytes);
+      Map<String, dynamic> responseBody = json.decode(decodedBytes);
       debugPrint('master');
       debugPrint(response.body);
       if (response.statusCode == 200) {
