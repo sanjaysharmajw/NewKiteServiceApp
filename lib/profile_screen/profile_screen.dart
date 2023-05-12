@@ -229,15 +229,14 @@ class ProfileScreenState extends State<ProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildSingleSetting('volunteer'.tr, 'would_you_like_to_volunteer?'.tr,
-                      FeatherIcons.user, appBlack,(){
-                        // buildLanguageDialog(context);
-                      }),
+                      FeatherIcons.user, appBlack,(){}
+                      ),
                   FlutterSwitch(
-                    width: 60.0,
-                    height: 30.0,
+                    width: 50.0,
+                    height: 25.0,
                     value: volunteer=="Yes"?true:volunteer=="No"?false:false,
                     borderRadius: 30.0,
-                    padding: 5.0,
+                    padding: 2.0,
                     activeColor: blackColor,
                     onToggle: (val) {
                       setState(() {

@@ -17,10 +17,6 @@ import 'Utils/custom_bottom_nav.dart';
 import 'Utils/loader.dart';
 import 'Utils/preference.dart';
 import 'Utils/theme.dart';
-
-
-
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
