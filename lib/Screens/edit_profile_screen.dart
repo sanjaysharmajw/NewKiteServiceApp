@@ -51,6 +51,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
 
   void getDetailsProfile()async{
     setState(() {
+
       updateProfileController.firstNameController.value.text=widget.userDetailsData.firstName.toString();
       updateProfileController.lastNameController.value.text=widget.userDetailsData.lastName.toString();
       updateProfileController.mobileController.value.text=widget.userDetailsData.mobileNumber.toString();

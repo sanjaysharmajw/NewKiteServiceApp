@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:multi_select_flutter/bottom_sheet/multi_select_bottom_sheet.dart';
+import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'package:nirbhaya_service/Screens/select_location.dart';
 import 'package:nirbhaya_service/Screens/upload_document.dart';
 import 'package:nirbhaya_service/Utils/tools.dart';
@@ -39,6 +41,11 @@ class _ServiceRegistrationState extends State<ServiceRegistration> {
   void initState() {
     super.initState();
   }
+
+
+
+
+
 
   @override
   Widget build(BuildContext context) {

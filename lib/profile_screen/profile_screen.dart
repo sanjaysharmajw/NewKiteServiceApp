@@ -1,16 +1,23 @@
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:flutx/flutx.dart';
+import 'package:multi_select_flutter/bottom_sheet/multi_select_bottom_sheet.dart';
+import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:nirbhaya_service/BodyRequest/user_details_request_body.dart';
 import 'package:nirbhaya_service/BodyRequest/volunteer_request.dart';
+import 'package:nirbhaya_service/BodyRequest/volunteer_status_request.dart';
+import 'package:nirbhaya_service/Models/reason_master_model.dart';
 import 'package:nirbhaya_service/Screens/about_us_screen.dart';
 import 'package:nirbhaya_service/Utils/loader.dart';
 import 'package:nirbhaya_service/chat_bot/ChatScreen.dart';
 import 'package:nirbhaya_service/color_constant.dart';
 import 'package:get/get.dart';
+import 'package:nirbhaya_service/contoller/reason_list_master_controller.dart';
 import 'package:nirbhaya_service/contoller/user_details_controller.dart';
 import 'package:nirbhaya_service/contoller/volunteer_select_controller.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -23,6 +30,7 @@ class ProfileScreen extends StatefulWidget {
 
   const ProfileScreen({Key? key}) : super(key: key);
 
+
   @override
   ProfileScreenState createState() => ProfileScreenState();
 
@@ -32,8 +40,15 @@ class ProfileScreenState extends State<ProfileScreen> {
 
   PackageInfo? packageInfo;
   bool? volunteerStatus=false;
+
   final userDetailsController=Get.put(UserDetailsController());
   String? volunteer;
+  List<VolunteerAri> selectedAri = [];
+
+  final List<String> _reasonNames = [];
+  final List<String> _selectedReasonNames= [];
+
+  final reasonMasterListController = Get.put(ReasonListMasterController());
 
 
   final volunteerController=Get.put(VolunteerController());
@@ -56,10 +71,73 @@ class ProfileScreenState extends State<ProfileScreen> {
   void userDetailsApi()async{
     await userDetailsController.updateProfile();
    volunteer= userDetailsController.getUserDetailsData[0].volunteer;
+
+   if(_selectedReasonNames.isNotEmpty){
+     _selectedReasonNames.clear();
+     selectedAri.clear();
+     _reasonNames.clear();
+
+   }
+
+   for(var i = 0; i< userDetailsController.getUserDetailsData[0].volunteerAri!.length;i++){
+     debugPrint("selected reason ${userDetailsController.getUserDetailsData[0].volunteerAri![i].name}");
+     _selectedReasonNames.add(userDetailsController.getUserDetailsData[0].volunteerAri![i].name.toString());
+   }
    setState(() {});
-   debugPrint("volunteer $volunteer");
+   // debugPrint("volunteer ari items ${volunteer[].}");
   }
 
+
+  void _showMultiSelect(BuildContext context) async {
+
+
+    List<ReasonMasterData> reasons = reasonMasterListController.getReasonMasterData.value;
+
+
+    for (var i = 0; i < reasons.length; i++) {
+      _reasonNames.add(reasons[i].name.toString());
+    }
+
+
+
+
+    await showModalBottomSheet(
+      isScrollControlled: true, // required for min/max child size
+      context: context,
+      builder: (ctx) {
+        return reasonMasterListController.isLoading==true?CustomLoader.loader():
+
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: MultiSelectBottomSheet(
+            items: _reasonNames.map((e) => MultiSelectItem(e, e)).toList(),
+            initialValue: _selectedReasonNames,
+            selectedColor: Colors.black,
+            cancelText: Text("Cancel", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
+            confirmText: Text("Confirm", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold, fontSize: 20),),
+            title: Text("I want to help in following situations", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),),
+            onConfirm: (values) {
+              for (var i = 0; i < values.length; i++) {
+                _selectedReasonNames.add(values[i].toString());
+                debugPrint("selected value : ${values[i].toString()}");
+                // make volunteer ari object list
+                VolunteerAri ari = VolunteerAri(id: reasons[i].id, name: reasons[i].name);
+                selectedAri.add(ari);
+              }
+
+
+              if(volunteerStatus==true){
+                volunteerApi("No");
+              }else{
+                volunteerApi("Yes");
+              }
+            },
+            maxChildSize: 0.9,
+        ),
+          );
+      },
+    );
+  }
 
 
 
@@ -120,13 +198,17 @@ class ProfileScreenState extends State<ProfileScreen> {
       onTap: click,
       child: Padding(
         padding: FxSpacing.y(8),
+
+
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(icon, size: 20, color: color),
             FxSpacing.width(20),
+
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+
               children: [
                 FxText.titleSmall(setting, fontWeight: 600, color: color),
                 FxSpacing.height(4),
@@ -228,28 +310,37 @@ class ProfileScreenState extends State<ProfileScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _buildSingleSetting('Volunteer'.tr, 'would you like to Volunteer?'.tr,
+                  _buildSingleSetting('Volunteer'.tr, 'would you like to help others?'.tr,
                       FeatherIcons.user, appBlack,(){
-                        // buildLanguageDialog(context);
-                      }),
-                  FlutterSwitch(
-                    width: 60.0,
-                    height: 30.0,
-                    value: volunteer=="Yes"?true:volunteer=="No"?false:false,
-                    borderRadius: 30.0,
-                    padding: 5.0,
-                    activeColor: blackColor,
-                    onToggle: (val) {
-                      setState(() {
-                        volunteerStatus = val;
-                        if(volunteerStatus==true){
-                          volunteerApi("Yes");
+                        if(volunteer=="Yes"){
+                          _showMultiSelect(context);
                         }else{
-                          volunteerApi("No");
+                          // volunteerApi("No");
                         }
+                      }
+                      ),
+                  Container(
+                    alignment: Alignment.centerRight,
+                    child: FlutterSwitch(
+                      width: 60.0,
+                      height: 30.0,
+                      value: volunteer=="Yes"?true:volunteer=="No"?false:false,
+                      borderRadius: 30.0,
+                      padding: 5.0,
+                      activeColor: blackColor,
+                      onToggle: (val) {
+                        setState(() {
 
-                      });
-                    },
+                          if(volunteer=="No"){
+                            _showMultiSelect(context);
+                          }else{
+                            volunteerApi("No");
+                          }
+
+
+                        });
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -287,11 +378,18 @@ class ProfileScreenState extends State<ProfileScreen> {
     );
   }
  void volunteerApi(String status)async{
-    VolunteerRequest request=VolunteerRequest(
+    VolunteerStatusRequest request=VolunteerStatusRequest(
       userId: Preferences.getUserId().toString(),
-      volunteer: status
+      volunteer: status,
+      volunteerAri: selectedAri,
     );
+
+
    volunteerController.volunteerApi(request).then((value){
+
+     final String json = jsonEncode(request.toJson());
+     debugPrint("request body ${json}");
+
      if(value!=null){
        if(value.status==true){
          userDetailsApi();
