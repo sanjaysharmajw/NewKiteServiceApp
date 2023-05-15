@@ -1,8 +1,5 @@
-
 import 'dart:async';
 import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:nirbhaya_service/BodyRequest/notification_request_body.dart';
 import 'package:nirbhaya_service/Models/notification_models.dart';
@@ -19,9 +16,6 @@ class NotificationController extends GetxController{
       final response = await http.post(Uri.parse(APIConstant.notification),
         headers: headerController.headerToken, body: jsonEncode(notificationRequestBody),
       );
-      debugPrint('jsonEncode(notificationRequestBody)');
-      debugPrint(jsonEncode(notificationRequestBody));
-      debugPrint(response.body);
       const utf8Decoder = Utf8Decoder(allowMalformed: true);
       final decodedBytes = utf8Decoder.convert(response.bodyBytes);
       Map<String, dynamic> responseBody = json.decode(decodedBytes);
