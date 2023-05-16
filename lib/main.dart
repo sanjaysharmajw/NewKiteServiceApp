@@ -79,7 +79,7 @@ class _MyAppState extends State<MyApp> {
     if (userId == null) {
       Get.to(const LoginMobile());
     } else {
-      Get.to(const VideoScreenTab());
+      Get.to(const CustomBottomNav());
     }
     setState(() { });
   }

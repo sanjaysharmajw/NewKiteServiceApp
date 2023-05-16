@@ -27,7 +27,7 @@ class _ListVideoScreenState extends State<ListVideoScreen> {
   void videoApi()async{
     VideoRequest request=VideoRequest(
       type: widget.status,
-      userType: "Rider"
+      userType: "Service"
     );
    await videoController.videoListApi(request);
   }
