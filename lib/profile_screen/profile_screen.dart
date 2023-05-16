@@ -98,9 +98,6 @@ class ProfileScreenState extends State<ProfileScreen> {
       _reasonNames.add(reasons[i].name.toString());
     }
 
-
-
-
     await showModalBottomSheet(
       isScrollControlled: true, // required for min/max child size
       context: context,
@@ -113,9 +110,9 @@ class ProfileScreenState extends State<ProfileScreen> {
             items: _reasonNames.map((e) => MultiSelectItem(e, e)).toList(),
             initialValue: _selectedReasonNames,
             selectedColor: Colors.black,
-            cancelText: Text("Cancel", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
-            confirmText: Text("Confirm", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold, fontSize: 20),),
-            title: Text("I want to help in following situations", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),),
+            cancelText: const Text("Cancel", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20,fontFamily: "Gilroy"),),
+            confirmText: const Text("Confirm", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold, fontSize: 20,fontFamily: "Gilroy")),
+            title: const Text("I want to help in following situations", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,fontFamily: "Gilroy"),),
             onConfirm: (values) {
               for (var i = 0; i < values.length; i++) {
                 _selectedReasonNames.add(values[i].toString());
@@ -125,7 +122,6 @@ class ProfileScreenState extends State<ProfileScreen> {
                 selectedAri.add(ari);
               }
 
-
               if(volunteerStatus==true){
                 volunteerApi("No");
               }else{
@@ -133,14 +129,10 @@ class ProfileScreenState extends State<ProfileScreen> {
               }
             },
             maxChildSize: 0.9,
-        ),
-          );
+        ));
       },
     );
   }
-
-
-
   buildLanguageDialog(BuildContext context) {
     showDialog(
         context: context,
