@@ -30,7 +30,7 @@ class VideoScreenTabState extends State<VideoScreenTab> {
       child: Scaffold(
         backgroundColor: appWhiteColor,
         body: DefaultTabController(
-          length: 5,
+          length: 2,
           initialIndex: 0,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,7 +102,6 @@ class VideoScreenTabState extends State<VideoScreenTab> {
     return  [
       ListVideoScreen(status: "Library"),
       LiveVideoScreen(status: "Live"),
-
     ];
   }
 }

@@ -176,6 +176,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_inappwebview",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/flutter_inappwebview-5.7.2+3",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/flutter_lints-2.0.1",
       "packageUri": "lib/",
@@ -860,13 +866,19 @@
       "languageVersion": "2.16"
     },
     {
+      "name": "youtube_player_flutter",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/youtube_player_flutter-8.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "nirbhaya_service",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-05-12T12:22:10.955066Z",
+  "generated": "2023-05-16T11:23:32.184173Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }
