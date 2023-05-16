@@ -40,6 +40,7 @@ class ProfileScreenState extends State<ProfileScreen> {
 
   PackageInfo? packageInfo;
   bool? volunteerStatus=false;
+  List<ReasonMasterData>? reasons;
 
   final userDetailsController=Get.put(UserDetailsController());
   String? volunteer;
@@ -89,21 +90,16 @@ class ProfileScreenState extends State<ProfileScreen> {
 
 
   void _showMultiSelect(BuildContext context) async {
-
-
-    List<ReasonMasterData> reasons = reasonMasterListController.getReasonMasterData.value;
-
-
-    for (var i = 0; i < reasons.length; i++) {
-      _reasonNames.add(reasons[i].name.toString());
+    reasons = reasonMasterListController.getReasonMasterData.value;
+    for (var i = 0; i < reasons!.length; i++) {
+      _reasonNames.add(reasons![i].name.toString());
     }
 
     await showModalBottomSheet(
-      isScrollControlled: true, // required for min/max child size
+      isScrollControlled: true,
       context: context,
       builder: (ctx) {
         return reasonMasterListController.isLoading==true?CustomLoader.loader():
-
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: MultiSelectBottomSheet(
@@ -118,7 +114,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                 _selectedReasonNames.add(values[i].toString());
                 debugPrint("selected value : ${values[i].toString()}");
                 // make volunteer ari object list
-                VolunteerAri ari = VolunteerAri(id: reasons[i].id, name: reasons[i].name);
+                VolunteerAri ari = VolunteerAri(id: reasons![i].id, name: reasons![i].name);
                 selectedAri.add(ari);
               }
 
@@ -190,17 +186,13 @@ class ProfileScreenState extends State<ProfileScreen> {
       onTap: click,
       child: Padding(
         padding: FxSpacing.y(8),
-
-
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(icon, size: 20, color: color),
             FxSpacing.width(20),
-
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-
               children: [
                 FxText.titleSmall(setting, fontWeight: 600, color: color),
                 FxSpacing.height(4),

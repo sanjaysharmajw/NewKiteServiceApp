@@ -11,6 +11,7 @@ import 'package:nirbhaya_service/Utils/tools.dart';
 import 'package:nirbhaya_service/color_constant.dart';
 import 'package:nirbhaya_service/contoller/permission_controller.dart';
 import 'package:nirbhaya_service/select_address/SelectAddressMap.dart';
+import 'package:nirbhaya_service/video/video_screen_tab.dart';
 import 'package:nirbhaya_service/widgets/images_set.dart';
 import 'Language/locat_string.dart';
 import 'Utils/custom_bottom_nav.dart';
@@ -78,7 +79,7 @@ class _MyAppState extends State<MyApp> {
     if (userId == null) {
       Get.to(const LoginMobile());
     } else {
-      Get.to(const CustomBottomNav());
+      Get.to(const VideoScreenTab());
     }
     setState(() { });
   }

@@ -46,5 +46,6 @@ class APIConstant{
   static const selectVolunteer = "${baseUrl}user/updatevolunteerStatus";
 
   static const sosReasonMaster = "${baseUrl}user/sosReasonMaster";
+  static const videoList = "${baseUrl}user/getVideoList";
 
 }
