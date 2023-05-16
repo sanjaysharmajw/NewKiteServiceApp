@@ -20,6 +20,7 @@ import 'package:get/get.dart';
 import 'package:nirbhaya_service/contoller/reason_list_master_controller.dart';
 import 'package:nirbhaya_service/contoller/user_details_controller.dart';
 import 'package:nirbhaya_service/contoller/volunteer_select_controller.dart';
+import 'package:nirbhaya_service/video/video_screen_tab.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import '../Screens/edit_profile_screen.dart';
 import '../Utils/preference.dart';
@@ -286,10 +287,14 @@ class ProfileScreenState extends State<ProfileScreen> {
              // }),
 
               FxSpacing.height(50),
-
               _buildSingleSetting('Profile', 'Update your profile',
                   FeatherIcons.messageCircle, appBlack,(){
                     Get.to(EditProfileScreen(userDetailsData: userDetailsController.getUserDetailsData[0]));
+                  }),
+              const Divider(),
+              _buildSingleSetting('Video', 'You can watch live video etc...',
+                  FeatherIcons.video, appBlack,(){
+                    Get.to(const VideoScreenTab());
                   }),
 
               const Divider(),
