@@ -29,7 +29,8 @@ class ReasonListMasterController extends GetxController{
       final response = await http.post(Uri.parse(APIConstant.sosReasonMaster),
         headers: headerController.headerToken,
         body: jsonEncode(<String, String>{
-          'status': 'Active'
+          'status': 'Active',
+          'type' : 'volunteer'
         }),
       );
       Map<String, dynamic> responseBody = json.decode(response.body);

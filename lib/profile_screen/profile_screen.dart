@@ -108,7 +108,7 @@ class ProfileScreenState extends State<ProfileScreen> {
         return reasonMasterListController.isLoading==true?CustomLoader.loader():
 
           Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.only(bottom: 15.0),
             child: MultiSelectBottomSheet(
             items: _reasonNames.map((e) => MultiSelectItem(e, e)).toList(),
             initialValue: _selectedReasonNames,
@@ -133,6 +133,7 @@ class ProfileScreenState extends State<ProfileScreen> {
               }
             },
             maxChildSize: 0.9,
+
         ),
           );
       },
