@@ -67,9 +67,9 @@ class UserDetailsData {
       String? createdBy, 
       String? updatedBy, 
       String? dob, 
-      dynamic fcmtoken, 
+      String? fcmtoken, 
       String? volunteer, 
-      List<VolunteerAri>? volunteerAri, 
+      List<String>? volunteerAri, 
       String? dlNumber, 
       String? dlExpiryDate, 
       String? dlMobileNumber, 
@@ -154,12 +154,7 @@ class UserDetailsData {
     _dob = json['dob'];
     _fcmtoken = json['fcmtoken'];
     _volunteer = json['volunteer'];
-    if (json['volunteer_ari'] != null) {
-      _volunteerAri = [];
-      json['volunteer_ari'].forEach((v) {
-        _volunteerAri?.add(VolunteerAri.fromJson(v));
-      });
-    }
+    _volunteerAri = json['volunteer_ari'] != null ? json['volunteer_ari'].cast<String>() : [];
     _dlNumber = json['dl_number'];
     _dlExpiryDate = json['dl_expiry_date'];
     _dlMobileNumber = json['dl_mobile_number'];
@@ -199,9 +194,9 @@ class UserDetailsData {
   String? _createdBy;
   String? _updatedBy;
   String? _dob;
-  dynamic _fcmtoken;
+  String? _fcmtoken;
   String? _volunteer;
-  List<VolunteerAri>? _volunteerAri;
+  List<String>? _volunteerAri;
   String? _dlNumber;
   String? _dlExpiryDate;
   String? _dlMobileNumber;
@@ -240,9 +235,9 @@ class UserDetailsData {
   String? createdBy,
   String? updatedBy,
   String? dob,
-  dynamic fcmtoken,
+  String? fcmtoken,
   String? volunteer,
-  List<VolunteerAri>? volunteerAri,
+  List<String>? volunteerAri,
   String? dlNumber,
   String? dlExpiryDate,
   String? dlMobileNumber,
@@ -323,9 +318,9 @@ class UserDetailsData {
   String? get createdBy => _createdBy;
   String? get updatedBy => _updatedBy;
   String? get dob => _dob;
-  dynamic get fcmtoken => _fcmtoken;
+  String? get fcmtoken => _fcmtoken;
   String? get volunteer => _volunteer;
-  List<VolunteerAri>? get volunteerAri => _volunteerAri;
+  List<String>? get volunteerAri => _volunteerAri;
   String? get dlNumber => _dlNumber;
   String? get dlExpiryDate => _dlExpiryDate;
   String? get dlMobileNumber => _dlMobileNumber;
@@ -373,9 +368,7 @@ class UserDetailsData {
     map['dob'] = _dob;
     map['fcmtoken'] = _fcmtoken;
     map['volunteer'] = _volunteer;
-    if (_volunteerAri != null) {
-      map['volunteer_ari'] = _volunteerAri?.map((v) => v.toJson()).toList();
-    }
+    map['volunteer_ari'] = _volunteerAri;
     map['dl_number'] = _dlNumber;
     map['dl_expiry_date'] = _dlExpiryDate;
     map['dl_mobile_number'] = _dlMobileNumber;
@@ -385,37 +378,6 @@ class UserDetailsData {
     map['shift_time_from'] = _shiftTimeFrom;
     map['shift_time_to'] = _shiftTimeTo;
     map['profile_percentage'] = _profilePercentage;
-    return map;
-  }
-
-}
-
-class VolunteerAri {
-  VolunteerAri({
-      String? id, 
-      String? name,}){
-    _id = id;
-    _name = name;
-}
-
-  VolunteerAri.fromJson(dynamic json) {
-    _id = json['id'];
-    _name = json['name'];
-  }
-  String? _id;
-  String? _name;
-VolunteerAri copyWith({  String? id,
-  String? name,
-}) => VolunteerAri(  id: id ?? _id,
-  name: name ?? _name,
-);
-  String? get id => _id;
-  String? get name => _name;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = _id;
-    map['name'] = _name;
     return map;
   }
 
