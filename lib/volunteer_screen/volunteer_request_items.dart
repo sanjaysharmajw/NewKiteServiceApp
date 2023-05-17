@@ -26,7 +26,15 @@ class VolunteerRequestItems extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children:  [
-              MyText(text: volunteerData.userName.toString(), fontName: 'Gilroy', fontSize: 16, fontWeight: FontWeight.w700, textColor: Colors.black),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  MyText(text: volunteerData.userName.toString(), fontName: 'Gilroy', fontSize: 16,
+                      fontWeight: FontWeight.w700, textColor: Colors.black),
+                  MyText(text: volunteerData.status.toString(), fontName: 'Gilroy', fontSize: 14,
+                      fontWeight: FontWeight.w700, textColor: volunteerData.status=="Accept"?Colors.green:Colors.red),
+                ],
+              ),
               const SizedBox(
                 height: 8,
               ),
@@ -36,16 +44,22 @@ class VolunteerRequestItems extends StatelessWidget {
               ),
               const MyText(text: '10 Km', fontName: 'Gilroy', fontSize: 14, fontWeight: FontWeight.w500, textColor: Colors.black),
               const SizedBox(height: 15),
-              Row(
-                children:  [
-                  Flexible(
-                      flex: 2,
-                      child: RequestWidget(textValue: 'Ready to Go', onClick: readyClick)),
-                 const  SizedBox(width: 10),
-                  Flexible(
-                      flex: 2,
-                      child: RequestWidget(textValue: 'Not ready to go', onClick: notReadyClick)),
-                ],
+              Visibility(
+                  visible: volunteerData.status=="Accept"?true:false,
+                  child: RequestWidget(textValue: 'Go to map', onClick: readyClick, color: Colors.black)),
+              Visibility(
+                visible: volunteerData.status=="Accept"?false:volunteerData.status=="Reject"?false:true,
+                child: Row(
+                  children:  [
+                    Flexible(
+                        flex: 2,
+                        child: RequestWidget(textValue: 'Ready to Go', onClick: readyClick, color: Colors.green)),
+                   const  SizedBox(width: 10),
+                    Flexible(
+                        flex: 2,
+                        child: RequestWidget(textValue: 'Not ready to go', onClick: notReadyClick, color: Colors.red)),
+                  ],
+                ),
               ),
             ],
           ),
