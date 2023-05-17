@@ -21,7 +21,7 @@ import 'package:nirbhaya_service/contoller/reason_list_master_controller.dart';
 import 'package:nirbhaya_service/contoller/user_details_controller.dart';
 import 'package:nirbhaya_service/contoller/volunteer_select_controller.dart';
 import 'package:nirbhaya_service/video/video_screen_tab.dart';
-import 'package:nirbhaya_service/volunteer_screen/volunteer_screen_request.dart';
+import 'package:nirbhaya_service/volunteer_screen/volunteer_screen_request_tab.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import '../Screens/edit_profile_screen.dart';
 import '../Utils/preference.dart';
@@ -300,7 +300,7 @@ class ProfileScreenState extends State<ProfileScreen> {
               const Divider(),
               _buildSingleSetting('Volunteer Request', 'Check request',
                   FeatherIcons.userPlus, appBlack,(){
-                    Get.to(const VolunteerRequestList());
+                    Get.to(const VolunteerRequestListTabScreen());
                   }),
 
 
