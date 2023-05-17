@@ -41,6 +41,7 @@ class ProfileScreenState extends State<ProfileScreen> {
   PackageInfo? packageInfo;
   bool? volunteerStatus=false;
   List<ReasonMasterData>? reasons;
+  List<ReasonMasterData>? selectedReasons;
 
   final userDetailsController=Get.put(UserDetailsController());
   String? volunteer;
@@ -114,7 +115,8 @@ class ProfileScreenState extends State<ProfileScreen> {
                 _selectedReasonNames.add(values[i].toString());
                 debugPrint("selected value : ${values[i].toString()}");
                 // make volunteer ari object list
-                VolunteerAri ari = VolunteerAri(id: reasons![i].id, name: reasons![i].name);
+
+                VolunteerAri ari = VolunteerAri(id: "", name: values[i]);
                 selectedAri.add(ari);
               }
 
