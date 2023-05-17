@@ -1,7 +1,10 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nirbhaya_service/Models/get_volunteer_models.dart';
+import 'package:nirbhaya_service/Utils/distance_calulator.dart';
+import 'package:nirbhaya_service/contoller/permission_controller.dart';
 import 'package:nirbhaya_service/volunteer_screen/request_widgets.dart';
 import 'package:nirbhaya_service/widgets/MyText.dart';
 
@@ -13,6 +16,16 @@ class VolunteerRequestItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locationController=Get.put(PermissionController());
+
+    //Distance Calculator
+    double fromLat=double.parse(locationController.locationData!.latitude.toString());
+    double fromLng=double.parse(locationController.locationData!.longitude.toString());
+    double toLat=double.parse(volunteerData.lat.toString());
+    double toLng=double.parse(volunteerData.lng.toString());
+    double distanceValue=DistanceCalculator.calculateDistance(fromLat, fromLng, toLat, toLng);
+    String distance = distanceValue.toStringAsFixed(2);
+
     return Padding(
       padding: const EdgeInsets.only(top: 8.0,bottom: 8.0),
       child: Container(
@@ -42,7 +55,7 @@ class VolunteerRequestItems extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
-              const MyText(text: '10 Km', fontName: 'Gilroy', fontSize: 14, fontWeight: FontWeight.w500, textColor: Colors.black),
+              MyText(text: '$distance Km', fontName: 'Gilroy', fontSize: 14, fontWeight: FontWeight.w500, textColor: Colors.black),
               const SizedBox(height: 15),
               Visibility(
                   visible: volunteerData.status=="Accept"?true:false,

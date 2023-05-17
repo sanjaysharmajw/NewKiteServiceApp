@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.nirbhaya_service.app-mergeReleaseResources-27:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.nirbhaya_service.app-mergeReleaseResources-30:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
                     "source": "/Users/sanjaysharma/Documents/Nirbhaya Service backup/NewKiteServiceApp/android/app/src/main/res/values-night/styles.xml",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/sanjaysharma/.gradle/caches/transforms-3/6c400c0637cb2fea81e72115a5ff1a4e/transformed/appcompat-1.4.2/res/values-night-v8/values-night-v8.xml",
+                    "source": "/Users/sanjaysharma/.gradle/caches/transforms-3/dd7933181bcd1a44ab10530c6cc929bb/transformed/appcompat-1.5.1/res/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
