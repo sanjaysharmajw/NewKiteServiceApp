@@ -42,7 +42,7 @@ class VolunteerRequestItems extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  MyText(text: volunteerData.userName.toString(), fontName: 'Gilroy', fontSize: 16,
+                  MyText(text: volunteerData.userName==""?"N/A":volunteerData.userName.toString(), fontName: 'Gilroy', fontSize: 16,
                       fontWeight: FontWeight.w700, textColor: Colors.black),
                   MyText(text: volunteerData.status.toString(), fontName: 'Gilroy', fontSize: 14,
                       fontWeight: FontWeight.w700, textColor: volunteerData.status=="Accept"?Colors.green:Colors.red),
