@@ -102,7 +102,7 @@ class VolunteerRequestListTabScreenState extends State<VolunteerRequestListTabSc
 
   List<Widget> getTabContents() {
     return  [
-      VolunteerAllScreen(status: "Pending"),
+      VolunteerAllScreen(status: ""),
       VolunteerAcceptScreen(status: "Accept"),
       VolunteerRejectScreen(status: "Reject"),
     ];

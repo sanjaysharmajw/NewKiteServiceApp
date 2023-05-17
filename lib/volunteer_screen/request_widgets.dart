@@ -7,7 +7,8 @@ import 'package:nirbhaya_service/widgets/MyText.dart';
 class RequestWidget extends StatelessWidget {
   final String textValue;
   final VoidCallback onClick;
-  const RequestWidget({Key? key, required this.textValue, required this.onClick}) : super(key: key);
+  final Color color;
+  const RequestWidget({Key? key, required this.textValue, required this.onClick, required this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class RequestWidget extends StatelessWidget {
         width: double.infinity,
         height: 35,
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: color,
             border: Border.all(color: Colors.black,width: 1),
             borderRadius: const BorderRadius.all(Radius.circular(5))
         ),
