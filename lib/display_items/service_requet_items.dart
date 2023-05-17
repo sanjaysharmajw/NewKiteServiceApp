@@ -213,8 +213,7 @@ class ServiceRequestItems extends StatelessWidget {
         value) {
       if (value != null) {
         if (value.status == true) {
-          Get.to(TrackingMap(
-              serviceListData: serviceListData, socketToken: value));
+          Get.to(TrackingMap(serviceListData: serviceListData, socketToken: value));
           CustomLoader.message(value.message.toString());
         } else {
           CustomLoader.message(value.message.toString());
