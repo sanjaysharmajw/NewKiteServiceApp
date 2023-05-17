@@ -47,7 +47,7 @@ class ProfileScreenState extends State<ProfileScreen> {
 
   final userDetailsController=Get.put(UserDetailsController());
   String? volunteer;
-  List<VolunteerAri> selectedAri = [];
+  List<String> selectedAri = [];
 
   final List<String> _reasonNames = [];
   final List<String> _selectedReasonNames= [];
@@ -84,8 +84,8 @@ class ProfileScreenState extends State<ProfileScreen> {
    }
 
    for(var i = 0; i< userDetailsController.getUserDetailsData[0].volunteerAri!.length;i++){
-     debugPrint("selected reason ${userDetailsController.getUserDetailsData[0].volunteerAri![i].name}");
-     _selectedReasonNames.add(userDetailsController.getUserDetailsData[0].volunteerAri![i].name.toString());
+     debugPrint("selected reason ${userDetailsController.getUserDetailsData[0].volunteerAri![i].toString()}");
+     _selectedReasonNames.add(userDetailsController.getUserDetailsData[0].volunteerAri![i].toString());
    }
    setState(() {});
    // debugPrint("volunteer ari items ${volunteer[].}");
@@ -118,8 +118,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                 debugPrint("selected value : ${values[i].toString()}");
                 // make volunteer ari object list
 
-                VolunteerAri ari = VolunteerAri(id: "", name: values[i]);
-                selectedAri.add(ari);
+                selectedAri.add(values[i]);
               }
 
               if(volunteerStatus==true){
