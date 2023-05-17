@@ -66,7 +66,6 @@ class ServiceListTabScreenState extends State<ServiceListTabScreen> {
                   ),
                   /*--------------- Build Tab body here -------------------*/
                   body: TabBarView(
-
                     children: getTabContents(),
                   ),
                 ),
