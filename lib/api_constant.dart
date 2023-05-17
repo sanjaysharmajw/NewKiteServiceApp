@@ -48,5 +48,7 @@ class APIConstant{
   static const sosReasonMaster = "${baseUrl}user/sosReasonMaster";
   static const videoList = "${baseUrl}user/getVideoList";
   static const videoAttend = "${baseUrl}user/attendSession";
+  static const getVolunteerRequests = "${baseUrl}user/getVolunteerRequests";
+  static const updateVolunteerRequest = "${baseUrl}user/updateVolunteerRequest";
 
 }
