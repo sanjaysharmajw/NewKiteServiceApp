@@ -23,7 +23,7 @@ class RequestVolunteerController extends GetxController{
 
   Future<dynamic> requestVolunteerApi(String status) async {
     GetVolunteerRequestBody volunteerRequestBody=GetVolunteerRequestBody(
-      userId: Preferences.getUserId().toString(),
+      userId: '6459fddbc7468996607d7908',
       status: status.toString(),
       lat: locationController.locationData!.latitude.toString(),
       lng: locationController.locationData!.longitude.toString(),
