@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nirbhaya_service/BodyRequest/video_attend_request.dart';
 import 'package:nirbhaya_service/Models/video_list_models.dart';
+import 'package:nirbhaya_service/Utils/preference.dart';
+import 'package:nirbhaya_service/contoller/video_attend_controller.dart';
 import 'package:nirbhaya_service/video/view_video_screen.dart';
 import 'package:nirbhaya_service/widgets/MyText.dart';
 
@@ -12,7 +15,7 @@ class VideoItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        Get.to(ViewVideoList(videoData: videoData));
+        attendVideo(videoData.id.toString());
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -41,5 +44,19 @@ class VideoItems extends StatelessWidget {
         ),
       ),
     );
+  }
+  void attendVideo(String videoId)async{
+    final videoAttendController =Get.put(VideoAttendController());
+    VideoAttendRequest request =VideoAttendRequest(
+      videoId: videoId,
+      userId: Preferences.getUserId().toString()
+    );
+   await videoAttendController.videoAttendApi(request).then((value){
+      if(value!=null){
+        if(value.status==true){
+          Get.to(ViewVideoList(videoData: videoData));
+        }
+      }
+    });
   }
 }

@@ -81,8 +81,8 @@ class VideoScreenTabState extends State<VideoScreenTab> {
 
   List<Tab> getTabs() {
     List<String> tabNames = [
-      'Video',
-      'Live Video'
+      'Live Video',
+      'Library'
     ];
 
     List<Tab> tabs = [];
@@ -100,8 +100,9 @@ class VideoScreenTabState extends State<VideoScreenTab> {
 
   List<Widget> getTabContents() {
     return  [
-      ListVideoScreen(status: "Library"),
       LiveVideoScreen(status: "Live"),
+      ListVideoScreen(status: "Library"),
+
     ];
   }
 }
