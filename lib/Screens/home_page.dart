@@ -78,139 +78,149 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  Future<void> _refresh(){
+
+
+    return Future.delayed(Duration(seconds: 2));
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: appWhiteColor,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        color: appBlue,
-                        height: 70,
-                        width: double.infinity,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 20, left: 10),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const ImageSets(
-                                  imagePath: 'assets/servicenow_logo.png',
-                                  width: 150,
-                                  height: 50,
-                                  color: appWhiteColor),
-                              InkWell(
-                                onTap: (){
-                                  Get.to(const NotificationScreen());
+        body: RefreshIndicator(
+          onRefresh: _refresh,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          color: appBlue,
+                          height: 70,
+                          width: double.infinity,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 20, left: 10),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const ImageSets(
+                                    imagePath: 'assets/servicenow_logo.png',
+                                    width: 150,
+                                    height: 50,
+                                    color: appWhiteColor),
+                                InkWell(
+                                  onTap: (){
+                                    Get.to(const NotificationScreen());
 
-                                },
-                                child: badges.Badge(
-                                  position: badges.BadgePosition.topEnd(
-                                      top: -10, end: -12),
-                                  badgeContent: MyText(
-                                      text: notificationCount!.toString(),
-                                      fontName: 'Gilroy',
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      textColor: appWhiteColor),
-                                  child: const ImageSets(
-                                      imagePath: 'assets/ring_bell.png',
-                                      width: 25,
-                                      height: 25,
-                                      color: appWhiteColor),
+                                  },
+                                  child: badges.Badge(
+                                    position: badges.BadgePosition.topEnd(
+                                        top: -10, end: -12),
+                                    badgeContent: MyText(
+                                        text: notificationCount!.toString(),
+                                        fontName: 'Gilroy',
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                        textColor: appWhiteColor),
+                                    child: const ImageSets(
+                                        imagePath: 'assets/ring_bell.png',
+                                        width: 25,
+                                        height: 25,
+                                        color: appWhiteColor),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      GridView.count(
-                          shrinkWrap: true,
-                          physics: const ClampingScrollPhysics(),
-                          crossAxisCount: 2,
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, top: 10),
-                          mainAxisSpacing: 20,
-                          childAspectRatio: 3 / 2,
-                          crossAxisSpacing: 20,
-                          children: [
-                            HomePageItems(
-                              completed: 58,
-                              backgroundColor: Colors.blue,
-                              title: 'all'.tr,
-                              subtitle: allRequest!,
-                            ),
-                            HomePageItems(
-                              completed: 45,
-                              backgroundColor: Colors.red,
-                              title: 'pending'.tr,
-                              subtitle: pendingRequest!,
-                            ),
-                            HomePageItems(
-                              completed: 68,
-                              backgroundColor: Colors.green,
-                              title: 'accepted'.tr,
-                              subtitle: acceptedRequest!,
-                            ),
-                            HomePageItems(
-                              completed: 32,
-                              backgroundColor: Colors.orange,
-                              title: 'rejected'.tr,
-                              subtitle: rejectedRequest!,
-                            ),
-                          ]),
-                    ]),
-                Container(
-                  margin: const EdgeInsets.only(left: 10, right: 10, top: 15),
-                  child: MyText(
-                      text: 'service_request'.tr,
-                      fontName: 'Gilroy',
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      textColor: appBlack),
-                ),
-                Expanded(
-                  child: Obx(() {
-                    return Center(
-                      child: serviceListController.isLoading.value
-                          ? CustomLoader.loader()
-                          : serviceListController.getServiceData.isEmpty
-                              ? const Center(
-                                  child: EmptyScreen(text: 'Service Not Found'),
-                                )
-                              : ListView.builder(
-                                  itemCount: serviceListController
-                                      .getServiceData.length,
-                                  itemBuilder: (context, index) {
-                                    return ServiceRequestItems(
-                                      serviceListData: serviceListController
-                                          .getServiceData[index],
-                                      acceptClick: () {
-                                        dialog(index, "Accept");
-                                      },
-                                      rejectClick: () {
-                                        dialog(index, "Reject");
-                                      },
-                                    );
-                                  }),
-                    );
-                  }),
-                )
-              ],
-            ))
-          ],
+                        GridView.count(
+                            shrinkWrap: true,
+                            physics: const ClampingScrollPhysics(),
+                            crossAxisCount: 2,
+                            padding: const EdgeInsets.only(
+                                left: 10, right: 10, top: 10),
+                            mainAxisSpacing: 20,
+                            childAspectRatio: 3 / 2,
+                            crossAxisSpacing: 20,
+                            children: [
+                              HomePageItems(
+                                completed: 58,
+                                backgroundColor: Colors.blue,
+                                title: 'all'.tr,
+                                subtitle: allRequest!,
+                              ),
+                              HomePageItems(
+                                completed: 45,
+                                backgroundColor: Colors.red,
+                                title: 'pending'.tr,
+                                subtitle: pendingRequest!,
+                              ),
+                              HomePageItems(
+                                completed: 68,
+                                backgroundColor: Colors.green,
+                                title: 'accepted'.tr,
+                                subtitle: acceptedRequest!,
+                              ),
+                              HomePageItems(
+                                completed: 32,
+                                backgroundColor: Colors.orange,
+                                title: 'rejected'.tr,
+                                subtitle: rejectedRequest!,
+                              ),
+                            ]),
+                      ]),
+                  Container(
+                    margin: const EdgeInsets.only(left: 10, right: 10, top: 15),
+                    child: MyText(
+                        text: 'service_request'.tr,
+                        fontName: 'Gilroy',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        textColor: appBlack),
+                  ),
+                  Expanded(
+                    child: Obx(() {
+                      return Center(
+                        child: serviceListController.isLoading.value
+                            ? CustomLoader.loader()
+                            : serviceListController.getServiceData.isEmpty
+                                ? const Center(
+                                    child: EmptyScreen(text: 'Service Not Found'),
+                                  )
+                                : ListView.builder(
+                                    itemCount: serviceListController
+                                        .getServiceData.length,
+                                    itemBuilder: (context, index) {
+                                      return ServiceRequestItems(
+                                        serviceListData: serviceListController
+                                            .getServiceData[index],
+                                        acceptClick: () {
+                                          dialog(index, "Accept");
+                                        },
+                                        rejectClick: () {
+                                          dialog(index, "Reject");
+                                        },
+                                      );
+                                    }),
+                      );
+                    }),
+                  )
+                ],
+              ))
+            ],
+          ),
         ),
       ),
     );

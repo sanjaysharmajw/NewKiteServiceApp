@@ -48,6 +48,11 @@ class _VolunteerAcceptScreenState extends State<VolunteerAcceptScreen> {
     });
   }
 
+  Future<void> _refresh(){
+    api();
+    return Future.delayed(Duration(seconds: 2));
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
@@ -65,16 +70,19 @@ class _VolunteerAcceptScreenState extends State<VolunteerAcceptScreen> {
                     ? const Center(
                   child: EmptyScreen(text: 'Reques Not Found'),
                 )
-                    : ListView.builder(
-                    itemCount: volunteerRequestController
-                        .getRequestVolunteerData.length,
-                    itemBuilder: (context, index) {
-                      return VolunteerRequestItems(volunteerData: volunteerRequestController.getRequestVolunteerData[index], readyClick: () {
-                        confirmationDialog(index,"Accept","Ready to go");
-                      }, notReadyClick: () {
-                        confirmationDialog(index,"Reject","Not ready to go");
-                      },);
-                    }),
+                    : RefreshIndicator(
+                      onRefresh: _refresh,
+                      child: ListView.builder(
+                      itemCount: volunteerRequestController
+                          .getRequestVolunteerData.length,
+                      itemBuilder: (context, index) {
+                        return VolunteerRequestItems(volunteerData: volunteerRequestController.getRequestVolunteerData[index], readyClick: () {
+                          confirmationDialog(index,"Accept","Ready to go");
+                        }, notReadyClick: () {
+                          confirmationDialog(index,"Reject","Not ready to go");
+                        },);
+                      }),
+                    ),
               );
             }),
           )

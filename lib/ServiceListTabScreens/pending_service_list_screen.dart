@@ -56,21 +56,24 @@ class PendingServiceListScreenState extends State<PendingServiceListScreen> {
                           ? const Center(
                               child: EmptyScreen(text: 'Service Not Found'),
                             )
-                          : ListView.builder(
-                              itemCount:
-                                  serviceListController.getServiceData.length,
-                              itemBuilder: (context, index) {
-                                return ServiceRequestItems(
-                                  serviceListData: serviceListController
-                                      .getServiceData[index],
-                                  rejectClick: () {
-                                    dialog(index, "Reject");
-                                  },
-                                  acceptClick: () {
-                                    dialog(index, "Accept");
-                                  },
-                                );
-                              }),
+                          : RefreshIndicator(
+                            onRefresh:  _refresh,
+                            child: ListView.builder(
+                                itemCount:
+                                    serviceListController.getServiceData.length,
+                                itemBuilder: (context, index) {
+                                  return ServiceRequestItems(
+                                    serviceListData: serviceListController
+                                        .getServiceData[index],
+                                    rejectClick: () {
+                                      dialog(index, "Reject");
+                                    },
+                                    acceptClick: () {
+                                      dialog(index, "Accept");
+                                    },
+                                  );
+                                }),
+                          ),
                 );
               }),
             )
@@ -88,6 +91,15 @@ class PendingServiceListScreenState extends State<PendingServiceListScreen> {
       acceptRejectApi(
           serviceListController.getServiceData[index].id.toString(), status);
     });
+  }
+
+  Future<void> _refresh(){
+
+    if (widget.status != null) {
+      serviceApi(widget.status);
+    }
+    return Future.delayed(Duration(seconds: 2));
+
   }
 
   void acceptRejectApi(String id, String status) async {

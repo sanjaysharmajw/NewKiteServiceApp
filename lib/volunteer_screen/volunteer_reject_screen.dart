@@ -34,6 +34,10 @@ class _VolunteerRejectScreenState extends State<VolunteerRejectScreen> {
     await volunteerRequestController.requestVolunteerApi(widget.status.toString());
   }
 
+  Future<void> _refresh(){
+    api();
+    return Future.delayed(Duration(seconds: 2));
+  }
 
 
   void updateVolunteerStatusApi(String id,String status)async{
@@ -70,16 +74,19 @@ class _VolunteerRejectScreenState extends State<VolunteerRejectScreen> {
                     ? const Center(
                   child: EmptyScreen(text: 'Reques Not Found'),
                 )
-                    : ListView.builder(
-                    itemCount: volunteerRequestController
-                        .getRequestVolunteerData.length,
-                    itemBuilder: (context, index) {
-                      return VolunteerRequestItems(volunteerData: volunteerRequestController.getRequestVolunteerData[index], readyClick: () {
-                        confirmationDialog(index,"Accept","Ready to go");
-                      }, notReadyClick: () {
-                        confirmationDialog(index,"Reject","Not ready to go");
-                      },);
-                    }),
+                    : RefreshIndicator(
+                      onRefresh: _refresh,
+                      child: ListView.builder(
+                      itemCount: volunteerRequestController
+                          .getRequestVolunteerData.length,
+                      itemBuilder: (context, index) {
+                        return VolunteerRequestItems(volunteerData: volunteerRequestController.getRequestVolunteerData[index], readyClick: () {
+                          confirmationDialog(index,"Accept","Ready to go");
+                        }, notReadyClick: () {
+                          confirmationDialog(index,"Reject","Not ready to go");
+                        },);
+                      }),
+                    ),
               );
             }),
           )

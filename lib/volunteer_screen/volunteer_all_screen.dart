@@ -48,6 +48,15 @@ class _VolunteerAllScreenState extends State<VolunteerAllScreen> {
     });
   }
 
+  Future<void> _refresh(){
+
+    setState(() {
+
+    });
+    return Future.delayed(Duration(seconds: 2));
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
@@ -66,18 +75,23 @@ class _VolunteerAllScreenState extends State<VolunteerAllScreen> {
                     ? const Center(
                   child: EmptyScreen(text: 'Request Not Found'),
                 )
-                    : ListView.builder(
-                    itemCount: volunteerRequestController
-                        .getRequestVolunteerData.length,
-                    itemBuilder: (context, index) {
-                      return VolunteerRequestItems(volunteerData: volunteerRequestController.getRequestVolunteerData[index],
-                        readyClick: () {
-                          confirmationDialog(index,"Accept","Ready to go");
-                        }, notReadyClick: () {
-                          confirmationDialog(index,"Reject","Not ready to go");
+                    : RefreshIndicator(
+                  onRefresh: _refresh,
+                      child: ListView.builder(
+                      itemCount: volunteerRequestController
+                          .getRequestVolunteerData.length,
+                          physics: const AlwaysScrollableScrollPhysics(),
 
-                         },);
-                    }),
+                          itemBuilder: (context, index) {
+                        return VolunteerRequestItems(volunteerData: volunteerRequestController.getRequestVolunteerData[index],
+                          readyClick: () {
+                            confirmationDialog(index,"Accept","Ready to go");
+                          }, notReadyClick: () {
+                            confirmationDialog(index,"Reject","Not ready to go");
+
+                           },);
+                      }),
+                    ),
               );
             }),
           )

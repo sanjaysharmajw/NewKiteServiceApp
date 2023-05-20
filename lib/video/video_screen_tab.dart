@@ -36,6 +36,12 @@ class VideoScreenTabState extends State<VideoScreenTab> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 20,top: 20),
+                child: InkWell( onTap: (){
+                  Get.back();
+                },child: Image.asset('assets/back_icons.png',width: 17,height: 17)),
+              ),
               const Padding(
                 padding: EdgeInsets.only(left: 20, top: 20),
                 child: MyText(

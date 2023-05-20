@@ -80,7 +80,6 @@ class ProfileScreenState extends State<ProfileScreen> {
      _selectedReasonNames.clear();
      selectedAri.clear();
      _reasonNames.clear();
-
    }
 
    for(var i = 0; i< userDetailsController.getUserDetailsData[0].volunteerAri!.length;i++){
@@ -116,8 +115,7 @@ class ProfileScreenState extends State<ProfileScreen> {
               for (var i = 0; i < values.length; i++) {
                 _selectedReasonNames.add(values[i].toString());
                 debugPrint("selected value : ${values[i].toString()}");
-                // make volunteer ari object list
-
+                // make volunteer ari object list-
                 selectedAri.add(values[i]);
               }
 
@@ -132,6 +130,8 @@ class ProfileScreenState extends State<ProfileScreen> {
       },
     );
   }
+
+
   buildLanguageDialog(BuildContext context) {
     showDialog(
         context: context,
@@ -233,58 +233,6 @@ class ProfileScreenState extends State<ProfileScreen> {
                   fontSize: 20, fontWeight: FontWeight.w800, textColor: appBlack),
               const SizedBox(height: 25),
 
-             // Obx((){
-             //   return  Column(
-             //     children: [
-             //       Center(
-             //         child: Stack(
-             //           clipBehavior: Clip.none,
-             //           children:  [
-             //             InkWell(
-             //               onTap: (){
-             //                 Get.to(EditProfileScreen(userDetailsData: userDetailsController.getUserDetailsData[0]));
-             //               },
-             //               child: const ClipRRect(
-             //                 clipBehavior: Clip.antiAliasWithSaveLayer,
-             //                 borderRadius: BorderRadius.all(Radius.circular(60)),
-             //                 child: Image(
-             //                   height: 100,
-             //                   width: 100,
-             //                   image: AssetImage('images/car.jpg'),
-             //                   fit: BoxFit.cover,
-             //                 ),
-             //               ),
-             //             ),
-             //             const Positioned(
-             //               bottom: 0,
-             //               right: 0,
-             //               child: FxCard(
-             //                 paddingAll: 2,
-             //                 borderRadiusAll: 4,
-             //                 clipBehavior: Clip.none,
-             //                 child: FxContainer(
-             //                   paddingAll: 4,
-             //                   borderRadiusAll: 4,
-             //                   color:appBlue,
-             //                   child: Icon(
-             //                     Icons.camera_alt,
-             //                     size: 16,
-             //                     color: appWhiteColor,
-             //                   ),
-             //                 ),
-             //               ),
-             //             ),
-             //           ],
-             //         ),
-             //       ),
-             //       FxSpacing.height(20),
-             //       FxText.bodyLarge(
-             //         "${userDetailsController.getUserDetailsData[0].firstName??"wait"}\n${userDetailsController.getUserDetailsData[0].lastName??"..."}",
-             //         fontWeight: 700,color: appBlack,
-             //       ),
-             //     ],
-             //   );
-             // }),
 
               FxSpacing.height(50),
               _buildSingleSetting('Profile', 'Update your profile',
@@ -297,11 +245,20 @@ class ProfileScreenState extends State<ProfileScreen> {
                     Get.to(const VideoScreenTab());
                   }),
 
-              const Divider(),
-              _buildSingleSetting('Volunteer Request', 'Check request',
-                  FeatherIcons.userPlus, appBlack,(){
-                    Get.to(const VolunteerRequestListTabScreen());
-                  }),
+
+              Visibility(
+
+                visible: volunteer == "Yes"? true : volunteer=="No"?false:false,
+                child: Column(
+                  children: [
+                    const Divider(),
+                    _buildSingleSetting('Volunteer Request', 'Check request',
+                        FeatherIcons.userPlus, appBlack,(){
+                          Get.to(const VolunteerRequestListTabScreen());
+                        }),
+                  ],
+                ),
+              ),
 
 
               const Divider(),

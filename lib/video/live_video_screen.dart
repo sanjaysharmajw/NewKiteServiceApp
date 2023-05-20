@@ -32,6 +32,15 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
     await videoController.videoListApi(request);
   }
 
+  Future<void> _refresh(){
+
+    if (widget.status != null) {
+      videoApi();
+    }
+    return Future.delayed(Duration(seconds: 2));
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,15 +55,18 @@ class _LiveVideoScreenState extends State<LiveVideoScreen> {
                     ? const Center(
                   child: EmptyScreen(text: 'Video Not Found'),
                 ) :
-                GridView.count(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10.0,
-                  mainAxisSpacing: 10.0,
-                  childAspectRatio: (3 / 4),
-                  shrinkWrap: true,
-                  children: List.generate(videoController.getVideoListData.length, (index) {
-                    return VideoItems(videoData: videoController.getVideoListData[index]);
-                  }),
+                RefreshIndicator(
+                  onRefresh: _refresh,
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10.0,
+                    mainAxisSpacing: 10.0,
+                    childAspectRatio: (3 / 4),
+                    shrinkWrap: true,
+                    children: List.generate(videoController.getVideoListData.length, (index) {
+                      return VideoItems(videoData: videoController.getVideoListData[index]);
+                    }),
+                  ),
                 );
               }),
             ),

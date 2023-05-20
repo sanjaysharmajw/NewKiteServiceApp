@@ -37,10 +37,22 @@ class VolunteerRequestListTabScreenState extends State<VolunteerRequestListTabSc
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20,top: 20),
+                    child: InkWell( onTap: (){
+                      Get.back();
+                    },child: Image.asset('assets/back_icons.png',width: 17,height: 17)),
+                  ),
+
+                ],
+              ),
               Padding(
                 padding: EdgeInsets.only(left: 20, top: 20),
                 child: MyText(
-                    text: 'Volunteer'.tr,
+                    text: 'Volunteer Request List'.tr,
                     fontName: 'Gilroy',
                     fontSize: 20,
                     fontWeight: FontWeight.w800,

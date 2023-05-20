@@ -18,6 +18,7 @@ class AllServiceListScreen extends StatefulWidget {
   State<AllServiceListScreen> createState() => AllServiceListScreenState();
 }
 
+
 class AllServiceListScreenState extends State<AllServiceListScreen> {
   final serviceListController = Get.put(ServiceListController());
   @override
@@ -26,11 +27,24 @@ class AllServiceListScreenState extends State<AllServiceListScreen> {
     if (widget.status != null) {
       serviceApi(widget.status);
     }
+
+  }
+
+
+  Future<void> _refresh(){
+
+    if (widget.status != null) {
+      serviceApi(widget.status);
+    }
+    return Future.delayed(Duration(seconds: 2));
+
   }
 
   void serviceApi(String? status) async {
     await serviceListController.getServiceList(status.toString());
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,39 +52,43 @@ class AllServiceListScreenState extends State<AllServiceListScreen> {
       child: Scaffold(
         backgroundColor: appWhiteColor,
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20),
-            Expanded(
-              child: Obx(() {
-                return Center(
-                  child: serviceListController.isLoading.value
-                      ? CustomLoader.loader()
-                      : serviceListController.getServiceData.isEmpty
-                          ? const Center(
-                              child: EmptyScreen(text: 'Service Not Found'),
-                            )
-                          : ListView.builder(
-                              itemCount:
-                                  serviceListController.getServiceData.length,
-                              itemBuilder: (context, index) {
-                                return ServiceRequestItems(
-                                  serviceListData: serviceListController
-                                      .getServiceData[index],
-                                  rejectClick: () {
-                                    dialog(index, "Reject");
-                                  },
-                                  acceptClick: () {
-                                    dialog(index, "Accept");
-                                  },
-                                );
-                              }),
-                );
-              }),
-            )
-          ],
-        ),
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+              Expanded(
+                child: Obx(() {
+                  return Center(
+                    child: serviceListController.isLoading.value
+                        ? CustomLoader.loader()
+                        : serviceListController.getServiceData.isEmpty
+                        ? const Center(
+                      child: EmptyScreen(text: 'Service Not Found'),
+                    )
+                        :  RefreshIndicator(
+                          onRefresh: _refresh,
+                          child: ListView.builder(
+                          itemCount: serviceListController.getServiceData.length,
+                              physics: const AlwaysScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return ServiceRequestItems(
+                              serviceListData: serviceListController
+                                  .getServiceData[index],
+                              rejectClick: () {
+                                dialog(index, "Reject");
+                              },
+                              acceptClick: () {
+                                dialog(index, "Accept");
+                              },
+                            );
+                          }),
+                        ),
+
+                  );
+                }),
+              )
+            ],
+          ),
       ),
     );
   }

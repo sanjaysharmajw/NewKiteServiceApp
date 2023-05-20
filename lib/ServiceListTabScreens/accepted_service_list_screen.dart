@@ -57,20 +57,23 @@ class AcceptedServiceListScreenState extends State<AcceptedServiceListScreen> {
                           ? const Center(
                               child: EmptyScreen(text: 'Service Not Found'),
                             )
-                          : ListView.builder(
-                              itemCount:
-                                  serviceListController.getServiceData.length,
-                              itemBuilder: (context, index) {
-                                return ServiceRequestItems(
-                                    serviceListData: serviceListController
-                                        .getServiceData[index],
-                                    acceptClick: () {
-                                      dialog(index, "Accept");
-                                    },
-                                    rejectClick: () {
-                                      dialog(index, "Reject");
-                                    });
-                              }),
+                          : RefreshIndicator(
+                             onRefresh: _refresh,
+                            child: ListView.builder(
+                                itemCount:
+                                    serviceListController.getServiceData.length,
+                                itemBuilder: (context, index) {
+                                  return ServiceRequestItems(
+                                      serviceListData: serviceListController
+                                          .getServiceData[index],
+                                      acceptClick: () {
+                                        dialog(index, "Accept");
+                                      },
+                                      rejectClick: () {
+                                        dialog(index, "Reject");
+                                      });
+                                }),
+                          ),
                 );
               }),
             )
@@ -78,6 +81,15 @@ class AcceptedServiceListScreenState extends State<AcceptedServiceListScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _refresh(){
+
+    if (widget.status != null) {
+      serviceApi(widget.status);
+    }
+    return Future.delayed(Duration(seconds: 2));
+
   }
 
   void dialog(int index, String status) {
