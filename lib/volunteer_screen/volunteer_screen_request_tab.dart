@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:nirbhaya_service/ServiceListTabScreens/accepted_service_list_screen.dart';
 import 'package:nirbhaya_service/ServiceListTabScreens/completed_service_list_screen.dart';

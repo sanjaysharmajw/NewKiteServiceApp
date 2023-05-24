@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "_flutterfire_internals",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "animated_text_kit",
       "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/animated_text_kit-4.2.2",
       "packageUri": "lib/",
@@ -105,7 +111,7 @@
     },
     {
       "name": "dbus",
-      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/dbus-0.7.3",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/dbus-0.7.8",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -141,9 +147,9 @@
     },
     {
       "name": "ffi",
-      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/ffi-1.2.1",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/ffi-2.0.2",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.17"
     },
     {
       "name": "file",
@@ -153,9 +159,45 @@
     },
     {
       "name": "file_picker",
-      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/file_picker-4.6.1",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/file_picker-5.2.10",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "firebase_core",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/firebase_core-2.13.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "firebase_core_platform_interface",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/firebase_core_platform_interface-4.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "firebase_core_web",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/firebase_core_web-2.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "firebase_messaging",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/firebase_messaging-14.6.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "firebase_messaging_platform_interface",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/firebase_messaging_platform_interface-4.5.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "firebase_messaging_web",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/firebase_messaging_web-3.5.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
     },
     {
       "name": "flutter",
@@ -186,6 +228,24 @@
       "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/flutter_lints-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_local_notifications",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/flutter_local_notifications-13.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "flutter_local_notifications_linux",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/flutter_local_notifications_linux-3.0.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_local_notifications_platform_interface",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/flutter_local_notifications_platform_interface-6.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "flutter_plugin_android_lifecycle",
@@ -224,12 +284,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "flutter_svg",
-      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/flutter_svg-0.23.0+1",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "flutter_switch",
       "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/flutter_switch-0.3.2",
       "packageUri": "lib/",
@@ -258,12 +312,6 @@
       "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/fluttertoast-8.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
-    },
-    {
-      "name": "flutx",
-      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/flutx-0.1.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
     },
     {
       "name": "geocoding",
@@ -500,12 +548,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "nested",
-      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/nested-1.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "nm",
       "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/nm-0.5.0",
       "packageUri": "lib/",
@@ -519,7 +561,7 @@
     },
     {
       "name": "package_info_plus",
-      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/package_info_plus-1.4.2",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/package_info_plus-1.4.3+1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -549,9 +591,9 @@
     },
     {
       "name": "package_info_plus_windows",
-      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/package_info_plus_windows-1.0.5",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/package_info_plus_windows-2.1.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.17"
     },
     {
       "name": "path",
@@ -603,9 +645,9 @@
     },
     {
       "name": "path_provider_windows",
-      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/path_provider_windows-2.0.7",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/path_provider_windows-2.1.6",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.17"
     },
     {
       "name": "petitparser",
@@ -648,12 +690,6 @@
       "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/process-4.2.4",
       "packageUri": "lib/",
       "languageVersion": "2.14"
-    },
-    {
-      "name": "provider",
-      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/provider-6.0.5",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
     },
     {
       "name": "pub_semver",
@@ -776,6 +812,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "timezone",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/timezone-0.9.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "typed_data",
       "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/typed_data-1.3.1",
       "packageUri": "lib/",
@@ -849,21 +891,21 @@
     },
     {
       "name": "win32",
-      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/win32-2.6.1",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/win32-3.1.4",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "xdg_directories",
-      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/xdg_directories-1.0.0",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/xdg_directories-0.2.0+3",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.12"
     },
     {
       "name": "xml",
-      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/xml-5.4.1",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/xml-6.2.2",
       "packageUri": "lib/",
-      "languageVersion": "2.16"
+      "languageVersion": "2.18"
     },
     {
       "name": "youtube_player_flutter",
@@ -878,7 +920,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-05-22T05:02:13.339225Z",
+  "generated": "2023-05-24T11:45:52.538982Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }

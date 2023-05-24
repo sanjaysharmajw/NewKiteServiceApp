@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nirbhaya_service/BodyRequest/accept_reject_body_request.dart';
@@ -43,9 +44,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    firebaseTokenMethod();
     super.initState();
     serviceApi();
     userDetailsApi();
+  }
+
+  void firebaseTokenMethod()async{
+    String? firebaseToken = await FirebaseMessaging.instance.getToken();
+    debugPrint("firebaseTOkensss: ${firebaseToken}");
   }
 
   void userDetailsApi() async {

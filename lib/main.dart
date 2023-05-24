@@ -1,27 +1,65 @@
 import 'dart:async';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:location/location.dart';
 import 'package:nirbhaya_service/Screens/login_mobile.dart';
-import 'package:nirbhaya_service/Screens/service_registraion_form.dart';
 import 'package:nirbhaya_service/Utils/tools.dart';
 import 'package:nirbhaya_service/color_constant.dart';
 import 'package:nirbhaya_service/contoller/permission_controller.dart';
-import 'package:nirbhaya_service/select_address/SelectAddressMap.dart';
-import 'package:nirbhaya_service/video/video_screen_tab.dart';
 import 'package:nirbhaya_service/widgets/images_set.dart';
 import 'Language/locat_string.dart';
 import 'Utils/custom_bottom_nav.dart';
-import 'Utils/loader.dart';
 import 'Utils/preference.dart';
-import 'Utils/theme.dart';
-void main() {
+import 'firebase_options.dart';
+
+
+const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'high_importance_channel', // id
+    'High Importance Notifications', // title
+    description:
+    'This channel is used for important notifications.', // description
+    importance: Importance.high,
+    playSound: true);
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+FlutterLocalNotificationsPlugin();
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print('A bg message just showed up :  ${message.messageId}');
+}
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  await Firebase.initializeApp();
   Tools.setStatusBarColor(appBlue);
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+      AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
+
+  await FirebaseMessaging.instance.requestPermission(
+    alert: true,
+    announcement: false,
+    badge: true,
+    carPlay: false,
+    criticalAlert: false,
+    provisional: false,
+    sound: true,
+  );
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -61,10 +99,58 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
+    //FCM Push Notification
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      RemoteNotification? notification = message.notification;
+      AndroidNotification? android = message.notification?.android;
+      if (notification != null && android != null) {
+        flutterLocalNotificationsPlugin.show(
+            notification.hashCode,
+            notification.title,
+            notification.body,
+            NotificationDetails(
+              android: AndroidNotificationDetails(
+                  channel.id,
+                  channel.name,
+                  channelDescription: channel.description,
+                  color: Colors.blue,
+                  playSound: true,
+                  importance: Importance.high,
+                  priority: Priority.high,
+                  enableLights: true,
+                  icon: '@mipmap/ic_launcher',
+                  //sound: const RawResourceAndroidNotificationSound('notification_play'),
+                  sound: const RawResourceAndroidNotificationSound('notification_play')
+              ),
+            )
+        );
+      }
+    });
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      debugPrint('A new onMessageOpenedApp event was published!');
+      RemoteNotification? notification = message.notification;
+      AndroidNotification? android = message.notification?.android;
+      if (notification != null && android != null) {
+        showDialog(
+            context: context,
+            builder: (_) {
+              return AlertDialog(
+                title: Text(notification.title!),
+                content: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [Text(notification.body!)],
+                  ),
+                ),
+              );
+            });
+      }
+    });
     sharePre();
     startTimer();
     super.initState();
   }
+
 
   void startTimer() {
     Timer(const Duration(seconds: 2), () {

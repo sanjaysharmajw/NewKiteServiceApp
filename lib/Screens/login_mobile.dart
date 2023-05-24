@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -5,6 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
 import 'package:nirbhaya_service/Utils/validators.dart';
 import 'package:nirbhaya_service/color_constant.dart';
+import 'package:nirbhaya_service/contoller/firebase_token_controller.dart';
 import 'package:nirbhaya_service/contoller/loginController.dart';
 import 'package:nirbhaya_service/widgets/images_set.dart';
 
@@ -25,7 +27,24 @@ class LoginMobile extends StatefulWidget {
 class _LoginMobileState extends State<LoginMobile> {
   final mobileController=TextEditingController();
   final controller = Get.put(SendOtpController());
+  final idFromFirstController = Get.put(FirebaseTokenController());
   final formKey = GlobalKey<FormState>();
+  String? firebaseToken;
+
+  // var idFromFirstController = Get.find<FirebaseTokenController>().getFirebaseToken();
+
+  @override
+  void initState() {
+    super.initState();
+    firebaseTokenMethod();
+
+  }
+
+  void firebaseTokenMethod()async{
+     firebaseToken = await FirebaseMessaging.instance.getToken();
+     debugPrint("loginFirebase${firebaseToken.toString()}");
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

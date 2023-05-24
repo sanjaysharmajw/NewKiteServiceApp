@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -27,6 +28,7 @@ class _OTPScreenState extends State<OTPScreen> {
   final otpApiController = Get.put(SendOtpController());
   OtpTimerButtonController controller = OtpTimerButtonController();
   final focusNode = FocusNode();
+  String? firebaseToken;
 
   requestOtp() {
     controller.loading();
@@ -39,6 +41,18 @@ class _OTPScreenState extends State<OTPScreen> {
   void dispose() {
     focusNode.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    firebaseTokenMethod();
+  }
+
+  void firebaseTokenMethod()async{
+    firebaseToken = await FirebaseMessaging.instance.getToken();
+    debugPrint("firebaseOTPVerify: ${firebaseToken}");
+    setState(() {});
   }
 
   @override
@@ -116,7 +130,7 @@ class _OTPScreenState extends State<OTPScreen> {
   }
 
   void verifyOTPApi(String mobile, String otp) async {
-    await otpApiController.verifyOtp(mobile, otp).then((value) async {
+    await otpApiController.verifyOtp(mobile, otp,firebaseToken!).then((value) async {
       if (value != null) {
         if (value.data!.isEmpty) {
           share(value.token!,'','');

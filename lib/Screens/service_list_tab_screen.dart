@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:nirbhaya_service/ServiceListTabScreens/accepted_service_list_screen.dart';
 import 'package:nirbhaya_service/ServiceListTabScreens/completed_service_list_screen.dart';
-import 'package:nirbhaya_service/Utils/icon_extension.dart';
 import 'package:nirbhaya_service/color_constant.dart';
 import 'package:nirbhaya_service/widgets/MyText.dart';
-
 import '../ServiceListTabScreens/all_service_list_screen.dart';
 import '../ServiceListTabScreens/pending_service_list_screen.dart';
 import '../ServiceListTabScreens/rejected_service_list_screen.dart';
-import '../Utils/theme.dart';
 
 class ServiceListTabScreen extends StatefulWidget {
   const ServiceListTabScreen({super.key});

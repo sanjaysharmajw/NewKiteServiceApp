@@ -1,7 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutx/widgets/container/container.dart';
-import 'package:flutx/widgets/text/text.dart';
 import 'package:nirbhaya_service/color_constant.dart';
 import 'package:nirbhaya_service/widgets/MyText.dart';
 class HomePageItems extends StatelessWidget {

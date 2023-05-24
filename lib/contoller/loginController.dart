@@ -37,15 +37,21 @@ class SendOtpController extends GetxController{
     return null;
   }
 
-  Future<VerifyOtpModels?> verifyOtp(String mobile,String otp) async {
+  Future<VerifyOtpModels?> verifyOtp(String mobile,String otp,String firebaseToken) async {
     try {
       CustomLoader.showLoader("Please wait");
       final response = await http.post(Uri.parse(APIConstant.verifyOtp),
         headers: APIConstant.authHeader, body: jsonEncode(<String, String>{
           "mobile_number": mobile,
-          "otp": otp
+          "otp": otp,
+          "fcmtoken":firebaseToken.toString()
         }),
       );
+      debugPrint(jsonEncode(<String, String>{
+        "mobile_number": mobile,
+        "otp": otp,
+        "fcmtoken":firebaseToken.toString()
+      }));
       Map<String, dynamic> responseBody = json.decode(response.body);
       if (response.statusCode == 200) {
         CustomLoader.closeLoader();

@@ -1,15 +1,10 @@
-
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_switch/flutter_switch.dart';
-import 'package:flutx/flutx.dart';
 import 'package:multi_select_flutter/bottom_sheet/multi_select_bottom_sheet.dart';
 import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:nirbhaya_service/BodyRequest/user_details_request_body.dart';
-import 'package:nirbhaya_service/BodyRequest/volunteer_request.dart';
 import 'package:nirbhaya_service/BodyRequest/volunteer_status_request.dart';
 import 'package:nirbhaya_service/Models/reason_master_model.dart';
 import 'package:nirbhaya_service/Screens/about_us_screen.dart';
@@ -188,25 +183,23 @@ class ProfileScreenState extends State<ProfileScreen> {
     return InkWell(
       onTap: click,
       child: Padding(
-        padding: FxSpacing.y(8),
+        padding: const EdgeInsets.all(8),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(icon, size: 20, color: color),
-            FxSpacing.width(20),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                FxText.titleSmall(setting, fontWeight: 600, color: color),
-                FxSpacing.height(4),
-                FxText.bodySmall(
-                  subSetting,
-                  color: appBlack,
-                  fontWeight: 600,
-                  xMuted: true,
-                  fontSize: 10,
-                ),
-              ],
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0,top: 4),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  MyText(text: setting, fontName: 'Gilroy', fontWeight: FontWeight.w600, textColor: color!, fontSize: 14),
+                  const SizedBox(height: 10),
+                  MyText(text: subSetting, fontName: 'Gilroy', fontWeight: FontWeight.w500, textColor: appBlack, fontSize: 10),
+
+                ],
+              ),
             ),
           ],
         ),
@@ -219,7 +212,7 @@ class ProfileScreenState extends State<ProfileScreen> {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: FxSpacing.x(20),
+          padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -234,7 +227,7 @@ class ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 25),
 
 
-              FxSpacing.height(50),
+              const SizedBox(height: 50),
               _buildSingleSetting('Profile', 'Update your profile',
                   FeatherIcons.messageCircle, appBlack,(){
                     Get.to(EditProfileScreen(userDetailsData: userDetailsController.getUserDetailsData[0]));
