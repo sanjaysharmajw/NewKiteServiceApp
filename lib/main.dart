@@ -15,8 +15,6 @@ import 'package:nirbhaya_service/widgets/images_set.dart';
 import 'Language/locat_string.dart';
 import 'Utils/custom_bottom_nav.dart';
 import 'Utils/preference.dart';
-import 'firebase_options.dart';
-
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'high_importance_channel', // id
