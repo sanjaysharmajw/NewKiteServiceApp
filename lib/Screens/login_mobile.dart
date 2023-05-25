@@ -29,26 +29,12 @@ class _LoginMobileState extends State<LoginMobile> {
   final controller = Get.put(SendOtpController());
   final idFromFirstController = Get.put(FirebaseTokenController());
   final formKey = GlobalKey<FormState>();
-  String? firebaseToken;
-
-  // var idFromFirstController = Get.find<FirebaseTokenController>().getFirebaseToken();
-
-  @override
-  void initState() {
-    super.initState();
-    firebaseTokenMethod();
-
-  }
-
-  void firebaseTokenMethod()async{
-     firebaseToken = await FirebaseMessaging.instance.getToken();
-     debugPrint("loginFirebase${firebaseToken.toString()}");
-  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          backgroundColor: appWhiteColor,
           resizeToAvoidBottomInset: false,
       body: Form(
         key: formKey,
@@ -59,8 +45,9 @@ class _LoginMobileState extends State<LoginMobile> {
             child: Column(
               children:  [
                 const SizedBox(height: 100),
-                const ImageSets(imagePath: 'assets/servicenow_logo.png', width: 230, height: 50, color: appBlue),
-                const SizedBox(height: 50),
+               // const ImageSets(imagePath: 'assets/servicenow_logo.png', width: 230, height: 50, color: appBlue),
+                Image.asset('assets/service_logo.png',width: 130,height: 130),
+                const SizedBox(height: 20),
                 const MyText(text: 'Enter your Phone Number for Login', fontName: 'Gilroy', fontSize: 18, fontWeight: FontWeight.w500, textColor: appBlack),
                 const MyText(text: 'or to Get Started', fontName: 'Gilroy', fontSize: 18, fontWeight: FontWeight.w500, textColor: appBlack),
                 Padding(

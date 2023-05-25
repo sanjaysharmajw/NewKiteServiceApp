@@ -13,10 +13,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
-
-
    <application
-        android:label="N Service"
+        android:label="TS Service"
        android:allowBackup="false"
        android:fullBackupOnly="false"
         android:name="${applicationName}"
@@ -25,6 +23,8 @@
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
@@ -49,6 +49,8 @@
 
        <meta-data android:name="com.google.android.geo.API_KEY"
            android:value="AIzaSyAmOl-QJnc2Spwuh8GAoqx9Z3Wz-ez73V8"/>
+
+
 
     </application>
 </manifest>

@@ -11,7 +11,7 @@ import 'package:nirbhaya_service/Screens/login_mobile.dart';
 import 'package:nirbhaya_service/Utils/tools.dart';
 import 'package:nirbhaya_service/color_constant.dart';
 import 'package:nirbhaya_service/contoller/permission_controller.dart';
-import 'package:nirbhaya_service/widgets/images_set.dart';
+import 'package:nirbhaya_service/widgets/MyText.dart';
 import 'Language/locat_string.dart';
 import 'Utils/custom_bottom_nav.dart';
 import 'Utils/preference.dart';
@@ -83,11 +83,18 @@ class _MyAppState extends State<MyApp> {
                 borderSide: BorderSide(color: appBlue)
             ),
           )),
-      home: const SizedBox(
+      home:  Container(
+        color: appWhiteColor,
         width: double.infinity,
         height: double.infinity,
         child: Center(
-            child: ImageSets(imagePath: 'assets/servicenow_logo.png', width: 230, height: 50, color: appBlue),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/service_logo.png',width: 130,height: 130),
+              const MyText(text: "TS Service", fontName: 'Gilroy', fontSize: 26, fontWeight: FontWeight.w600, textColor: appBlack)
+            ],
+          ),
         ),
       ),
     );

@@ -5,7 +5,6 @@ import 'package:nirbhaya_service/BodyRequest/accept_reject_body_request.dart';
 import 'package:nirbhaya_service/BodyRequest/notification_request_body.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:nirbhaya_service/BodyRequest/service_list_body_request.dart';
-import 'package:nirbhaya_service/ListItems/service_registration_items.dart';
 import 'package:nirbhaya_service/Screens/notification_screen.dart';
 import 'package:nirbhaya_service/Utils/preference.dart';
 import 'package:nirbhaya_service/color_constant.dart';
@@ -51,8 +50,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   void firebaseTokenMethod()async{
-    String? firebaseToken = await FirebaseMessaging.instance.getToken();
-    debugPrint("firebaseTOkensss: ${firebaseToken}");
+   String? firebaseToken = await FirebaseMessaging.instance.getToken();
+    debugPrint("firebaseOTPVerify:....   ${firebaseToken}   ........");
+    setState(() {});
   }
 
   void userDetailsApi() async {
@@ -86,10 +86,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _refresh(){
-
-
-    return Future.delayed(Duration(seconds: 2));
-
+    return Future.delayed(const Duration(seconds: 2));
   }
 
   @override
@@ -122,11 +119,12 @@ class _HomePageState extends State<HomePage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const ImageSets(
-                                    imagePath: 'assets/servicenow_logo.png',
-                                    width: 150,
-                                    height: 50,
-                                    color: appWhiteColor),
+                                const MyText(text: "TS Service", fontName: 'Gilroy', fontSize: 24, fontWeight: FontWeight.w600, textColor: appWhiteColor),
+                                // const ImageSets(
+                                //     imagePath: 'assets/servicenow_logo.png',
+                                //     width: 150,
+                                //     height: 50,
+                                //     color: appWhiteColor),
                                 InkWell(
                                   onTap: (){
                                     Get.to(const NotificationScreen());

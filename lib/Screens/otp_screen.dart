@@ -51,7 +51,7 @@ class _OTPScreenState extends State<OTPScreen> {
 
   void firebaseTokenMethod()async{
     firebaseToken = await FirebaseMessaging.instance.getToken();
-    debugPrint("firebaseOTPVerify: ${firebaseToken}");
+    debugPrint("firebaseOTPVerify:....   ${firebaseToken}   ........");
     setState(() {});
   }
 
@@ -60,6 +60,7 @@ class _OTPScreenState extends State<OTPScreen> {
     ScreenUtil.init(context, designSize: const Size(375, 812));
     return SafeArea(
         child: Scaffold(
+          backgroundColor: appWhiteColor,
           resizeToAvoidBottomInset: false,
       body: Center(
         child: SizedBox(
@@ -69,12 +70,13 @@ class _OTPScreenState extends State<OTPScreen> {
             children: [
               //const ImageSets(imagePath:'assets/back_icons.png', width: 50),
               const SizedBox(height: 100),
-              const ImageSets(
-                  imagePath: 'assets/servicenow_logo.png',
-                  width: 230,
-                  height: 50,
-                  color: appBlue),
-              const SizedBox(height: 50),
+              // const ImageSets(
+              //     imagePath: 'assets/servicenow_logo.png',
+              //     width: 230,
+              //     height: 50,
+              //     color: appBlue),
+              Image.asset('assets/service_logo.png',width: 130,height: 130),
+              const SizedBox(height: 20),
               const MyText(
                   text: 'Enter OTP sent to your Mobile Number',
                   fontName: 'Gilroy',

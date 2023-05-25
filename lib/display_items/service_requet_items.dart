@@ -67,14 +67,18 @@ class ServiceRequestItems extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              MyText(
-                  text: serviceListData.providername == ""
-                      ? "N/A"
-                      : serviceListData.providername.toString(),
-                  fontName: 'Gilroy',
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  textColor: appBlack),
+              Expanded(
+                child: Text(
+                        serviceListData.providername == ""
+                        ? "N/A"
+                        : serviceListData.providername.toString(),
+                    style: const TextStyle(
+                        fontFamily: 'Gilroy',
+                        fontSize: 16,
+                        overflow: TextOverflow.ellipsis,
+                        color: appBlack,
+                        fontWeight: FontWeight.w600)),
+              ),
               const SizedBox(height: 5),
               MyText(
                   text: serviceListData.usermobilenumber == "" ? "N/A" : serviceListData.usermobilenumber.toString(),

@@ -43,15 +43,18 @@ class ServiceListItems extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                          userServiceListData.title == ""
-                              ? "N/A"
-                              : userServiceListData.title.toString(),
-                          style: const TextStyle(
-                              fontFamily: 'Gilroy',
-                              fontSize: 18,
-                              color: appBlack,
-                              fontWeight: FontWeight.w700)),
+                      Expanded(
+                        child: Text(
+                            userServiceListData.title == ""
+                                ? "N/A"
+                                : userServiceListData.title.toString(),
+                            style: const TextStyle(
+                                fontFamily: 'Gilroy',
+                                fontSize: 18,
+                                overflow: TextOverflow.ellipsis,
+                                color: appBlack,
+                                fontWeight: FontWeight.w700)),
+                      ),
                       Text(
                           userServiceListData.contactPerson == ""
                               ? "N/A"
