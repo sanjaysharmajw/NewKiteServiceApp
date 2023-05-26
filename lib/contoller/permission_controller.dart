@@ -16,6 +16,7 @@ class PermissionController extends GetxController{
     getLocation();
   }
 
+
   Future permissionLocation() async {
     bool? serviceEnabled;
     Location location =  Location();

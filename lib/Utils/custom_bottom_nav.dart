@@ -23,7 +23,7 @@ class CustomBottomNav extends StatefulWidget {
 class UserDashBoardScreenState extends State<CustomBottomNav> {
   int currentPage = 0;
   Position? position;
-  final userDetailsController=Get.put(UserDetailsController());
+  final userDetailsController=Get.put(UserDetailsController(),permanent: true);
 
   List<Widget> page = [
     const HomePage(),

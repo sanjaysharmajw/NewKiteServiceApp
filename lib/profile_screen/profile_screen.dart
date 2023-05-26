@@ -211,115 +211,117 @@ class ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-             // const SizedBox(height: 25),
-              // InkWell( onTap: (){
-              //   Get.back();
-              // },child: Image.asset('assets/back_icons.png',width: 17,height: 17)),
-              const SizedBox(height: 25),
-              const MyText(text: 'Profile', fontName: 'Gilroy',
-                  fontSize: 20, fontWeight: FontWeight.w800, textColor: appBlack),
-              const SizedBox(height: 25),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+               // const SizedBox(height: 25),
+                // InkWell( onTap: (){
+                //   Get.back();
+                // },child: Image.asset('assets/back_icons.png',width: 17,height: 17)),
+                const SizedBox(height: 25),
+                const MyText(text: 'Profile', fontName: 'Gilroy',
+                    fontSize: 20, fontWeight: FontWeight.w800, textColor: appBlack),
+                const SizedBox(height: 25),
 
 
-              const SizedBox(height: 50),
-              _buildSingleSetting('Profile', 'Update your profile',
-                  FeatherIcons.messageCircle, appBlack,(){
-                    Get.to(EditProfileScreen(userDetailsData: userDetailsController.getUserDetailsData[0]));
-                  }),
-              const Divider(),
-              _buildSingleSetting('Video', 'You can watch live video etc...',
-                  FeatherIcons.video, appBlack,(){
-                    Get.to(const VideoScreenTab());
-                  }),
+                const SizedBox(height: 50),
+                _buildSingleSetting('Profile', 'Update your profile',
+                    FeatherIcons.messageCircle, appBlack,(){
+                      Get.to(EditProfileScreen(userDetailsData: userDetailsController.getUserDetailsData[0]));
+                    }),
+                const Divider(),
+                _buildSingleSetting('Video', 'You can watch live video etc...',
+                    FeatherIcons.video, appBlack,(){
+                      Get.to(const VideoScreenTab());
+                    }),
 
 
-              Visibility(
+                Visibility(
 
-                visible: volunteer == "Yes"? true : volunteer=="No"?false:false,
-                child: Column(
-                  children: [
-                    const Divider(),
-                    _buildSingleSetting('Volunteer Request', 'Check request',
-                        FeatherIcons.userPlus, appBlack,(){
-                          Get.to(const VolunteerRequestListTabScreen());
-                        }),
-                  ],
+                  visible: volunteer == "Yes"? true : volunteer=="No"?false:false,
+                  child: Column(
+                    children: [
+                      const Divider(),
+                      _buildSingleSetting('Volunteer Request', 'Check request',
+                          FeatherIcons.userPlus, appBlack,(){
+                            Get.to(const VolunteerRequestListTabScreen());
+                          }),
+                    ],
+                  ),
                 ),
-              ),
 
 
-              const Divider(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _buildSingleSetting('Volunteer'.tr, 'would you like to help others?'.tr,
-                      FeatherIcons.user, appBlack,(){
-                        if(volunteer=="Yes"){
-                          _showMultiSelect(context);
-                        }else{
-                          // volunteerApi("No");
-                        }
-                      }
-                      ),
-                  Container(
-                    alignment: Alignment.centerRight,
-                    child: FlutterSwitch(
-                      width: 60.0,
-                      height: 30.0,
-                      value: volunteer=="Yes"?true:volunteer=="No"?false:false,
-                      borderRadius: 30.0,
-                      padding: 5.0,
-                      activeColor: blackColor,
-                      onToggle: (val) {
-                        setState(() {
-
-                          if(volunteer=="No"){
+                const Divider(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buildSingleSetting('Volunteer'.tr, 'would you like to help others?'.tr,
+                        FeatherIcons.user, appBlack,(){
+                          if(volunteer=="Yes"){
                             _showMultiSelect(context);
                           }else{
-                            volunteerApi("No");
+                            // volunteerApi("No");
                           }
+                        }
+                        ),
+                    Container(
+                      alignment: Alignment.centerRight,
+                      child: FlutterSwitch(
+                        width: 60.0,
+                        height: 30.0,
+                        value: volunteer=="Yes"?true:volunteer=="No"?false:false,
+                        borderRadius: 30.0,
+                        padding: 5.0,
+                        activeColor: blackColor,
+                        onToggle: (val) {
+                          setState(() {
+
+                            if(volunteer=="No"){
+                              _showMultiSelect(context);
+                            }else{
+                              volunteerApi("No");
+                            }
 
 
-                        });
-                      },
+                          });
+                        },
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
 
-              const Divider(),
-              _buildSingleSetting('language'.tr, 'changeYourLanguage'.tr,
-                  FeatherIcons.settings, appBlack,(){
-                    buildLanguageDialog(context);
-                  }),
+                const Divider(),
+                _buildSingleSetting('language'.tr, 'changeYourLanguage'.tr,
+                    FeatherIcons.settings, appBlack,(){
+                      buildLanguageDialog(context);
+                    }),
 
 
-              // const Divider(),
-              // _buildSingleSetting(
-              //     'Notification',
-              //     'Ringtone, Message, Notification',
-              //     FeatherIcons.bell,
-              //     appBlack),
-              const Divider(),
-              _buildSingleSetting('Help', 'Contact Us',
-                  FeatherIcons.messageCircle, appBlack,(){
-                  Get.to(const ChatScreen());
-                  }),
-              const Divider(),
-              _buildSingleSetting('About', 'About the application',
-                  FeatherIcons.alertCircle, appBlack,(){
-                Get.to(const AboutUsScreen());
-                  }),
-              const Divider(),
-              _buildSingleSetting('Log Out', 'Exit from your account',
-                  FeatherIcons.logOut, appBlack,(){logoutPopup(context);}),
-            ],
+                // const Divider(),
+                // _buildSingleSetting(
+                //     'Notification',
+                //     'Ringtone, Message, Notification',
+                //     FeatherIcons.bell,
+                //     appBlack),
+                const Divider(),
+                _buildSingleSetting('Help', 'Contact Us',
+                    FeatherIcons.messageCircle, appBlack,(){
+                    Get.to(const ChatScreen());
+                    }),
+                const Divider(),
+                _buildSingleSetting('About', 'About the application',
+                    FeatherIcons.alertCircle, appBlack,(){
+                  Get.to(const AboutUsScreen());
+                    }),
+                const Divider(),
+                _buildSingleSetting('Log Out', 'Exit from your account',
+                    FeatherIcons.logOut, appBlack,(){logoutPopup(context);}),
+              ],
+            ),
           ),
         ),
       ),

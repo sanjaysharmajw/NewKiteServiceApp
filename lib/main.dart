@@ -68,6 +68,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final permissionController=Get.put(PermissionController());
 
   @override
   Widget build(BuildContext context) {
@@ -99,8 +100,6 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
-
-  final permissionController=Get.put(PermissionController());
 
   @override
   void initState() {
@@ -177,7 +176,7 @@ class _MyAppState extends State<MyApp> {
 
   void sharePre() async {
     await permissionController.permissionLocation();
-    WidgetsFlutterBinding.ensureInitialized();
+    setState(() {});
     await Preferences.setPreferences();
     var language = Preferences.getLanguage();
     if(language=='hi'){
