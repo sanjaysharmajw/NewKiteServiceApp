@@ -28,7 +28,7 @@ class _OTPScreenState extends State<OTPScreen> {
   final otpApiController = Get.put(SendOtpController());
   OtpTimerButtonController controller = OtpTimerButtonController();
   final focusNode = FocusNode();
-  String? firebaseToken;
+  String? firebaseToken="";
 
   requestOtp() {
     controller.loading();
@@ -116,6 +116,7 @@ class _OTPScreenState extends State<OTPScreen> {
               ),
               MyButton(
                   press: () {
+                    CustomLoader.message( firebaseToken!);
                     if (otpController.text.trim().isNotEmpty) {
                       verifyOTPApi(
                           widget.mobile, otpController.text.toString());

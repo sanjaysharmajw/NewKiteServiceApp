@@ -47,9 +47,11 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     serviceApi();
     userDetailsApi();
+    setState(() {});
   }
 
   void firebaseTokenMethod()async{
+    FirebaseMessaging.instance.requestPermission();
    String? firebaseToken = await FirebaseMessaging.instance.getToken();
     debugPrint("firebaseOTPVerify:....   ${firebaseToken}   ........");
     setState(() {});
@@ -79,7 +81,6 @@ class _HomePageState extends State<HomePage> {
         acceptedRequest = value.count?.acceptedRequest.toString();
         rejectedRequest = value.count?.rejectedRequest.toString();
         notificationCount = value.data!.toString();
-
         setState(() {});
       }
     });
