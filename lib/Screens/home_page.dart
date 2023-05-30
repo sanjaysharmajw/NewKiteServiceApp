@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
 
   void serviceApi() async {
     await permissionController.permissionLocation();
-    await serviceListController.getServiceList("");
+    listApi();
     ServiceListBodyRequest request = ServiceListBodyRequest(
       userId: Preferences.getUserId().toString(),
       lat: permissionController.locationData!.latitude,
@@ -86,9 +86,14 @@ class _HomePageState extends State<HomePage> {
       }
     });
   }
+  void listApi()async{
+    await serviceListController.getServiceList("");
+  }
 
   Future<void> _refresh(){
-    return Future.delayed(const Duration(seconds: 2));
+    return Future.delayed(const Duration(seconds: 2)).then((value){
+      listApi();
+    });
   }
 
   @override
