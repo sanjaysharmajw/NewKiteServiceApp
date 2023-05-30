@@ -53,7 +53,8 @@ class _HomePageState extends State<HomePage> {
   void firebaseTokenMethod()async{
     FirebaseMessaging.instance.requestPermission();
    String? firebaseToken = await FirebaseMessaging.instance.getToken();
-    debugPrint("firebaseOTPVerify:....   ${firebaseToken}   ........");
+    debugPrint("firebaseOTPVerify:....   $firebaseToken   ........");
+    debugPrint("firebaseOTPVerifyIOS:....   $firebaseToken   ........");
     setState(() {});
   }
 

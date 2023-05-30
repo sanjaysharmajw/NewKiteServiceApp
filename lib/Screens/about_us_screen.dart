@@ -21,32 +21,32 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: appWhiteColor,
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children:  [
-            const SizedBox(height: 25),
-            InkWell( onTap: (){
-              Get.back();
-            },child: Image.asset('assets/back_icons.png',width: 17,height: 17)),
-            const SizedBox(height: 25),
-             MyText(text: 'about_us'.tr, fontName: 'Gilroy',
-                fontSize: 20, fontWeight: FontWeight.w800, textColor: appBlack),
-            const SizedBox(height: 25),
-            SingleChildScrollView(
-              child: Column(
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children:  [
+              const SizedBox(height: 25),
+              InkWell( onTap: (){
+                Get.back();
+              },child: Image.asset('assets/back_icons.png',width: 17,height: 17)),
+              const SizedBox(height: 25),
+               MyText(text: 'about_us'.tr, fontName: 'Gilroy',
+                  fontSize: 20, fontWeight: FontWeight.w800, textColor: appBlack),
+              const SizedBox(height: 25),
+              Column(
                 children: [
-                  const ImageSets(imagePath: 'assets/servicenow_logo.png', width: 230, height: 50, color: appBlue),
+                  Image.asset('assets/service_logo.png',width: 130,height: 130),
                   40.height,
                   const Text(
                       serviceLongText,style: TextStyle(fontFamily: 'Gilroy',fontSize: 15,fontWeight: FontWeight.w500,height: 1.3,color: appBlack)),
                   16.height,
                   const Text(serviceLongText,style: TextStyle(fontFamily: 'Gilroy',fontSize: 15,height: 1.3,fontWeight: FontWeight.w500,color: appBlack))
                 ],
-              ),
-            )
-          ],
-        ).paddingSymmetric(horizontal: 16).center(),
+              )
+            ],
+          ).paddingSymmetric(horizontal: 16).center(),
+        ),
       ),
     );
   }
