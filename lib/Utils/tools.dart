@@ -9,8 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class Tools {
   static void setStatusBarColor(Color color) {
-    SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: color));
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: color));
   }
 
   static String allCaps(String str) {
