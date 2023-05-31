@@ -33,8 +33,6 @@ class _SelectServiceScreenState extends State<SelectServiceScreen> {
     if(widget.action=="Edit"){
       serviceDetails();
     }
-
-
   }
   void serviceDetails()async{
     Preferences.setPreferences();

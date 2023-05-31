@@ -35,7 +35,6 @@ class _ServiceRegistrationState extends State<ServiceRegistrationUI> {
       lng: permissionController.locationData!.longitude,
     );
     userServiceListController.getUserServiceList(request);
-
   }
 
   @override
