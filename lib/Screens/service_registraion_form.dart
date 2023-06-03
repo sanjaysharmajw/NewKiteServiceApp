@@ -232,6 +232,7 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          //resizeToAvoidBottomInset: true,
       body: Container(
         child: Form(
           key: formKey,
@@ -547,10 +548,10 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
       builder: (builder) {
         return StatefulBuilder(
           builder: (BuildContext context, setState) => Container(
-            child: Column(
-              children: [
-                SingleChildScrollView(
-                  child: Padding(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
                     padding:
                         const EdgeInsets.only(left: 30, right: 30, top: 20),
                     child: Column(
@@ -719,10 +720,8 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                       ],
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
-                  child: Expanded(
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
                     child: MyButtonPadding(
                         press: () {
                           Get.back();
@@ -731,8 +730,8 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                         },
                         buttonText: 'Submit'),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );

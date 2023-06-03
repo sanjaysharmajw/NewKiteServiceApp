@@ -29,12 +29,14 @@ class ServiceMasterListItems extends StatelessWidget {
           color: appWhiteColor,
           borderRadius: const BorderRadius.all(Radius.circular(5)),
         ),
-        padding: const EdgeInsets.only(left: 12, right: 12, top: 20, bottom: 20),
+        padding: const EdgeInsets.only(left: 12, right: 12, top: 20, bottom: 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            MyText(text: serviceTypeListMasterData.name.toString(), fontName: 'Gilroy',
-                fontSize: 12, fontWeight: FontWeight.w700, textColor: Colors.black),
+            Flexible(
+              child: MyText(text: serviceTypeListMasterData.name.toString(), fontName: 'Gilroy',
+                  fontSize: 12, fontWeight: FontWeight.w700, textColor: Colors.black,),
+            ),
             Image.asset('images/forword_arrow.png',width: 15, height: 15, fit: BoxFit.contain, color: appBlack)
           ],
         ),

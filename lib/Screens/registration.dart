@@ -169,56 +169,55 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                   ),
 
-                  Column(
+              Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                      const Padding(
-                        padding:  EdgeInsets.symmetric(horizontal: 30),
+                        padding:  EdgeInsets.only(left: 20),
                         child:  MyText(text: 'Select Gender', fontName: 'Gilroy',
-                            fontSize: 16, fontWeight: FontWeight.w800, textColor: appWhiteColor),
+                            fontSize: 16, fontWeight: FontWeight.w800, textColor: Colors.black87),
                       ),
                       const SizedBox(height: 10),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(child: RadioListTile(
-                              title: const Text("Male",style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
-                              value: "male",
-                              activeColor: appBlue,
-                              groupValue: gender,
-                              onChanged: (value){
-                                setState(() {
-                                  gender = value.toString();
-                                });
-                              },
-                            ),),
-                            Expanded(child: RadioListTile(
-                              visualDensity: const VisualDensity(horizontal: -4),
-                              title: const Text("Female",style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
-                              value: "female",
-                              groupValue: gender,
-                              activeColor: appBlue,
-                              onChanged: (value){
-                                setState(() {
-                                  gender = value.toString();
-                                });
-                              },
-                            )),
-                            Expanded(child: RadioListTile(
-                              title: const Text("Other",style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
-                              value: "other",
-                              groupValue: gender,
-                              activeColor: appBlue,
-                              onChanged: (value){
-                                setState(() {
-                                  gender = value.toString();
-                                });
-                              },
-                            )),
-                          ],
-                        ),
+                      Row(
+                        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Flexible(child: RadioListTile(
+                            title: const Text("Male",style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
+                            value: "male",
+                            activeColor: appBlue,
+                            groupValue: gender,
+                            onChanged: (value){
+                              setState(() {
+                                gender = value.toString();
+                              });
+                            },
+                          ),),
+                          Flexible(child: RadioListTile(
+                            contentPadding: EdgeInsets.only(right: 5),
+                            visualDensity: VisualDensity(horizontal: -4),
+                            title: const Text("Female",style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
+                            value: "female",
+                            groupValue: gender,
+                            activeColor: appBlue,
+                            onChanged: (value){
+                              setState(() {
+                                gender = value.toString();
+                              });
+                            },
+                          )),
+                          Flexible(child: RadioListTile(
+                            contentPadding: EdgeInsets.only(right: 5),
+                            title: const Text("Other",style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
+                            value: "other",
+                            groupValue: gender,
+                            activeColor: appBlue,
+                            onChanged: (value){
+                              setState(() {
+                                gender = value.toString();
+                              });
+                            },
+                          )),
+                        ],
                       ),
                     ],
                   ),

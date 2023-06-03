@@ -210,11 +210,11 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.multiline,
                           inputFormatters: [
-                            engHindFormatter,
+                            //engHindFormatter,
                             FilteringTextInputFormatter.allow(
-                                RegExp("[0-9a-zA-Zऀ-ॿ'\.\-\s\\,\ ]")),
+                                RegExp("[0-9a-zA-Zऀ-ॿ'\.\-\s\,\ ]")),
                             FilteringTextInputFormatter.deny('  ')
                           ],),
                         const SizedBox(height: 25),
@@ -263,6 +263,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                           Expanded(
 
                             child: RadioListTile(
+                              contentPadding: EdgeInsets.only(left: 10),
 
                             title:  Text("male".tr,style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
                             value: "male",
@@ -278,6 +279,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                           Expanded(
 
                               child: RadioListTile(
+                                contentPadding: EdgeInsets.only(left: 10),
                             //visualDensity: const VisualDensity(horizontal: -4),
                             title:  Text("female".tr,style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
                             value: "female",
@@ -290,6 +292,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                             },
                           )),
                           Expanded(child: RadioListTile(
+                            contentPadding: EdgeInsets.only(left: 10),
                             title: Text("other".tr,style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
                             value: "other",
                             groupValue: gender,
@@ -334,7 +337,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
       setState(() {
         if(value == null) return;
         date = Tools.getFormattedDateSimple(value.millisecondsSinceEpoch);
-        updateProfileController.firstNameController.value.text=date;
+        updateProfileController.selectDobController.value.text=date;
       });
     }, onError: (error) {
       CustomLoader.message(error);

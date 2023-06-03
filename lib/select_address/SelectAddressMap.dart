@@ -55,6 +55,7 @@ class _HomePageState extends State<SelectAddressMap> {
 
   _init() {
     _defaultLatLng = const LatLng(11, 104);
+    //_defaultLatLng = const LatLng(18.98219737164321, 73.02593093365431);
     _draggedLatlng = _defaultLatLng;
     _cameraPosition = CameraPosition(
         target: _defaultLatLng,
@@ -154,6 +155,7 @@ class _HomePageState extends State<SelectAddressMap> {
               imageHeight: 25),
         ),
         MyButton(press: (){
+          debugPrint("placemark :${address=placemarks![0]}"+"latlng :${_draggedLatlng}"+"action :${widget.action}");
           Get.to(SelectServiceScreen(placemark:  address = placemarks![0], latLng: _draggedLatlng,action: widget.action));
         }, buttonText: 'next'.tr),
       ],
