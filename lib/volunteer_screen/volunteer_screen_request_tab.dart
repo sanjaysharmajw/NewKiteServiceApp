@@ -71,7 +71,7 @@ class VolunteerRequestListTabScreenState extends State<VolunteerRequestListTabSc
                       children: [
                         /*-------------- Build Tabs here ------------------*/
                         TabBar(
-                            labelPadding: const EdgeInsets.only(left: 25,right: 25),
+                            labelPadding: const EdgeInsets.only(left: 40,right: 40),
                             isScrollable: true,
                             tabs: getTabs(),
                             indicatorColor: appBlue)

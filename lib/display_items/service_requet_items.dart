@@ -25,7 +25,7 @@ class ServiceRequestItems extends StatelessWidget {
   final VoidCallback  acceptClick;
   final VoidCallback  rejectClick;
 
-  const ServiceRequestItems({Key? key, required this.serviceListData, required this.acceptClick, required this.rejectClick})
+  const   ServiceRequestItems({Key? key, required this.serviceListData, required this.acceptClick, required this.rejectClick})
       : super(key: key);
 
   @override
@@ -47,7 +47,7 @@ class ServiceRequestItems extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               MyText(
-                  text: serviceListData.date.toString(),
+                  text: serviceListData.date.toString() == "" ? "" : serviceListData.date.toString(),
                   fontName: 'Gilroy',
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
@@ -67,11 +67,11 @@ class ServiceRequestItems extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
+              Flexible(
                 child: Text(
                         serviceListData.providername == ""
-                        ? "N/A"
-                        : serviceListData.providername.toString(),
+                        ? ""
+                          : serviceListData.providername.toString(),
                     style: const TextStyle(
                         fontFamily: 'Gilroy',
                         fontSize: 16,
@@ -81,7 +81,7 @@ class ServiceRequestItems extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               MyText(
-                  text: serviceListData.usermobilenumber == "" ? "N/A" : serviceListData.usermobilenumber.toString(),
+                  text: serviceListData.usermobilenumber == "" ? "" : serviceListData.usermobilenumber.toString(),
                   fontName: 'Gilroy',
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
@@ -95,7 +95,7 @@ class ServiceRequestItems extends StatelessWidget {
               Expanded(
                 child: MyText(
                     text: 'Comment: ${serviceListData.comments == ""
-                        ? "N/A"
+                        ? ""
                         : serviceListData.comments.toString()}',
                     fontName: 'Gilroy',
                     fontSize: 14,

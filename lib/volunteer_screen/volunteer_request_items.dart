@@ -42,8 +42,10 @@ class VolunteerRequestItems extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  MyText(text: volunteerData.userName==""?"N/A":volunteerData.userName.toString(), fontName: 'Gilroy', fontSize: 16,
-                      fontWeight: FontWeight.w700, textColor: Colors.black),
+                  Flexible(
+                    child: MyText(text: volunteerData.userName==""?"":volunteerData.userName.toString(), fontName: 'Gilroy', fontSize: 16,
+                        fontWeight: FontWeight.w700, textColor: Colors.black),
+                  ),
                   MyText(text: volunteerData.status.toString(), fontName: 'Gilroy', fontSize: 14,
                       fontWeight: FontWeight.w700, textColor: volunteerData.status=="Accept"?Colors.green:Colors.red),
                 ],
@@ -51,11 +53,12 @@ class VolunteerRequestItems extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
-              MyText(text: 'Drive: ${volunteerData.driverName.toString()}, ${volunteerData.vehicleNumber.toString()}', fontName: 'Gilroy', fontSize: 14, fontWeight: FontWeight.w500, textColor: Colors.black),
+              MyText(text: 'Driver: ${volunteerData.driverName.toString()}, ${volunteerData.vehicleNumber.toString()}' == ""?"":'Driver: ${volunteerData.driverName.toString()}, ${volunteerData.vehicleNumber.toString()}',
+                  fontName: 'Gilroy', fontSize: 14, fontWeight: FontWeight.w500, textColor: Colors.black,maxLine: 2,),
               const SizedBox(
                 height: 8,
               ),
-              MyText(text: '$distance Km', fontName: 'Gilroy', fontSize: 14, fontWeight: FontWeight.w500, textColor: Colors.black),
+              MyText(text: '$distance Km'==""?"":'$distance Km', fontName: 'Gilroy', fontSize: 14, fontWeight: FontWeight.w500, textColor: Colors.black),
               const SizedBox(height: 15),
               Visibility(
                   visible: volunteerData.status=="Accept"?true:false,

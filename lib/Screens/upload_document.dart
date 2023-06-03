@@ -6,6 +6,7 @@ import 'dart:math';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:nirbhaya_service/Screens/home_page.dart';
@@ -103,7 +104,9 @@ class _UploadDocumentScreenState extends State<UploadDocumentScreen> with Single
                           }else{
                             return null;
                           }
-                        }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text, inputFormatters: [
+                        }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.number,
+                      inputFormatters: [
+
 
                       ],),
 
