@@ -37,6 +37,7 @@ class AddServiceController extends GetxController{
       final decodedBytes = utf8Decoder.convert(response.bodyBytes);
       Map<String, dynamic> responseBody = json.decode(decodedBytes);
       debugPrint('AddServiceRequest');
+      print('AddServiceRequest');
       debugPrint(jsonEncode(addServiceRequestBody));
       if (response.statusCode == 200) {
         CustomLoader.closeLoader();

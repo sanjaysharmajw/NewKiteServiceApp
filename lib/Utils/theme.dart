@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:nirbhaya_service/Utils/custom_theme.dart';
 import 'package:nirbhaya_service/Utils/app_theme.dart';
 
@@ -181,8 +180,8 @@ class AppTheme {
     cardTheme: const CardTheme(color: Color(0xfff0f0f0)),
     cardColor: const Color(0xfff0f0f0),
 
-    textTheme: TextTheme(
-        headline6: GoogleFonts.aBeeZee(), bodyText1: GoogleFonts.abel()),
+    // textTheme: TextTheme(
+    //     headline6: GoogleFonts.aBeeZee(), bodyText1: GoogleFonts.abel()),
 
     /// Colorscheme
     colorScheme: ColorScheme.fromSeed(

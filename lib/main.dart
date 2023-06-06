@@ -103,7 +103,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    //FCM Push Notification
+    // FCM Push Notification
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;

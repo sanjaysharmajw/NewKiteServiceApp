@@ -54,7 +54,7 @@ class _HomePageState extends State<SelectAddressMap> {
   }
 
   _init() {
-    _defaultLatLng = const LatLng(11, 104);
+    _defaultLatLng = const LatLng(0.0, 0.0);
     _draggedLatlng = _defaultLatLng;
     _cameraPosition = CameraPosition(
         target: _defaultLatLng,
