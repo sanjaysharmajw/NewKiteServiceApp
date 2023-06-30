@@ -241,7 +241,6 @@ class ProfileScreenState extends State<ProfileScreen> {
 
 
                 Visibility(
-
                   visible: volunteer == "Yes"? true : volunteer=="No"?false:false,
                   child: Column(
                     children: [
@@ -253,7 +252,6 @@ class ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                 ),
-
 
                 const Divider(),
                 Row(

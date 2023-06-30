@@ -103,8 +103,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 radius: 30,
                 backgroundColor: appBlue,
                 textColor: appBlue,
-                buttonType:
-                    ButtonType.text_button, // or ButtonType.outlined_button
+                buttonType: ButtonType.text_button, // or ButtonType.outlined_button
                 loadingIndicator: const CircularProgressIndicator(
                   strokeWidth: 2,
                   color: appBlue,
@@ -118,8 +117,7 @@ class _OTPScreenState extends State<OTPScreen> {
                   press: () {
                     CustomLoader.message( firebaseToken!);
                     if (otpController.text.trim().isNotEmpty) {
-                      verifyOTPApi(
-                          widget.mobile, otpController.text.toString());
+                      verifyOTPApi(widget.mobile, otpController.text.toString());
                     } else {
                       CustomLoader.message('Enter 4 Digits OTP');
                     }

@@ -53,7 +53,6 @@ class EditProfileScreenState extends State<EditProfileScreen> {
 
   void getDetailsProfile()async{
     setState(() {
-
       updateProfileController.firstNameController.value.text=widget.userDetailsData.firstName.toString();
       updateProfileController.lastNameController.value.text=widget.userDetailsData.lastName.toString();
       updateProfileController.mobileController.value.text=widget.userDetailsData.mobileNumber.toString();
@@ -62,7 +61,6 @@ class EditProfileScreenState extends State<EditProfileScreen> {
       updateProfileController.emergencyController.value.text=widget.userDetailsData.emergencyContactNo.toString();
       updateProfileController.selectDobController.value.text=widget.userDetailsData.dob.toString();
       gender=widget.userDetailsData.gender.toString();
-
     });
   }
 
@@ -240,7 +238,9 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: true, onTap: () { showDialogPicker(context); }, keyboardType: TextInputType.text, inputFormatters: [],),
+                            }, fontSize: 16,readOnly: true, onTap: () {
+                          showDialogPicker(context);
+                          }, keyboardType: TextInputType.text, inputFormatters: [],),
                         const SizedBox(height: 5),
                       ],
                     ),
@@ -261,9 +261,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Expanded(
-
                             child: RadioListTile(
-
                             title:  Text("male".tr,style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
                             value: "male",
                             activeColor: appBlue,
@@ -276,7 +274,6 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                           ),),
 
                           Expanded(
-
                               child: RadioListTile(
                             //visualDensity: const VisualDensity(horizontal: -4),
                             title:  Text("female".tr,style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
