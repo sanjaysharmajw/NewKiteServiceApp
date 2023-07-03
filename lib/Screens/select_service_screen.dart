@@ -12,7 +12,6 @@ import 'package:nirbhaya_service/utils_screens/empty_screen.dart';
 import 'package:nirbhaya_service/widgets/MyText.dart';
 import '../color_constant.dart';
 
-
 class SelectServiceScreen extends StatefulWidget {
   Placemark placemark;
   LatLng latLng;
@@ -38,7 +37,7 @@ class _SelectServiceScreenState extends State<SelectServiceScreen> {
     Preferences.setPreferences();
     String? serviceId=Preferences.getServiceId();
     String? id=Preferences.getServiceListId();
-    ServiceListBodyRequest request =ServiceListBodyRequest(
+    ServiceListBodyRequest request = ServiceListBodyRequest(
         userId: Preferences.getUserId().toString(),
         lat: widget.latLng.latitude,
         lng: widget.latLng.longitude,

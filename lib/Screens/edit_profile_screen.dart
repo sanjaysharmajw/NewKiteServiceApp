@@ -53,7 +53,6 @@ class EditProfileScreenState extends State<EditProfileScreen> {
 
   void getDetailsProfile()async{
     setState(() {
-
       updateProfileController.firstNameController.value.text=widget.userDetailsData.firstName.toString();
       updateProfileController.lastNameController.value.text=widget.userDetailsData.lastName.toString();
       updateProfileController.mobileController.value.text=widget.userDetailsData.mobileNumber.toString();
@@ -62,7 +61,6 @@ class EditProfileScreenState extends State<EditProfileScreen> {
       updateProfileController.emergencyController.value.text=widget.userDetailsData.emergencyContactNo.toString();
       updateProfileController.selectDobController.value.text=widget.userDetailsData.dob.toString();
       gender=widget.userDetailsData.gender.toString();
-
     });
   }
 
@@ -210,11 +208,11 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.multiline,
+                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
                           inputFormatters: [
-                            //engHindFormatter,
+                            engHindFormatter,
                             FilteringTextInputFormatter.allow(
-                                RegExp("[0-9a-zA-Zऀ-ॿ'\.\-\s\,\ ]")),
+                                RegExp("[0-9a-zA-Zऀ-ॿ'\.\-\s\\,\ ]")),
                             FilteringTextInputFormatter.deny('  ')
                           ],),
                         const SizedBox(height: 25),
@@ -240,7 +238,9 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: true, onTap: () { showDialogPicker(context); }, keyboardType: TextInputType.text, inputFormatters: [],),
+                            }, fontSize: 16,readOnly: true, onTap: () {
+                          showDialogPicker(context);
+                          }, keyboardType: TextInputType.text, inputFormatters: [],),
                         const SizedBox(height: 5),
                       ],
                     ),
@@ -261,10 +261,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Expanded(
-
                             child: RadioListTile(
-                              contentPadding: EdgeInsets.only(left: 10),
-
                             title:  Text("male".tr,style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
                             value: "male",
                             activeColor: appBlue,
@@ -277,9 +274,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                           ),),
 
                           Expanded(
-
                               child: RadioListTile(
-                                contentPadding: EdgeInsets.only(left: 10),
                             //visualDensity: const VisualDensity(horizontal: -4),
                             title:  Text("female".tr,style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
                             value: "female",
@@ -292,7 +287,6 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                             },
                           )),
                           Expanded(child: RadioListTile(
-                            contentPadding: EdgeInsets.only(left: 10),
                             title: Text("other".tr,style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
                             value: "other",
                             groupValue: gender,
@@ -337,7 +331,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
       setState(() {
         if(value == null) return;
         date = Tools.getFormattedDateSimple(value.millisecondsSinceEpoch);
-        updateProfileController.selectDobController.value.text=date;
+        updateProfileController.firstNameController.value.text=date;
       });
     }, onError: (error) {
       CustomLoader.message(error);

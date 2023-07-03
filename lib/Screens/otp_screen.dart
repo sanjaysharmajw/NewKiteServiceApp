@@ -61,7 +61,7 @@ class _OTPScreenState extends State<OTPScreen> {
     return SafeArea(
         child: Scaffold(
           backgroundColor: appWhiteColor,
-
+          resizeToAvoidBottomInset: false,
       body: Center(
         child: SizedBox(
           height: double.infinity,
