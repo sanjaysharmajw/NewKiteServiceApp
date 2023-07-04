@@ -104,9 +104,9 @@ class ProfileScreenState extends State<ProfileScreen> {
             items: _reasonNames.map((e) => MultiSelectItem(e, e)).toList(),
             initialValue: _selectedReasonNames,
             selectedColor: Colors.black,
-            cancelText: const Text("Cancel", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20,fontFamily: "Gilroy"),),
-            confirmText: const Text("Confirm", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold, fontSize: 20,fontFamily: "Gilroy")),
-            title: const Text("I want to help in following situations", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,fontFamily: "Gilroy"),),
+            cancelText: const Text("Cancel", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16,fontFamily: "Gilroy"),),
+            confirmText: const Text("Confirm", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold, fontSize: 16,fontFamily: "Gilroy")),
+            title: const Text("I want to help in following situations", style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold,fontFamily: "Gilroy"),),
             onConfirm: (values) {
               for (var i = 0; i < values.length; i++) {
                 _selectedReasonNames.add(values[i].toString());
