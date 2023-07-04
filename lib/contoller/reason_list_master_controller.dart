@@ -19,7 +19,7 @@ class ReasonListMasterController extends GetxController{
   final headerController = Get.put(HeaderController());
   @override
   void onInit() {
-    sosReasonMasterListApi();
+   // sosReasonMasterListApi();
     super.onInit();
   }
 
