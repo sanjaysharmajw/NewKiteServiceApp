@@ -23,6 +23,7 @@ class SelectServiceScreen extends StatefulWidget {
 }
 
 class _SelectServiceScreenState extends State<SelectServiceScreen> {
+
   final serviceMasterListController=Get.put((ServiceListMasterController()));
   final userServiceListController = Get.put(UserServiceListController());
 
@@ -37,7 +38,8 @@ class _SelectServiceScreenState extends State<SelectServiceScreen> {
       print("ADD "+widget.action);
     }
   }
-  void serviceDetails()async{
+
+  void serviceDetails() async {
     Preferences.setPreferences();
     String? serviceId=Preferences.getServiceId();
     String? id=Preferences.getServiceListId();

@@ -12,6 +12,7 @@ import 'package:nirbhaya_service/contoller/permission_controller.dart';
 import 'package:nirbhaya_service/contoller/service_complete_request_controller.dart';
 import 'package:nirbhaya_service/contoller/service_start_ride_controller.dart';
 import 'package:nirbhaya_service/utils_screens/exit_dialog.dart';
+import 'package:nirbhaya_service/widgets/rating_bar_widget.dart';
 import 'package:nirbhaya_service/widgets/request_status.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:flutter/material.dart';
@@ -256,14 +257,22 @@ class _TrackingMapState extends State<TrackingMap> {
         10.height,
         Padding(
           padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
-          child: MyText(
-              text:
-                  'Comment: ${widget.serviceListData!.comments == "" ? "N/A" : widget.serviceListData!.comments.toString()}',
-              fontName: 'Gilroy',
-              fontSize: 14,
-              maxLine: 2,
-              fontWeight: FontWeight.w500,
-              textColor: appBlack),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              MyText(
+                  text:
+                      'Comment: ${widget.serviceListData!.comments == "" ? "N/A" : widget.serviceListData!.comments.toString()}',
+                  fontName: 'Gilroy',
+                  fontSize: 14,
+                  maxLine: 2,
+                  fontWeight: FontWeight.w500,
+                  textColor: appBlack),
+              Visibility(
+                  visible: widget.serviceListData!.rating==""?false:true,
+                  child: RatingBarWidgets(ratingRate: widget.serviceListData!.rating.toDouble())),
+            ],
+          ),
         ),
         15.height,
         MyButton(press: (){

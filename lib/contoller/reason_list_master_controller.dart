@@ -19,13 +19,13 @@ class ReasonListMasterController extends GetxController{
   final headerController = Get.put(HeaderController());
   @override
   void onInit() {
-    sosReasonMasterListApi();
+   // sosReasonMasterListApi();
     super.onInit();
   }
 
   Future<dynamic> sosReasonMasterListApi() async {
     try {
-      //DriverCustomLoader.showLoader("Please wait");
+      CustomLoader.showLoader("Please wait");
       final response = await http.post(Uri.parse(APIConstant.sosReasonMaster),
         headers: headerController.headerToken,
         body: jsonEncode(<String, String>{
@@ -46,21 +46,24 @@ class ReasonListMasterController extends GetxController{
       }
     } on TimeoutException catch (e) {
       isLoading.value = false;
+      CustomLoader.closeLoader();
       CustomLoader.showToast(e.message.toString());
       debugPrint('log message');
       debugPrint(e.message.toString());
     } on SocketException catch (e) {
       isLoading.value = false;
+      CustomLoader.closeLoader();
       CustomLoader.showToast(e.message.toString());
       debugPrint('log message');
       debugPrint(e.message.toString());
     } on Error catch (e) {
       isLoading.value = false;
+      CustomLoader.closeLoader();
       CustomLoader.showToast(e.toString());
       debugPrint('log message');
       debugPrint(e.toString());
     } catch (e) {
-      //DriverCustomLoader.closeLoader();
+      CustomLoader.closeLoader();
       CustomLoader.showToast(e.toString());
       debugPrint('log message');
       debugPrint(e.toString());

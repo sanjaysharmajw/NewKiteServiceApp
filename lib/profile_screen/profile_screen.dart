@@ -71,11 +71,11 @@ class ProfileScreenState extends State<ProfileScreen> {
     await userDetailsController.updateProfile();
    volunteer= userDetailsController.getUserDetailsData[0].volunteer;
 
-   if(_selectedReasonNames.isNotEmpty){
-     _selectedReasonNames.clear();
-     selectedAri.clear();
-     _reasonNames.clear();
-   }
+   // if(_selectedReasonNames.isNotEmpty){
+   //   _selectedReasonNames.clear();
+   //   selectedAri.clear();
+   //   _reasonNames.clear();
+   // }
 
    for(var i = 0; i< userDetailsController.getUserDetailsData[0].volunteerAri!.length;i++){
      debugPrint("selected reason ${userDetailsController.getUserDetailsData[0].volunteerAri![i].toString()}");
@@ -87,6 +87,7 @@ class ProfileScreenState extends State<ProfileScreen> {
 
 
   void _showMultiSelect(BuildContext context) async {
+    await reasonMasterListController.sosReasonMasterListApi();
     reasons = reasonMasterListController.getReasonMasterData.value;
     for (var i = 0; i < reasons!.length; i++) {
       _reasonNames.add(reasons![i].name.toString());
@@ -103,9 +104,9 @@ class ProfileScreenState extends State<ProfileScreen> {
             items: _reasonNames.map((e) => MultiSelectItem(e, e)).toList(),
             initialValue: _selectedReasonNames,
             selectedColor: Colors.black,
-            cancelText: const Text("Cancel", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20,fontFamily: "Gilroy"),),
-            confirmText: const Text("Confirm", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold, fontSize: 20,fontFamily: "Gilroy")),
-            title: const Text("I want to help in following situations", style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,fontFamily: "Gilroy"),),
+            cancelText: const Text("Cancel", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16,fontFamily: "Gilroy"),),
+            confirmText: const Text("Confirm", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold, fontSize: 16,fontFamily: "Gilroy")),
+            title: const Text("I want to help in following situations", style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold,fontFamily: "Gilroy"),),
             onConfirm: (values) {
               for (var i = 0; i < values.length; i++) {
                 _selectedReasonNames.add(values[i].toString());
@@ -260,7 +261,10 @@ class ProfileScreenState extends State<ProfileScreen> {
                     _buildSingleSetting('Volunteer'.tr, 'would you like to help others?'.tr,
                         FeatherIcons.user, appBlack,(){
                           if(volunteer=="Yes"){
+                            _reasonNames.clear();
+                            _selectedReasonNames.clear();
                             _showMultiSelect(context);
+                            reasons=reasonMasterListController.getReasonMasterData;
                           }else{
                             // volunteerApi("No");
                           }
@@ -277,9 +281,10 @@ class ProfileScreenState extends State<ProfileScreen> {
                         activeColor: blackColor,
                         onToggle: (val) {
                           setState(() {
-
                             if(volunteer=="No"){
+                              _reasonNames.clear();
                               _showMultiSelect(context);
+                              reasons=reasonMasterListController.getReasonMasterData;
                             }else{
                               volunteerApi("No");
                             }
