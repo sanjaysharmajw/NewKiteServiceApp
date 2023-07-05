@@ -26,10 +26,8 @@ class UserServiceListController extends GetxController{
       const utf8Decoder = Utf8Decoder(allowMalformed: true);
       final decodedBytes = utf8Decoder.convert(response.bodyBytes);
       Map<String, dynamic> responseBody = json.decode(decodedBytes);
+      debugPrint("userServiceList"+jsonEncode(request),);
       debugPrint('userServiceList');
-      debugPrint(response.body);
-      debugPrint(jsonEncode(request),);
-
       if (response.statusCode == 200) {
         isLoading.value = false;
         ServiceListModel model = ServiceListModel.fromJson(responseBody);
