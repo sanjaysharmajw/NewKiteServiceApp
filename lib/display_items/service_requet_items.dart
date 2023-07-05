@@ -82,7 +82,7 @@ class ServiceRequestItems extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               MyText(
-                  text: serviceListData.usermobilenumber == "" ? "N/A" : serviceListData.usermobilenumber.toString(),
+                  text: serviceListData.usermobilenumber == null ? "" : serviceListData.usermobilenumber.toString(),
                   fontName: 'Gilroy',
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
