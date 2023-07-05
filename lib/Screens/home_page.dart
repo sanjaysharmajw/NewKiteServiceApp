@@ -44,11 +44,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    listApi();
+
     firebaseTokenMethod();
     super.initState();
     serviceApi();
    userDetailsApi();
+    listApi();
     setState(() {});
   }
 
@@ -71,11 +72,10 @@ class _HomePageState extends State<HomePage> {
       userId: Preferences.getUserId().toString(),
       lat: permissionController.locationData?.latitude,
       lng: permissionController.locationData?.longitude,
-     id: userServiceListController.getUserServiceListData[0].id,
-      serviceId: userServiceListController.getUserServiceListData[0].serviceId
+     // id: userServiceListController.getUserServiceListData[0].id,
+     //  serviceId: userServiceListController.getUserServiceListData[0].serviceId
     );
     await userServiceListController.getUserServiceList(request);
-
     NotificationRequestBody notificationModels = NotificationRequestBody(count: true, unread: true, userId: Preferences.getUserId().toString());
     await notificationController
         .notificationApi(notificationModels)

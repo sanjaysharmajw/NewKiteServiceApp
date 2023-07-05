@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:nirbhaya_service/BodyRequest/notification_request_body.dart';
 import 'package:nirbhaya_service/Models/notification_models.dart';
@@ -19,6 +20,8 @@ class NotificationController extends GetxController{
       const utf8Decoder = Utf8Decoder(allowMalformed: true);
       final decodedBytes = utf8Decoder.convert(response.bodyBytes);
       Map<String, dynamic> responseBody = json.decode(decodedBytes);
+      log('notification');
+      log(responseBody.toString());
       if (response.statusCode == 200) {
         CustomLoader.closeLoader();
         return NotificationModels.fromJson(responseBody);
