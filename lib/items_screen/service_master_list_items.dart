@@ -20,6 +20,7 @@ class ServiceMasterListItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
+        print("serviceRegForm  "+action);
         Get.to(ServiceRegistrationForm(serviceId: serviceTypeListMasterData.id.toString(), serviceName:serviceTypeListMasterData.name.toString(),
             placemark: placemark, latLng: currentLatLng,action: action));
       },

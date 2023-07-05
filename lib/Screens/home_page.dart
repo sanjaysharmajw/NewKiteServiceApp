@@ -68,8 +68,10 @@ class _HomePageState extends State<HomePage> {
     listApi();
     ServiceListBodyRequest request = ServiceListBodyRequest(
       userId: Preferences.getUserId().toString(),
-      lat: permissionController.locationData!.latitude,
-      lng: permissionController.locationData!.longitude,
+      lat: permissionController.locationData?.latitude,
+      lng: permissionController.locationData?.longitude,
+     id: userServiceListController.getUserServiceListData[0].id,
+      serviceId: userServiceListController.getUserServiceListData[0].serviceId
     );
     await userServiceListController.getUserServiceList(request);
 

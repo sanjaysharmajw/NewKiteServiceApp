@@ -53,14 +53,17 @@ class SendOtpController extends GetxController{
         "fcmtoken":firebaseToken.toString()
       }));
       Map<String, dynamic> responseBody = json.decode(response.body);
+
       if (response.statusCode == 200) {
         CustomLoader.closeLoader();
         return VerifyOtpModels.fromJson(responseBody);
       }
     } on TimeoutException catch (e) {
       CustomLoader.closeLoader();
+
       CustomLoader.showToast(e.message.toString());
     }  catch (e) {
+
       CustomLoader.closeLoader();
       CustomLoader.showToast(e.toString());
     }

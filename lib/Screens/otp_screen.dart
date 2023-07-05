@@ -117,7 +117,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 ),
                 MyButton(
                     press: () {
-                      CustomLoader.message( firebaseToken!);
+                      //CustomLoader.message( firebaseToken!);
                       if (otpController.text.trim().isNotEmpty) {
                         verifyOTPApi(
                             widget.mobile, otpController.text.toString());
@@ -137,13 +137,21 @@ class _OTPScreenState extends State<OTPScreen> {
   void verifyOTPApi(String mobile, String otp) async {
     await otpApiController.verifyOtp(mobile, otp,firebaseToken!).then((value) async {
       if (value != null) {
-        if (value.data!.isEmpty) {
-          share(value.token!,'','');
-          Get.to(const RegistrationScreen());
-        } else {
-          share(value.token!,value.data![0].id.toString(),value.data![0].mobileNumber.toString());
-          Get.to(const CustomBottomNav());
-        }
+        if(value.status==true){
+            if(value.data.toString()=="[]"){
+              Get.to(const RegistrationScreen());
+            }else{
+              share(value.token!, value.data![0].id.toString(), value.data![0].mobileNumber.toString());
+              //share(value.token!,'','');
+
+              Get.to(const CustomBottomNav());
+            }
+          }else{
+            CustomLoader.message(value.message.toString());
+          }
+
+
+
       }
     });
   }
@@ -161,11 +169,12 @@ class _OTPScreenState extends State<OTPScreen> {
     });
   }
 
-  Future<void> share(String token,String userId,String mobileNumber) async {
+  void share(String token,String userId,String mobileNumber) async {
     await Preferences.setPreferences();
-    Preferences.setToken(token);
-    Preferences.setUserId(userId);
-    Preferences.setMobileNo(mobileNumber);
+    Preferences.setToken(token).toString();
+    Preferences.setUserId(userId).toString();
+    Preferences.setMobileNo(mobileNumber).toString();
+
   }
 
 }

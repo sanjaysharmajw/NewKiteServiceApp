@@ -23,12 +23,8 @@ class UserDetailsController extends GetxController{
     await Preferences.setPreferences();
     String mobileNo=Preferences.getMobileNumber().toString();
     UserDetailsRequestBody requestBody=UserDetailsRequestBody(
-        mobileNumber: mobileNo
+        mobileNumber: Preferences.getMobileNumber().toString()
     );
-
-
-
-
     try {
       final response = await http.post(Uri.parse(APIConstant.userDetails),
         headers: headerController.headerToken,

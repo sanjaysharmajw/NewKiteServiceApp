@@ -48,7 +48,7 @@ class AwsController extends GetxController{
     return null;
   }
 
-  Future<UpdateDocumentModel?> updateDocument(String userId,String registration, String photo,String token) async {
+  Future<UpdateDocumentModel?> updateDocument(String userId,String registration, String photo, String token) async {
     try {
       CustomLoader.showLoader("Please wait");
       var data = {
@@ -66,6 +66,7 @@ class AwsController extends GetxController{
           "Authorization" : token
           }, body: jsonEncode(data)
       );
+      print("updateDocument"+jsonEncode(data)+"   "+token);
       Map<String, dynamic> responseBody = json.decode(response.body);
       if (response.statusCode == 200) {
         CustomLoader.closeLoader();

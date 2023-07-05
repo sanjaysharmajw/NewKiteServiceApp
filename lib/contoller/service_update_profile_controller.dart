@@ -31,12 +31,27 @@ class ServiceUpdateProfileController extends GetxController{
       lastName: lastNameController.value.text,
       mobileNumber: mobileController.value.text,
       emailId: emailController.value.text,
+      address: addressController.value.text,
       permanentAddress: PermanentAddress(
         address: addressController.value.text
       ),
       emergencyContactNo: emergencyController.value.text,
       dob: selectDobController.value.text,
       gender: gender.toString()
+    );
+    print("UpdateProfileService:  "+
+        "userId:"+ Preferences.getUserId().toString()+
+        "firstName:"+firstNameController.value.text+
+        "lastName:"+ lastNameController.value.text+
+       " mobileNumber:" +mobileController.value.text+
+        "emailId:" +emailController.value.text+
+        "address:" +addressController.value.text+
+        "permanentAddress:" +
+            "address:" +addressController.value.text+
+
+        "emergencyContactNo:" +emergencyController.value.text+
+        "dob:" +selectDobController.value.text+
+        "gender:" +gender.toString()
     );
     final headerController = Get.put(HeaderController());
     try {

@@ -242,7 +242,7 @@ class _ServiceRegDocumentScreenState extends State<ServiceRegDocumentScreen> wit
   }
 
   void updateDocument(String imagePath)async{
-    await controllerAws.updateDocument(userId!,uploadDocController.text.toString(),imagePath,token!).then((value) async {
+    await controllerAws.updateDocument(userId!,uploadDocController.text.toString(),imagePath,token.toString()).then((value) async {
       if (value != null) {
         if (value.status == true) {
           CustomLoader.showToast('Upload Successful');
