@@ -96,6 +96,9 @@ class _HomePageState extends State<HomePage> {
         lat:permissionController.locationData!.latitude,
     );
     await serviceListController.getServiceList(requestBody);
+    setState(() {
+
+    });
   }
 
   Future<void> _refresh(){
