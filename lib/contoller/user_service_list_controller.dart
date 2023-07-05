@@ -28,7 +28,6 @@ class UserServiceListController extends GetxController{
       Map<String, dynamic> responseBody = json.decode(decodedBytes);
       debugPrint("userServiceList"+jsonEncode(request),);
       debugPrint('userServiceList');
-      debugPrint(response.body);
       if (response.statusCode == 200) {
         isLoading.value = false;
         ServiceListModel model = ServiceListModel.fromJson(responseBody);
