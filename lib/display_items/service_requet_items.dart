@@ -14,6 +14,7 @@ import 'package:nirbhaya_service/contoller/service_accept_reject_controller.dart
 import 'package:nirbhaya_service/contoller/service_start_ride_controller.dart';
 import 'package:nirbhaya_service/utils_screens/exit_dialog.dart';
 import 'package:nirbhaya_service/widgets/MyText.dart';
+import 'package:nirbhaya_service/widgets/rating_bar_widget.dart';
 import 'package:nirbhaya_service/widgets/request_status.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -188,6 +189,10 @@ class ServiceRequestItems extends StatelessWidget {
              ),
             ],
           ),
+          10.height,
+          Visibility(
+            visible: serviceListData.rating==""?false:true,
+              child: RatingBarWidgets(ratingRate: serviceListData.rating.toDouble())),
         ],
       ),
     );

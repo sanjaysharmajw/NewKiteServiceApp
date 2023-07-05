@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nirbhaya_service/BodyRequest/accept_reject_body_request.dart';
+import 'package:nirbhaya_service/BodyRequest/service_list_request_body.dart';
 import 'package:nirbhaya_service/Utils/preference.dart';
 import 'package:nirbhaya_service/color_constant.dart';
+import 'package:nirbhaya_service/contoller/permission_controller.dart';
 import 'package:nirbhaya_service/contoller/service_accept_reject_controller.dart';
 import 'package:nirbhaya_service/contoller/service_list_controller.dart';
 import 'package:nirbhaya_service/utils_screens/exit_dialog.dart';
@@ -21,6 +23,7 @@ class AllServiceListScreen extends StatefulWidget {
 
 class AllServiceListScreenState extends State<AllServiceListScreen> {
   final serviceListController = Get.put(ServiceListController());
+  final permissionController = Get.put(PermissionController());
   @override
   void initState() {
     super.initState();
@@ -41,7 +44,13 @@ class AllServiceListScreenState extends State<AllServiceListScreen> {
   }
 
   void serviceApi(String? status) async {
-    await serviceListController.getServiceList(status.toString());
+    ServiceListRequestBody requestBody=ServiceListRequestBody(
+        serviceProviderId: Preferences.getUserId().toString(),
+        status:status,
+        lng:permissionController.locationData!.longitude!,
+        lat:permissionController.locationData!.latitude!
+    );
+    await serviceListController.getServiceList(requestBody);
   }
 
 

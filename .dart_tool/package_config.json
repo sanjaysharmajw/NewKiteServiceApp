@@ -260,6 +260,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_rating_bar",
+      "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/flutter_rating_bar-4.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "flutter_screenutil",
       "rootUri": "file:///Users/sanjaysharma/.pub-cache/hosted/pub.dev/flutter_screenutil-5.7.0",
       "packageUri": "lib/",
@@ -920,7 +926,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-07-01T14:42:57.361723Z",
+  "generated": "2023-07-05T07:21:24.699575Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }

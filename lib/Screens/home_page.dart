@@ -6,6 +6,7 @@ import 'package:nirbhaya_service/BodyRequest/accept_reject_body_request.dart';
 import 'package:nirbhaya_service/BodyRequest/notification_request_body.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:nirbhaya_service/BodyRequest/service_list_body_request.dart';
+import 'package:nirbhaya_service/BodyRequest/service_list_request_body.dart';
 import 'package:nirbhaya_service/Screens/notification_screen.dart';
 import 'package:nirbhaya_service/Utils/preference.dart';
 import 'package:nirbhaya_service/color_constant.dart';
@@ -44,18 +45,20 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    listApi();
     firebaseTokenMethod();
     super.initState();
     serviceApi();
-    userDetailsApi();
+   userDetailsApi();
     setState(() {});
   }
 
-  void firebaseTokenMethod()async{
+  void firebaseTokenMethod() async {
     FirebaseMessaging.instance.requestPermission();
    String? firebaseToken = await FirebaseMessaging.instance.getToken();
     debugPrint("firebaseOTPVerify:....   $firebaseToken   ........");
     debugPrint("firebaseOTPVerifyIOS:....   $firebaseToken   ........");
+    debugPrint("loginId:....   ${Preferences.getUserId()}   ........");
     setState(() {});
   }
 
@@ -65,7 +68,6 @@ class _HomePageState extends State<HomePage> {
 
   void serviceApi() async {
     await permissionController.permissionLocation();
-    listApi();
     ServiceListBodyRequest request = ServiceListBodyRequest(
       userId: Preferences.getUserId().toString(),
       lat: permissionController.locationData!.latitude,
@@ -87,8 +89,14 @@ class _HomePageState extends State<HomePage> {
       }
     });
   }
-  void listApi()async{
-    await serviceListController.getServiceList("");
+  void listApi() async {
+    ServiceListRequestBody requestBody=ServiceListRequestBody(
+      serviceProviderId: Preferences.getUserId().toString(),
+        status:'',
+        lng:permissionController.locationData!.longitude,
+        lat:permissionController.locationData!.latitude,
+    );
+    await serviceListController.getServiceList(requestBody);
   }
 
   Future<void> _refresh(){
@@ -137,7 +145,6 @@ class _HomePageState extends State<HomePage> {
                                 InkWell(
                                   onTap: (){
                                     Get.to(const NotificationScreen());
-
                                   },
                                   child: badges.Badge(
                                     position: badges.BadgePosition.topEnd(
@@ -214,12 +221,10 @@ class _HomePageState extends State<HomePage> {
                                     child: EmptyScreen(text: 'Service Not Found'),
                                   )
                                 : ListView.builder(
-                                    itemCount: serviceListController
-                                        .getServiceData.length,
+                                    itemCount: serviceListController.getServiceData.length,
                                     itemBuilder: (context, index) {
                                       return ServiceRequestItems(
-                                        serviceListData: serviceListController
-                                            .getServiceData[index],
+                                        serviceListData: serviceListController.getServiceData[index],
                                         acceptClick: () {
                                           dialog(index, "Accept");
                                         },
