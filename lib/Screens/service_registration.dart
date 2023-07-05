@@ -33,6 +33,8 @@ class _ServiceRegistrationState extends State<ServiceRegistrationUI> {
       userId: Preferences.getUserId().toString(),
       lat: permissionController.locationData!.latitude,
       lng: permissionController.locationData!.longitude,
+
+
     );
     userServiceListController.getUserServiceList(request);
   }

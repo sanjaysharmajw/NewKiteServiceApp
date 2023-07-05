@@ -48,7 +48,7 @@ class _HomePageState extends State<SelectAddressMap> {
       mapStyle = string;
     });
     setState(() {
-
+      print("button'sAction   "+widget.action);
     });
     super.initState();
   }
@@ -154,6 +154,10 @@ class _HomePageState extends State<SelectAddressMap> {
               imageHeight: 25),
         ),
         MyButton(press: (){
+          print("Click on next");
+          print(address = placemarks![0]);
+          print( "latLng:"+ _draggedLatlng.toString()+"  action:"+widget.action);
+
           Get.to(SelectServiceScreen(placemark:  address = placemarks![0], latLng: _draggedLatlng,action: widget.action));
         }, buttonText: 'next'.tr),
       ],

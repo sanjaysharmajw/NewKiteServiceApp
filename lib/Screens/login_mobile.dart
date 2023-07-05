@@ -1,4 +1,4 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -27,7 +27,7 @@ class LoginMobile extends StatefulWidget {
 class _LoginMobileState extends State<LoginMobile> {
   final mobileController=TextEditingController();
   final controller = Get.put(SendOtpController());
-  final idFromFirstController = Get.put(FirebaseTokenController());
+  //final idFromFirstController = Get.put(FirebaseTokenController());
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -35,43 +35,77 @@ class _LoginMobileState extends State<LoginMobile> {
     return SafeArea(
         child: Scaffold(
           backgroundColor: appWhiteColor,
-          resizeToAvoidBottomInset: false,
-      body: Form(
-        key: formKey,
-        child: Center(
-          child: SizedBox(
-            height: double.infinity,
-            width: double.infinity,
-            child: Column(
-              children:  [
-                const SizedBox(height: 100),
-               // const ImageSets(imagePath: 'assets/servicenow_logo.png', width: 230, height: 50, color: appBlue),
-                Image.asset('assets/service_logo.png',width: 130,height: 130),
-                const SizedBox(height: 20),
-                const MyText(text: 'Enter your Phone Number for Login', fontName: 'Gilroy', fontSize: 18, fontWeight: FontWeight.w500, textColor: appBlack),
-                const MyText(text: 'or to Get Started', fontName: 'Gilroy', fontSize: 18, fontWeight: FontWeight.w500, textColor: appBlack),
-                Padding(
-                  padding: const EdgeInsets.all(30),
-                  child: MyTextFieldForm(hintText: 'Mobile Number', controller: mobileController,
-                    validator: (value) {
-                      if (value.toString().length!=10) {
-                        return "Enter 10 digits Mobile Number";
-                      }else{
+          //resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView(
+        child: Form(
+          key: formKey,
+          child: Center(
+            child: Container(
+
+              child: Column(
+                children:  [
+                  const SizedBox(height: 50),
+                 // const ImageSets(imagePath: 'assets/servicenow_logo.png', width: 230, height: 50, color: appBlue),
+                  Image.asset('assets/service_logo.png',width: 130,height: 130),
+                  const SizedBox(height: 20),
+                  const MyText(text: 'Enter your Phone Number for Login', fontName: 'Gilroy', fontSize: 18, fontWeight: FontWeight.w500, textColor: appBlack),
+                  const MyText(text: 'or to Get Started', fontName: 'Gilroy', fontSize: 18, fontWeight: FontWeight.w500, textColor: appBlack),
+                  Padding(
+                    padding: const EdgeInsets.all(30),
+                    child: TextFormField(
+
+
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                            RegExp("[0-9]")),
+                        FilteringTextInputFormatter.deny(RegExp(r'^0+')),
+                        LengthLimitingTextInputFormatter(10),
+                        FilteringTextInputFormatter.deny('  ')
+                      ],
+                      style:  TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Gilroy',
+                        fontWeight: FontWeight.normal,
+                      ),
+                      controller: mobileController,
+                      keyboardType: TextInputType.number,
+                      decoration:  InputDecoration(
+                        labelText: "mobile_number".tr,
+                        labelStyle: TextStyle(
+                          fontSize: 16,
+                          fontFamily: 'Gilroy',
+                          fontWeight: FontWeight.normal,
+                        ),
+                        prefixText: "+91",
+                        // hintText: widget.dlMobNumber ,
+                        border: UnderlineInputBorder(),
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 1, color: appBlack)),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                              width: 1, color: appBlue),
+                        ),
+                      ),
+
+                      validator: (value) {
+                        if (value == null ||
+                            value.isEmpty ||
+                            value.length != 10) {
+                          return 'please_enter_10_digit_number'.tr;
+                        }
                         return null;
-                      }
-                    }, fontSize: 18, readOnly: false, onTap: () {  }, keyboardType: TextInputType.number,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.allow(RegExp("[0-9]")),
-                      FilteringTextInputFormatter.deny(RegExp(r'^0+')),
-                      LengthLimitingTextInputFormatter(10),
-                    ],),
-                ),
-                 MyButton(press: () {
-                   if (formKey.currentState!.validate()) {
-                   sendOtpAPi(mobileController.text.trim().toString());
-                   }
-                 }, buttonText: 'SEND OTP'),
-              ],
+                      },
+
+                    ),
+                  ),
+                   MyButton(press: () {
+                     if (formKey.currentState!.validate()) {
+                     sendOtpAPi(mobileController.text.trim().toString());
+                     }
+                   }, buttonText: 'SEND OTP'),
+                ],
+              ),
             ),
           ),
         ),

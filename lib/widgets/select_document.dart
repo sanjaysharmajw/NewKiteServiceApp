@@ -55,7 +55,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                            }, fontSize: 16,readOnly: false, onTap: () {  },
+                          textCapitalization: TextCapitalization.words,
+                          keyboardType: TextInputType.text,
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(
                                 RegExp("[a-zA-Z\]")),
@@ -69,7 +71,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.number,
+                            }, fontSize: 16,readOnly: false, onTap: () {  },
+                          textCapitalization: TextCapitalization.none,
+                          keyboardType: TextInputType.number,
                           inputFormatters: [
 
                             FilteringTextInputFormatter.allow(RegExp("[0-9]")),
@@ -86,7 +90,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               } else {
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.emailAddress,
+                            }, fontSize: 16,readOnly: false, onTap: () {  },
+                          textCapitalization: TextCapitalization.words,
+                          keyboardType: TextInputType.emailAddress,
                           inputFormatters: [
                             FilteringTextInputFormatter.deny('  '),
                           ],),
@@ -98,7 +104,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text, inputFormatters: [
+                            }, fontSize: 16,readOnly: false, onTap: () {  },
+                          textCapitalization: TextCapitalization.words,
+                          keyboardType: TextInputType.text, inputFormatters: [
                             FilteringTextInputFormatter.allow(
                                 RegExp("[A-Za-z0-9'\.\-\s\,\ ]")),
                             FilteringTextInputFormatter.deny('  ')
@@ -111,7 +119,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.number, inputFormatters: [
+                            }, fontSize: 16,readOnly: false, onTap: () {  },
+                          textCapitalization: TextCapitalization.words,
+                          keyboardType: TextInputType.number, inputFormatters: [
                             FilteringTextInputFormatter.allow(RegExp("[0-9]")),
                             FilteringTextInputFormatter.deny(RegExp(r'^0+')),
                             LengthLimitingTextInputFormatter(10),
@@ -124,7 +134,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text, inputFormatters: [],),
+                            }, fontSize: 16,readOnly: false, onTap: () {  },
+                          textCapitalization: TextCapitalization.words,
+                          keyboardType: TextInputType.text, inputFormatters: [],),
                         const SizedBox(height: 5),
                       ],
                     ),

@@ -15,7 +15,8 @@ class FirebaseTokenController extends GetxController {
   void getFirebaseToken() async {
 
    String? firebaseToken = await FirebaseMessaging.instance.getToken();
-   getfirebaseToken=firebaseToken.toString() as RxString;
+   RxString rxStringValue = RxString(firebaseToken.toString());
+   getfirebaseToken=rxStringValue;
 
   }
 }

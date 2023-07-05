@@ -49,6 +49,8 @@ class UserDashBoardScreenState extends State<CustomBottomNav> {
   void userDetailsApi()async{
     await userDetailsController.updateProfile();
     debugPrint('loginToken');
+    debugPrint(Preferences.getMobileNumber().toString());
+    debugPrint(Preferences.getUserId().toString());
     debugPrint(Preferences.getToken().toString());
   }
 

@@ -30,8 +30,12 @@ class _SelectServiceScreenState extends State<SelectServiceScreen> {
   @override
   void initState() {
     super.initState();
+
     if(widget.action=="Edit"){
+      print("Edit "+widget.action);
       serviceDetails();
+    }else{
+      print("ADD "+widget.action);
     }
   }
 

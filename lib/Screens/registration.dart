@@ -5,6 +5,7 @@ import 'package:nirbhaya_service/Screens/select_location.dart';
 import 'package:nirbhaya_service/Screens/upload_document.dart';
 import 'package:nirbhaya_service/Utils/preference.dart';
 import 'package:nirbhaya_service/Utils/tools.dart';
+import '../Language/custom_text_input_formatter.dart';
 import '../Models/search_location_model.dart';
 import '../Utils/loader.dart';
 import '../color_constant.dart';
@@ -27,7 +28,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final lastNameController=TextEditingController();
   final mobileController=TextEditingController();
   final emailController=TextEditingController();
-  TextEditingController addressController=TextEditingController();
+  final addressController=TextEditingController();
   final emergencyController=TextEditingController();
   final selectDobController=TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -39,6 +40,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   late Future<DateTime?> selectedDate;
   String date = "-";
   final apiController = Get.put(SendOtpController());
+  int id = 1;
+  String radioButtonItem = 'Female';
 
   @override
   void initState() {
@@ -76,10 +79,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 return null;
                               }
                             }, fontSize: 16, readOnly: false, onTap: () {  },
+                          textCapitalization: TextCapitalization.words,
                             keyboardType: TextInputType.text,
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(
-                                RegExp("[a-zA-Z\]")),
+                                RegExp("[a-zA-Z\ ]")),
                             FilteringTextInputFormatter.deny('  '),
                           ],),
                         const SizedBox(height: 25),
@@ -90,12 +94,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             }else{
                               return null;
                             }
-                          }, fontSize: 16, readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                          }, fontSize: 16, readOnly: false, onTap: () {  },
+                          textCapitalization: TextCapitalization.words,
+                          keyboardType: TextInputType.text,
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(
-                                RegExp("[a-zA-Z\]")),
+                                RegExp("[a-zA-Z\ ]")),
                             FilteringTextInputFormatter.deny('  '),
-                          ],),
+                          ], ),
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'Mobile Number', controller: mobileController,
                             validator: (value) {
@@ -104,27 +110,54 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                            }, fontSize: 16,readOnly: false, onTap: () {  },
+                          textCapitalization: TextCapitalization.none,
+                          keyboardType: TextInputType.number,
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(RegExp("[0-9]")),
                             FilteringTextInputFormatter.deny(RegExp(r'^0+')),
                             LengthLimitingTextInputFormatter(10),
+                            FilteringTextInputFormatter.deny(' '),
                           ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Email ID', controller: emailController,
-                            validator: (value) {
-                              Pattern pattern = r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+';
-                              RegExp regex = RegExp(pattern as String);
-                              if (!regex.hasMatch(value)) {
-                                return 'Please enter a valid email address.';
-                              } else {
-                                return null;
-                              }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
-                          inputFormatters: [
-                            FilteringTextInputFormatter.deny('  '),
+                        TextFormField(
 
-                          ],),
+                          showCursor: true,
+                          cursorHeight:30,
+                          cursorWidth: 2.0,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.deny(' '),
+                          ],
+                          style:TextStyle(fontFamily: 'Gilroy', fontWeight: FontWeight.w500,fontSize: 16),
+                          controller: emailController,
+
+                          // textCapitalization: TextCapitalization.none,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            hintText: 'Email Id',
+                            border: const UnderlineInputBorder(),
+                            enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 1, color: Colors.black45)),
+                            focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 2, color: Colors.black54)),
+                          ),
+                          validator: (value) {
+                            if (value == null ||
+                                value.isEmpty) {
+                              return 'email_is_required !'.tr;
+                            } if (
+                            !RegExp(
+                                r'^[a-z0-9]+@[a-z]+\.[a-z]')
+                                .hasMatch(value)
+                            // EmailValidator.validate(value)
+                            ) {
+                              return 'email_is_required !'.tr;
+                            }
+                            return null ;
+                          },
+                        ),
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'Address', controller: addressController,
                           validator: (value) {
@@ -133,13 +166,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             }else{
                               return null;
                             }
-                          }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                          }, fontSize: 16,readOnly: false, onTap: () {  },
+                          textCapitalization: TextCapitalization.sentences,
+                          keyboardType: TextInputType.multiline,
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(
                                 RegExp("[A-Za-z0-9'\.\-\s\,\ ]")),
                             FilteringTextInputFormatter.deny('  ')
 
-                          ],),
+                          ], ),
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'Emergency Contact Number', controller: emergencyController,
                             validator: (value) {
@@ -148,12 +183,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () { }, keyboardType: TextInputType.text,
+                            }, fontSize: 16,readOnly: false, onTap: () { }, keyboardType: TextInputType.number,
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(RegExp("[0-9]")),
                             FilteringTextInputFormatter.deny(RegExp(r'^0+')),
                             LengthLimitingTextInputFormatter(10),
-                          ],),
+
+                            FilteringTextInputFormatter.deny(' '),
+                          ], textCapitalization: TextCapitalization.none,
+
+                        ),
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'Select DOB', controller: selectDobController,
                             validator: (value) {
@@ -162,71 +201,133 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: true, onTap: () { showDialogPicker(context); }, keyboardType: TextInputType.text, inputFormatters: [],),
+                            }, fontSize: 16,readOnly: true, onTap: () { showDialogPicker(context); }, keyboardType: TextInputType.text, inputFormatters: [], textCapitalization: TextCapitalization.none,),
                         const SizedBox(height: 5),
                       ],
                     ),
                   ),
                   ),
 
-                  Column(
+              Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                      const Padding(
-                        padding:  EdgeInsets.symmetric(horizontal: 30),
+                        padding:  EdgeInsets.only(left: 20),
                         child:  MyText(text: 'Select Gender', fontName: 'Gilroy',
-                            fontSize: 16, fontWeight: FontWeight.w800, textColor: appWhiteColor),
+                            fontSize: 16, fontWeight: FontWeight.w800, textColor: Colors.black87),
                       ),
                       const SizedBox(height: 10),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(child: RadioListTile(
-                              title: const Text("Male",style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
-                              value: "male",
-                              activeColor: appBlue,
-                              groupValue: gender,
-                              onChanged: (value){
-                                setState(() {
-                                  gender = value.toString();
-                                });
-                              },
-                            ),),
-                            Expanded(child: RadioListTile(
-                              visualDensity: const VisualDensity(horizontal: -4),
-                              title: const Text("Female",style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
-                              value: "female",
-                              groupValue: gender,
-                              activeColor: appBlue,
-                              onChanged: (value){
-                                setState(() {
-                                  gender = value.toString();
-                                });
-                              },
-                            )),
-                            Expanded(child: RadioListTile(
-                              title: const Text("Other",style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
-                              value: "other",
-                              groupValue: gender,
-                              activeColor: appBlue,
-                              onChanged: (value){
-                                setState(() {
-                                  gender = value.toString();
-                                });
-                              },
-                            )),
-                          ],
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Row(
+                            children: [
+                              Radio(
+                                fillColor: MaterialStateColor.resolveWith(
+                                        (states) => appBlue),
+                                focusColor:
+                                MaterialStateColor.resolveWith(
+                                        (states) => appBlue),
+                                value: 1,
+                                groupValue: id,
+                                onChanged: (val) {
+                                  setState(() {
+                                    radioButtonItem = 'Female';
+                                    id = 1;
+                                  });
+                                },
+                              ),
+                              Text(
+                                'Female',
+                                style: TextStyle(fontSize: 16,fontFamily: 'Gilroy'),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Radio(
+                                fillColor: MaterialStateColor.resolveWith(
+                                        (states) => appBlue),
+                                focusColor:
+                                MaterialStateColor.resolveWith(
+                                        (states) => appBlue),
+                                value: 2,
+                                groupValue: id,
+                                onChanged: (val) {
+                                  setState(() {
+                                    radioButtonItem = 'Male';
+                                    id = 2;
+                                  });
+                                },
+                              ),
+                              Text(
+                                'Male',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontFamily: 'Gilroy'
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children:[
+                              Radio(
+                                fillColor: MaterialStateColor.resolveWith(
+                                        (states) => appBlue),
+                                focusColor:
+                                MaterialStateColor.resolveWith(
+                                        (states) => appBlue),
+                                value: 3,
+                                groupValue: id,
+                                onChanged: (val) {
+                                  setState(() {
+                                    radioButtonItem = 'Other';
+                                    id = 3;
+                                  });
+                                },
+                              ),
+                              Text(
+                                'Other',
+                                style: TextStyle(fontSize: 16,fontFamily: 'Gilroy'),
+                              ),
+                            ],
+                          )
+
+
+
+                        ],
                       ),
                     ],
                   ),
 
                   MyButton(press: () {
-                    if(formKey.currentState!.validate()){
-                     registrationOtp(firstNameController.text, lastNameController.text, mobileController.text,
-                         emailController.text, addressController.text, emergencyController.text, selectDobController.text, gender.toString());
+                    if(formKey.currentState!.validate()) {
+                      var agedate =
+                      selectDobController.text.toString().split('-');
+                      var year = agedate[2];
+                      var month = (int.parse(agedate[1]) < 10
+                          ? '0' + int.parse(agedate[1]).toString()
+                          : agedate[1]);
+                      var date = (int.parse(agedate[0]) < 10
+                          ? '0' + int.parse(agedate[0]).toString()
+                          : agedate[0]);
+                      int age = calculateAge(DateTime.parse(
+                          year + "-" + month + "-" + date));
+                      if (age < 18) {
+                        Get.snackbar("Invalid Age",
+                            "Age should be greater than 18 years");
+                        return null;
+                      } else {
+                        registrationOtp(
+                            firstNameController.text,
+                            lastNameController.text,
+                            mobileController.text,
+                            emailController.text,
+                            addressController.text,
+                            emergencyController.text,
+                            selectDobController.text,
+                            radioButtonItem.toString());
+                      }
                     }
                   }, buttonText: 'NEXT'),
                 ],
@@ -235,6 +336,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           ),
         ),
     ));
+  }
+
+  int calculateAge(DateTime birthDate) {
+    DateTime currentDate = DateTime.now();
+    var age = currentDate.year - birthDate.year;
+    int month1 = currentDate.month;
+    int month2 = birthDate.month;
+    if (month2 > month1) {
+      age--;
+    } else if (month1 == month2) {
+      int day1 = currentDate.day;
+      int day2 = birthDate.day;
+      if (day2 > day1) {
+        age--;
+      }
+    }
+    //print("age cal: $age");
+    //Preferences.setAge(age);
+    return age;
   }
 
   void placeDetailsApi(String placeId)async{
@@ -259,11 +379,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   // }
 
   void showDialogPicker(BuildContext context){
+
     selectedDate = showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2050),
+      firstDate: DateTime(1947),
+      lastDate: DateTime.now(),
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: ThemeData.dark(),
@@ -291,6 +412,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           await Preferences.setPreferences();
           Preferences.setUserId(value.data![0].id.toString());
           Preferences.setMobileNo(value.data![0].mobileNumber.toString());
+          Preferences.setToken(value.data![0].logintoken.toString());
+
           Get.to(const UploadDocumentScreen());
         }else{
           CustomLoader.showToast('Error');

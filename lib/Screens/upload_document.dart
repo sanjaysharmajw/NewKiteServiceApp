@@ -6,6 +6,7 @@ import 'dart:math';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:nirbhaya_service/Screens/home_page.dart';
@@ -103,7 +104,11 @@ class _UploadDocumentScreenState extends State<UploadDocumentScreen> with Single
                           }else{
                             return null;
                           }
-                        }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text, inputFormatters: [
+                        }, fontSize: 16,readOnly: false, onTap: () {  },
+                      textCapitalization: TextCapitalization.words,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+
 
                       ],),
 
@@ -236,9 +241,11 @@ class _UploadDocumentScreenState extends State<UploadDocumentScreen> with Single
         Uri.parse(path),
         body: await _file!.readAsBytes(),
       );
+
       if (response.statusCode == 200) {
         CustomLoader.closeLoader();
         String? imageFilePath = APIConstant.awsImagePathUrl + stringRandomNumber! +_platformFile!.name;
+        print("awsUploadFinal"+imageFilePath.toString());
         updateDocument(imageFilePath);
       }
     } on TimeoutException catch (e) {
@@ -252,7 +259,8 @@ class _UploadDocumentScreenState extends State<UploadDocumentScreen> with Single
   }
 
   void updateDocument(String imagePath)async{
-    await controllerAws.updateDocument(userId!,uploadDocController.text.toString(),imagePath,token!).then((value) async {
+
+    await controllerAws.updateDocument(userId!,uploadDocController.text.toString(),imagePath,token.toString()).then((value) async {
       if (value != null) {
         if (value.status == true) {
           CustomLoader.showToast('Upload Successful');
@@ -266,6 +274,7 @@ class _UploadDocumentScreenState extends State<UploadDocumentScreen> with Single
     await Preferences.setPreferences();
      userId=Preferences.getUserId();
      token=Preferences.getToken();
+     print(userId.toString()+token.toString());
   }
 
 }

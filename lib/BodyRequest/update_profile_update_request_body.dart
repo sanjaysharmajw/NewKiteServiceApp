@@ -11,7 +11,8 @@ class UpdateProfileUpdateRequestBody {
       String? mobileNumber, 
       String? alternateContactNo, 
       String? emergencyContactNo, 
-      String? profileImage, 
+      String? profileImage,
+      String? address,
       String? maritalStatus, 
       PermanentAddress? permanentAddress, 
       PresentAddress? presentAddress, 
@@ -34,6 +35,7 @@ class UpdateProfileUpdateRequestBody {
     _presentAddress = presentAddress;
     _sameAddress = sameAddress;
     _dldetails = dldetails;
+    _address =address;
 }
 
   UpdateProfileUpdateRequestBody.fromJson(dynamic json) {
@@ -54,6 +56,7 @@ class UpdateProfileUpdateRequestBody {
     _presentAddress = json['present_address'] != null ? PresentAddress.fromJson(json['present_address']) : null;
     _sameAddress = json['same_address'];
     _dldetails = json['dldetails'] != null ? Dldetails.fromJson(json['dldetails']) : null;
+    _address = json['address'];
   }
   String? _userId;
   String? _firstName;
@@ -72,6 +75,7 @@ class UpdateProfileUpdateRequestBody {
   PresentAddress? _presentAddress;
   String? _sameAddress;
   Dldetails? _dldetails;
+  String? _address;
 UpdateProfileUpdateRequestBody copyWith({  String? userId,
   String? firstName,
   String? lastName,
@@ -89,6 +93,7 @@ UpdateProfileUpdateRequestBody copyWith({  String? userId,
   PresentAddress? presentAddress,
   String? sameAddress,
   Dldetails? dldetails,
+  String? address,
 }) => UpdateProfileUpdateRequestBody(  userId: userId ?? _userId,
   firstName: firstName ?? _firstName,
   lastName: lastName ?? _lastName,
@@ -106,6 +111,7 @@ UpdateProfileUpdateRequestBody copyWith({  String? userId,
   presentAddress: presentAddress ?? _presentAddress,
   sameAddress: sameAddress ?? _sameAddress,
   dldetails: dldetails ?? _dldetails,
+  address: address ?? _address,
 );
   String? get userId => _userId;
   String? get firstName => _firstName;
@@ -124,6 +130,7 @@ UpdateProfileUpdateRequestBody copyWith({  String? userId,
   PresentAddress? get presentAddress => _presentAddress;
   String? get sameAddress => _sameAddress;
   Dldetails? get dldetails => _dldetails;
+  String? get address => _address;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -140,6 +147,7 @@ UpdateProfileUpdateRequestBody copyWith({  String? userId,
     map['emergency_contact_no'] = _emergencyContactNo;
     map['profile_image'] = _profileImage;
     map['marital_status'] = _maritalStatus;
+    map['address'] = _address;
     if (_permanentAddress != null) {
       map['permanent_address'] = _permanentAddress?.toJson();
     }

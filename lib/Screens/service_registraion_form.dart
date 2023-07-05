@@ -232,38 +232,40 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          //resizeToAvoidBottomInset: true,
       body: Container(
         child: Form(
           key: formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(25),
-                  child: Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 10),
-                        InkWell(
-                            onTap: () {
-                              Get.back();
-                            },
-                            child: Image.asset('assets/back_icons.png',
-                                width: 17, height: 17)),
-                        const SizedBox(height: 25),
-                         MyText(
-                            text: 'service_form'.tr,
-                            fontName: 'Gilroy',
-                            fontSize: 20,
-                            fontWeight: FontWeight.w800,
-                            textColor: appBlack),
-                        const SizedBox(height: 25),
-                        MyTextFieldForm(
+          child: Obx((){
+            return  SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(25),
+                    child: Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 10),
+                          InkWell(
+                              onTap: () {
+                                Get.back();
+                              },
+                              child: Image.asset('assets/back_icons.png',
+                                  width: 17, height: 17)),
+                          const SizedBox(height: 25),
+                          MyText(
+                              text: 'service_form'.tr,
+                              fontName: 'Gilroy',
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
+                              textColor: appBlack),
+                          const SizedBox(height: 25),
+                          MyTextFieldForm(
                             hintText: 'shop_name'.tr,
                             controller:
-                                addServiceController.shopNameController.value,
+                            addServiceController.shopNameController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return "enter_shop_name".tr;
@@ -274,14 +276,15 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             fontSize: 16,
                             readOnly: false,
                             onTap: () {},
+                            textCapitalization: TextCapitalization.words,
                             keyboardType: TextInputType.text, inputFormatters: [
-                          engHindFormatter,
-                         // FilteringTextInputFormatter.allow(
-                           //   RegExp("[a-zA-Z\]")),
-                          FilteringTextInputFormatter.deny('  '),
-                        ],),
-                        const SizedBox(height: 25),
-                        MyTextFieldForm(
+                            //engHindFormatter,
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[0-9a-zA-Zऀ-ॿ'\ ]")),
+                            FilteringTextInputFormatter.deny('  '),
+                          ],),
+                          const SizedBox(height: 25),
+                          MyTextFieldForm(
                             hintText: 'contact_person_name'.tr,
                             controller: addServiceController
                                 .contactPersonNameController.value,
@@ -295,14 +298,15 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             fontSize: 16,
                             readOnly: false,
                             onTap: () {},
+                            textCapitalization: TextCapitalization.words,
                             keyboardType: TextInputType.text, inputFormatters: [
-                          engHindFormatter,
-                         // FilteringTextInputFormatter.allow(
-                           //   RegExp("[a-zA-Z\]")),
-                          FilteringTextInputFormatter.deny('  '),
-                        ],),
-                        const SizedBox(height: 25),
-                        MyTextFieldForm(
+                            engHindFormatter,
+                            // FilteringTextInputFormatter.allow(
+                            //   RegExp("[a-zA-Z\]")),
+                            FilteringTextInputFormatter.deny('  '),
+                          ],),
+                          const SizedBox(height: 25),
+                          MyTextFieldForm(
                             hintText: 'contact_person_number'.tr,
                             controller: addServiceController
                                 .contactPersonNoController.value,
@@ -317,16 +321,17 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             readOnly: false,
                             maxLength: 10,
                             onTap: () {},
+                            textCapitalization: TextCapitalization.words,
                             keyboardType: TextInputType.number, inputFormatters: [
-                          FilteringTextInputFormatter.allow(RegExp("[0-9]")),
-                          FilteringTextInputFormatter.deny(RegExp(r'^0+')),
-                          LengthLimitingTextInputFormatter(10),
-                        ],),
-                        const SizedBox(height: 25),
-                        MyTextFieldForm(
+                            FilteringTextInputFormatter.allow(RegExp("[0-9]")),
+                            FilteringTextInputFormatter.deny(RegExp(r'^0+')),
+                            LengthLimitingTextInputFormatter(10),
+                          ],),
+                          const SizedBox(height: 25),
+                          MyTextFieldForm(
                             hintText: 'pincode'.tr,
                             controller:
-                                addServiceController.pinCodeController.value,
+                            addServiceController.pinCodeController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return "enter_pincode".tr;
@@ -338,17 +343,18 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             readOnly: false,
                             maxLength: 6,
                             onTap: () {},
+                            textCapitalization: TextCapitalization.words,
                             keyboardType: TextInputType.number, inputFormatters: [
-                          FilteringTextInputFormatter.allow(
-                              RegExp("[0-9]")),
-                          FilteringTextInputFormatter.deny(' '),
-                          LengthLimitingTextInputFormatter(6),
-                        ],),
-                        const SizedBox(height: 25),
-                        MyTextFieldForm(
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[0-9]")),
+                            FilteringTextInputFormatter.deny(' '),
+                            LengthLimitingTextInputFormatter(6),
+                          ],),
+                          const SizedBox(height: 25),
+                          MyTextFieldForm(
                             hintText: 'city'.tr,
                             controller:
-                                addServiceController.cityController.value,
+                            addServiceController.cityController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return "enter_city".tr;
@@ -359,17 +365,18 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             fontSize: 16,
                             readOnly: false,
                             onTap: () {},
+                            textCapitalization: TextCapitalization.words,
                             keyboardType: TextInputType.text, inputFormatters: [
-                          engHindFormatter,
-                          //FilteringTextInputFormatter.allow(
-                             // RegExp("[a-zA-Z\]")),
-                          FilteringTextInputFormatter.deny('  '),
-                        ],),
-                        const SizedBox(height: 25),
-                        MyTextFieldForm(
+                            engHindFormatter,
+                            //FilteringTextInputFormatter.allow(
+                            // RegExp("[a-zA-Z\]")),
+                            FilteringTextInputFormatter.deny('  '),
+                          ],),
+                          const SizedBox(height: 25),
+                          MyTextFieldForm(
                             hintText: 'state'.tr,
                             controller:
-                                addServiceController.stateController.value,
+                            addServiceController.stateController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return "enter_state".tr;
@@ -380,17 +387,18 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             fontSize: 16,
                             readOnly: false,
                             onTap: () {},
+                            textCapitalization: TextCapitalization.words,
                             keyboardType: TextInputType.text, inputFormatters: [
-                          engHindFormatter,
-                         // FilteringTextInputFormatter.allow(
-                           //   RegExp("[a-zA-Z\]")),
-                          FilteringTextInputFormatter.deny('  '),
-                        ],),
-                        const SizedBox(height: 25),
-                        MyTextFieldForm(
+                            engHindFormatter,
+                            // FilteringTextInputFormatter.allow(
+                            //   RegExp("[a-zA-Z\]")),
+                            FilteringTextInputFormatter.deny('  '),
+                          ],),
+                          const SizedBox(height: 25),
+                          MyTextFieldForm(
                             hintText: 'address'.tr,
                             controller:
-                                addServiceController.addressController.value,
+                            addServiceController.addressController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return "enter_address".tr;
@@ -401,17 +409,18 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             fontSize: 16,
                             readOnly: false,
                             onTap: () {},
+                            textCapitalization: TextCapitalization.words,
                             keyboardType: TextInputType.text, inputFormatters: [
-                          FilteringTextInputFormatter.allow(
-                              RegExp("[0-9a-zA-Zऀ-ॿ'\.\-\s\,\ ]")),
-                          FilteringTextInputFormatter.deny('  ')
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[0-9a-zA-Zऀ-ॿ'\.\-\s\,\ ]")),
+                            FilteringTextInputFormatter.deny('  ')
 
-                        ],),
-                        const SizedBox(height: 25),
-                        Row(
-                          children: <Widget>[
-                            Flexible(
-                              child: MyTextFieldForm(
+                          ],),
+                          const SizedBox(height: 25),
+                          Row(
+                            children: <Widget>[
+                              Flexible(
+                                child: MyTextFieldForm(
                                   hintText: 'working_from'.tr,
                                   controller: addServiceController
                                       .workingFromController.value,
@@ -427,13 +436,14 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                                   onTap: () {
                                     selectTime(context, 1);
                                   },
+                                  textCapitalization: TextCapitalization.words,
                                   keyboardType: TextInputType.text, inputFormatters: [
 
-                              ],),
-                            ),
-                            const SizedBox(width: 10),
-                            Flexible(
-                              child: MyTextFieldForm(
+                                ],),
+                              ),
+                              const SizedBox(width: 10),
+                              Flexible(
+                                child: MyTextFieldForm(
                                   hintText: 'working_to'.tr,
                                   controller: addServiceController
                                       .workingToController.value,
@@ -449,12 +459,13 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                                   onTap: () {
                                     selectTime(context, 2);
                                   },
+                                  textCapitalization: TextCapitalization.words,
                                   keyboardType: TextInputType.text, inputFormatters: [],),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 25),
-                        MyTextFieldForm(
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 25),
+                          MyTextFieldForm(
                             hintText: 'select_working_day'.tr,
                             controller: addServiceController
                                 .selectWorkingDayController.value,
@@ -470,9 +481,10 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             onTap: () {
                               mCornerBottomSheet(context);
                             },
+                            textCapitalization: TextCapitalization.words,
                             keyboardType: TextInputType.text, inputFormatters: [],),
-                        const SizedBox(height: 25),
-                        MyTextFieldForm(
+                          const SizedBox(height: 25),
+                          MyTextFieldForm(
                             hintText: 'registration_no'.tr,
                             controller: addServiceController
                                 .registrationNoController.value,
@@ -486,53 +498,58 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             fontSize: 16,
                             readOnly: false,
                             onTap: () {},
+                            textCapitalization: TextCapitalization.words,
                             keyboardType: TextInputType.text, inputFormatters: [
-                          FilteringTextInputFormatter.allow(RegExp("[0-9]")),
-                          FilteringTextInputFormatter.deny('  '),
-                        ],),
-                      ],
+                            FilteringTextInputFormatter.allow(RegExp("[0-9]")),
+                            FilteringTextInputFormatter.deny('  '),
+                          ],),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                MyButton(
-                    press: () async {
-                      if (formKey.currentState!.validate()) {
+                  MyButton(
+                      press: () async {
+                        if (formKey.currentState!.validate()) {
 
-                        if(widget.action=="Edit"){
-                          requestUpdateBodyApi();
-                          await updateAddServiceController
-                              .addUpdateServiceListApi(updateRequest!)
-                              .then((value) {
-                            if (value != null) {
-                              if (value.status == true) {
-                                CustomLoader.message(value.message.toString());
-                                Get.to(const CustomBottomNav());
-                              } else {
-                                CustomLoader.message(value.message.toString());
+                          if(widget.action=="Edit"){
+                            requestUpdateBodyApi();
+                            await updateAddServiceController
+                                .addUpdateServiceListApi(updateRequest!)
+                                .then((value) {
+                              if (value != null) {
+                                if (value.status == true) {
+                                  CustomLoader.message(value.message.toString());
+                                  Get.to(const CustomBottomNav());
+                                } else {
+                                  CustomLoader.message(value.message.toString());
+                                }
                               }
-                            }
-                          });
-                        }else if(widget.action=="Add"){
-                          requestBodyApi();
-                          await addServiceController
-                              .addServiceListApi(request!)
-                              .then((value) {
-                            if (value != null) {
-                              if (value.status == true) {
-                                CustomLoader.message(value.message.toString());
-                                Get.to(const CustomBottomNav());
-                              } else {
-                                CustomLoader.message(value.message.toString());
+                            });
+                          }else if(widget.action=="Add"){
+                            requestBodyApi();
+                            await addServiceController
+                                .addServiceListApi(request!)
+                                .then((value) {
+                              if (value != null) {
+                                if (value.status == true) {
+                                  CustomLoader.message(value.message.toString());
+                                  Get.to(const CustomBottomNav());
+                                } else {
+                                  CustomLoader.message(value.message.toString());
+                                }
                               }
-                            }
-                          });
+                            });
+                          }
                         }
-                      }
-                    },
-                    buttonText: buttonValue!),
-              ],
-            ),
-          ),
+                      },
+                      buttonText: buttonValue!),
+                ],
+              ),
+
+            );
+
+          })
+
         ),
       ),
     ));
@@ -547,10 +564,10 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
       builder: (builder) {
         return StatefulBuilder(
           builder: (BuildContext context, setState) => Container(
-            child: Column(
-              children: [
-                SingleChildScrollView(
-                  child: Padding(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
                     padding:
                         const EdgeInsets.only(left: 30, right: 30, top: 20),
                     child: Column(
@@ -719,10 +736,8 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                       ],
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
-                  child: Expanded(
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
                     child: MyButtonPadding(
                         press: () {
                           Get.back();
@@ -731,8 +746,8 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                         },
                         buttonText: 'Submit'),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );

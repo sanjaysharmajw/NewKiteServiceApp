@@ -37,8 +37,13 @@ class EditProfileScreenState extends State<EditProfileScreen> {
   String? imageFilePath="", stringRandomNumber;
 
   String resultData="";
-  late Future<DateTime?> selectedDate;
+  DateTime selectedDate = DateTime.now();
+  int age = 0;
+  var response_date = "";
   String date = "-";
+
+  int genderId = 1;
+  String radioButtonItem = 'Female';
 
   @override
   void initState() {
@@ -53,14 +58,41 @@ class EditProfileScreenState extends State<EditProfileScreen> {
 
   void getDetailsProfile()async{
     setState(() {
+      response_date=widget.userDetailsData.dob.toString();
+      if (response_date.toString() == "null" ||
+          response_date.toString().isEmpty) {
+        var agedate =
+        widget.userDetailsData.dob.toString().split('-');
+        var date = agedate[0];
+        agedate[1] = agedate[1];
+        var month = (int.parse(agedate[1]) < 10
+            ? '0${int.parse(agedate[1])}'
+            : agedate[1]);
+        var year = (int.parse(agedate[2]) < 10
+            ? '0${int.parse(agedate[2])}'
+            : agedate[2]);
+        response_date = date + "-" + month + "-" + year;
+      }
+      updateProfileController.selectDobController.value.text= response_date;
+
       updateProfileController.firstNameController.value.text=widget.userDetailsData.firstName.toString();
       updateProfileController.lastNameController.value.text=widget.userDetailsData.lastName.toString();
       updateProfileController.mobileController.value.text=widget.userDetailsData.mobileNumber.toString();
       updateProfileController.emailController.value.text=widget.userDetailsData.emailId.toString();
-      updateProfileController.addressController.value.text=widget.userDetailsData.permanentAddress!.address.toString();
+      updateProfileController.addressController.value.text=widget.userDetailsData.address.toString();
       updateProfileController.emergencyController.value.text=widget.userDetailsData.emergencyContactNo.toString();
-      updateProfileController.selectDobController.value.text=widget.userDetailsData.dob.toString();
-      gender=widget.userDetailsData.gender.toString();
+      updateProfileController.selectDobController.value.text =widget.userDetailsData.dob??"";
+      radioButtonItem=widget.userDetailsData.gender.toString();
+      if (radioButtonItem == 'Female') {
+        genderId = 1;
+      }
+      if (radioButtonItem == 'Male') {
+        genderId = 2;
+      }
+      if (radioButtonItem == 'Other') {
+        genderId = 3;
+      }
+      print(radioButtonItem);
     });
   }
 
@@ -87,60 +119,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                          MyText(text: 'UpdateProfile'.tr, fontName: 'Gilroy',
                             fontSize: 20, fontWeight: FontWeight.w800, textColor: appBlack),
                         const SizedBox(height: 25),
-                        // Column(
-                        //   children: [
-                        //     Center(
-                        //       child: Stack(
-                        //         clipBehavior: Clip.none,
-                        //         children:  [
-                        //           InkWell(
-                        //             onTap: (){
-                        //               // Get.to(const EditProfileScreen());
-                        //               _showDialog();
-                        //             },
-                        //             child: const ClipRRect(
-                        //               clipBehavior: Clip.antiAliasWithSaveLayer,
-                        //               borderRadius: BorderRadius.all(Radius.circular(60)),
-                        //               child: Image(
-                        //                 height: 100,
-                        //                 width: 100,
-                        //                 image: AssetImage('images/car.jpg'),
-                        //                 fit: BoxFit.cover,
-                        //               ),
-                        //             ),
-                        //           ),
-                        //           const Positioned(
-                        //             bottom: 0,
-                        //             right: 0,
-                        //             child: FxCard(
-                        //               paddingAll: 2,
-                        //               borderRadiusAll: 4,
-                        //               clipBehavior: Clip.none,
-                        //               child: FxContainer(
-                        //                 paddingAll: 4,
-                        //                 borderRadiusAll: 4,
-                        //                 color:appBlue,
-                        //                 child: Icon(
-                        //                   Icons.camera_alt,
-                        //                   size: 16,
-                        //                   color: appWhiteColor,
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //     FxSpacing.height(20),
-                        //     Text("${widget.userDetailsData.firstName.toString()}\n${widget.userDetailsData.lastName.toString()}",
-                        //         textAlign: TextAlign.center,
-                        //         style: const TextStyle(
-                        //           fontSize: 18,
-                        //           fontWeight: FontWeight.w700,
-                        //           color: appBlack,fontFamily: 'Gilroy',
-                        //         ))
-                        //   ],
-                        // ),
+
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'first_name'.tr, controller: updateProfileController.firstNameController.value,
                             validator: (value) {
@@ -149,13 +128,15 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16, readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                            }, fontSize: 16, readOnly: false, onTap: () {  },
+                          textCapitalization: TextCapitalization.words,
+                          keyboardType: TextInputType.text,
                           inputFormatters: [
                             engHindFormatter,
                             //FilteringTextInputFormatter.allow(
                               //  RegExp("[a-zA-Z\]")),
                             FilteringTextInputFormatter.deny('  '),
-                          ],),
+                          ], ),
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'last_name'.tr, controller: updateProfileController.lastNameController.value,
                             validator: (value) {
@@ -164,13 +145,15 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16, readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                            }, fontSize: 16, readOnly: false, onTap: () {  },
+                          textCapitalization: TextCapitalization.words,
+                          keyboardType: TextInputType.text,
                           inputFormatters: [
                             engHindFormatter,
                             //FilteringTextInputFormatter.allow(
                               //  RegExp("[a-zA-Z\]")),
                             FilteringTextInputFormatter.deny('  '),
-                          ],),
+                          ], ),
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'mobile_number'.tr, controller: updateProfileController.mobileController.value,
                             validator: (value) {
@@ -179,7 +162,9 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                            }, fontSize: 16,readOnly: false, onTap: () {  },
+                          textCapitalization: TextCapitalization.none,
+                          keyboardType: TextInputType.text,
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(
                                 RegExp("[0-9]")),
@@ -187,19 +172,43 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                             LengthLimitingTextInputFormatter(10),
                           ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'email'.tr, controller: updateProfileController.emailController.value,
-                            validator: (value) {
-                              Pattern pattern = r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+';
-                              RegExp regex = RegExp(pattern as String);
-                              if (!regex.hasMatch(value)) {
-                                return 'enter_valid_email'.tr;
-                              } else {
-                                return null;
-                              }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                        TextFormField(
+                          showCursor: true,
+                          cursorHeight:30,
+                          cursorWidth: 2.0,
                           inputFormatters: [
+
                             FilteringTextInputFormatter.deny(' '),
-                          ],),
+
+                          ],
+                          style:TextStyle(fontFamily: 'Gilroy', fontWeight: FontWeight.w500,fontSize: 16),
+                          controller: updateProfileController.emailController.value,
+                          // textCapitalization: TextCapitalization.none,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            border: const UnderlineInputBorder(),
+                            enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 1, color: Colors.black45)),
+                            focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 2, color: Colors.black54)),
+                          ),
+                          validator: (value) {
+                            if (value == null ||
+                                value.isEmpty) {
+                              return 'email_is_required !'.tr;
+                            } if (
+                            !RegExp(
+                                r'^[a-z0-9]+@[a-z]+\.[a-z]')
+                                .hasMatch(value)
+                            // EmailValidator.validate(value)
+                            ) {
+                              return 'email_is_required !'.tr;
+                            }
+                            return null ;
+                          },
+                        ),
                         const SizedBox(height: 25),
                         MyTextFieldForm(hintText: 'address'.tr, controller: updateProfileController.addressController.value,
                             validator: (value) {
@@ -208,11 +217,13 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text,
+                            }, fontSize: 16,readOnly: false, onTap: () {  },
+                          textCapitalization: TextCapitalization.words,
+                          keyboardType: TextInputType.multiline,
                           inputFormatters: [
-                            engHindFormatter,
+                            //engHindFormatter,
                             FilteringTextInputFormatter.allow(
-                                RegExp("[0-9a-zA-Zऀ-ॿ'\.\-\s\\,\ ]")),
+                                RegExp("[0-9a-zA-Zऀ-ॿ'\.\-\s\,\ ]")),
                             FilteringTextInputFormatter.deny('  ')
                           ],),
                         const SizedBox(height: 25),
@@ -223,7 +234,9 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: false, onTap: () { }, keyboardType: TextInputType.text,
+                            }, fontSize: 16,readOnly: false, onTap: () { },
+                          textCapitalization: TextCapitalization.none,
+                          keyboardType: TextInputType.number,
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(
                                 RegExp("[0-9]")),
@@ -238,9 +251,10 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               }else{
                                 return null;
                               }
-                            }, fontSize: 16,readOnly: true, onTap: () {
-                          showDialogPicker(context);
-                          }, keyboardType: TextInputType.text, inputFormatters: [],),
+                            }, fontSize: 16,readOnly: true, onTap: () { showDialogPicker(context); },
+                          textCapitalization: TextCapitalization.none,
+
+                          keyboardType: TextInputType.text, inputFormatters: [],),
                         const SizedBox(height: 5),
                       ],
                     ),
@@ -258,10 +272,91 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: Row(
+                        mainAxisAlignment:
+                        MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            children: [
+                              Radio(
+                                fillColor:
+                                MaterialStateColor.resolveWith(
+                                        (states) => appBlack),
+                                focusColor:
+                                MaterialStateColor.resolveWith(
+                                        (states) => appBlack),
+                                value: 1,
+                                groupValue: radioButtonItem, //=='female'?1:null,
+                                onChanged: (val) {
+                                  setState(() {
+                                    radioButtonItem = 'Female';
+                                    genderId = 1;
+                                  });
+                                },
+                              ),
+                              Text(
+                                "female".tr,
+                                style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Radio(
+                                fillColor:
+                                MaterialStateColor.resolveWith(
+                                        (states) => appBlack),
+                                focusColor:
+                                MaterialStateColor.resolveWith(
+                                        (states) => appBlack),
+                                value: 2,
+                                groupValue: radioButtonItem, //=='male'?2:radioButtonItem,
+                                onChanged: (val) {
+                                  setState(() {
+                                    radioButtonItem = 'Male';
+                                    genderId = 2;
+                                  });
+                                },
+                              ),
+                              Text(
+                                "male".tr,
+                                style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Radio(
+                                fillColor:
+                                MaterialStateColor.resolveWith(
+                                        (states) => appBlack),
+                                focusColor:
+                                MaterialStateColor.resolveWith(
+                                        (states) => appBlack),
+                                value: 3,
+                                groupValue:  radioButtonItem, //=='other'?3:radioButtonItem,
+                                onChanged: (val) {
+                                  setState(() {
+                                    radioButtonItem = 'Other';
+                                    genderId = 3;
+                                  });
+                                },
+                              ),
+                              Text(
+                                "other".tr,
+                                style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                      /*Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Expanded(
+
                             child: RadioListTile(
+                              contentPadding: EdgeInsets.only(left: 10),
+
                             title:  Text("male".tr,style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
                             value: "male",
                             activeColor: appBlue,
@@ -274,7 +369,9 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                           ),),
 
                           Expanded(
+
                               child: RadioListTile(
+                                contentPadding: EdgeInsets.only(left: 10),
                             //visualDensity: const VisualDensity(horizontal: -4),
                             title:  Text("female".tr,style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
                             value: "female",
@@ -287,6 +384,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                             },
                           )),
                           Expanded(child: RadioListTile(
+                            contentPadding: EdgeInsets.only(left: 10),
                             title: Text("other".tr,style: TextStyle(fontFamily: 'Gilroy',fontSize: 14)),
                             value: "other",
                             groupValue: gender,
@@ -298,13 +396,33 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                             },
                           )),
                         ],
-                      ),
+                      ),*/
                     ),
                   ],
                 ),
                 MyButton(press: () {
                   if(formKey.currentState!.validate()){
-                    updateProfileApi(gender.toString());
+                    var agedate = updateProfileController.selectDobController.value.text.toString().split('-');
+                    var year = agedate[2];
+                    var month = (int.parse(agedate[1]) < 10 ? '0' +
+                        int.parse(agedate[1]).toString() : agedate[1]);
+                    var date = (int.parse(agedate[0]) < 10 ? '0' +
+                        int.parse(agedate[0]).toString() : agedate[0]);
+
+                    // print(DateTime.parse(agedate[2]+"-"+'0'+agedate[1].padLeft(1, '0')+"-"+agedate[0].padLeft(1, '0'))); // 2020-01-02 00:00:00.000
+
+
+                    int age = calculateAge(DateTime.parse(year + "-" + month + "-" + date));
+
+                    if (age < 18) {
+            CustomLoader.message("Invalid Age, Age should be greater than 18 years");
+            return null;
+            }
+            else {
+
+              updateProfileApi(radioButtonItem.toString());
+              print("UpdateGender: "+radioButtonItem.toString());
+            }
                   }
                 }, buttonText: 'update'.tr),
               ],
@@ -314,8 +432,26 @@ class EditProfileScreenState extends State<EditProfileScreen> {
       ),
     ));
   }
-  void showDialogPicker(BuildContext context){
-    selectedDate = showDatePicker(
+
+  showDialogPicker(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(1900, 8),
+        lastDate: DateTime.now());
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        var date =
+            "${picked.toLocal().day}-${picked.toLocal().month}-${picked.toLocal().year}";
+        updateProfileController.selectDobController.value.text = date;
+        calculateAge(picked);
+      });
+    }
+  }
+
+  /*showDialogPicker(BuildContext context){
+    final DateTime? picked = showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
@@ -331,11 +467,29 @@ class EditProfileScreenState extends State<EditProfileScreen> {
       setState(() {
         if(value == null) return;
         date = Tools.getFormattedDateSimple(value.millisecondsSinceEpoch);
-        updateProfileController.firstNameController.value.text=date;
+        updateProfileController.selectDobController.value.text=date;
+        calculateAge();
       });
     }, onError: (error) {
       CustomLoader.message(error);
     });
+  }*/
+
+  calculateAge(DateTime birthDate) {
+    DateTime currentDate = DateTime.now();
+    age = currentDate.year - birthDate.year;
+    int month1 = currentDate.month;
+    int month2 = birthDate.month;
+    if (month2 > month1) {
+      age--;
+    } else if (month1 == month2) {
+      int day1 = currentDate.day;
+      int day2 = birthDate.day;
+      if (day2 > day1) {
+        age--;
+      }
+    }
+    return age;
   }
   void updateProfileApi(String gender)async{
     updateProfileController.updateProfile(gender).then((value){

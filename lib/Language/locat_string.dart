@@ -80,7 +80,8 @@ class LocaleString extends Translations{
       'submit':'Submit',
       'accepted':'Accepted',
       'service_request':'Service Requests',
-      'notification':'Notification'
+      'notification':'Notification',
+      'please_enter_10_digit_number':'Please enter 10 digit number'
 
 
 
@@ -157,7 +158,8 @@ class LocaleString extends Translations{
       'submit':'प्रस्तुत करना',
       'accepted':'स्वीकार किया हुआ',
       'service_request':'सेवा अनुरोध',
-      'notification':'अधिसूचना'
+      'notification':'अधिसूचना',
+      'please_enter_10_digit_number':'कृपया 10 अंकों की संख्या दर्ज करें'
     },
     //MARATHI LANGUAGE
     'mr_IN':{
@@ -229,7 +231,8 @@ class LocaleString extends Translations{
       'submit':'प्रस्तुत करणे',
       'accepted':'स्वीकारले',
       'service_request':'सेवा विनंत्या',
-      'notification':'सूचना'
+      'notification':'सूचना',
+      'please_enter_10_digit_number':'कृपया 10 अंकी क्रमांक प्रविष्ट करा'
 
 
 
