@@ -1,6 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:nirbhaya_service/BodyRequest/accept_reject_body_request.dart';
 import 'package:nirbhaya_service/BodyRequest/notification_request_body.dart';
@@ -246,8 +245,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void dialog(int index, String status) {
-    exitShowDialog(context, 'Confirmation', 'No', 'Yes',
-        'Are you sure you want to $status?', () {
+    exitShowDialog(context, 'Confirmation', 'No', 'Yes', 'Are you sure you want to $status?', () {
       Get.back();
     }, () {
       acceptRejectApi(serviceListController.getServiceData[index].id.toString(), status);
@@ -272,4 +270,5 @@ class _HomePageState extends State<HomePage> {
       }
     });
   }
+
 }
