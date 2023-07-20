@@ -25,7 +25,7 @@ class _VolunteerAcceptScreenState extends State<VolunteerAcceptScreen> {
 
   @override
   void initState() {
-    api();
+    updateVolunteerStatusApi(volunteerRequestController.getRequestVolunteerData[0].id.toString(), widget.status.toString());
     super.initState();
   }
 

@@ -285,7 +285,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                                 MaterialStateColor.resolveWith(
                                         (states) => appBlack),
                                 value: 1,
-                                groupValue: radioButtonItem, //=='female'?1:null,
+                                groupValue: genderId, //=='female'?1:null,
                                 onChanged: (val) {
                                   setState(() {
                                     radioButtonItem = 'Female';
@@ -309,7 +309,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                                 MaterialStateColor.resolveWith(
                                         (states) => appBlack),
                                 value: 2,
-                                groupValue: radioButtonItem, //=='male'?2:radioButtonItem,
+                                groupValue: genderId, //=='male'?2:radioButtonItem,
                                 onChanged: (val) {
                                   setState(() {
                                     radioButtonItem = 'Male';
@@ -333,7 +333,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                                 MaterialStateColor.resolveWith(
                                         (states) => appBlack),
                                 value: 3,
-                                groupValue:  radioButtonItem, //=='other'?3:radioButtonItem,
+                                groupValue:  genderId, //=='other'?3:radioButtonItem,
                                 onChanged: (val) {
                                   setState(() {
                                     radioButtonItem = 'Other';

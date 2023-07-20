@@ -14,7 +14,7 @@ import '../utils_screens/empty_screen.dart';
 
 class AllServiceListScreen extends StatefulWidget {
   String? status;
-  AllServiceListScreen({Key? key, this.status}) : super(key: key);
+    AllServiceListScreen({Key? key, this.status}) : super(key: key);
 
   @override
   State<AllServiceListScreen> createState() => AllServiceListScreenState();
