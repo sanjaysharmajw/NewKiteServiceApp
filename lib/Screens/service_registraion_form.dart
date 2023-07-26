@@ -77,13 +77,15 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
   @override
   void initState() {
     super.initState();
-    if(widget.action=="Edit"){
-      serviceDetails();
-      buttonValue="update".tr;
-    }else if(widget.action=="Add"){
-      buttonValue="submit".tr;
-    }
-
+      if(widget.action=="Edit"){
+        serviceDetails();
+        buttonValue="update".tr;
+        CustomLoader.message(widget.action.toString());
+      }else if(widget.action=="Add"){
+        //userServiceListController.getUserServiceListData.clear();
+        buttonValue="submit".tr;
+        CustomLoader.message(widget.action.toString());
+      }
     theme = AppTheme.theme;
     customTheme = AppTheme.customTheme;
   }
@@ -263,9 +265,8 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                               textColor: appBlack),
                           const SizedBox(height: 25),
                           MyTextFieldForm(
-                            hintText: 'shop_name'.tr,
-                            controller:
-                            addServiceController.shopNameController.value,
+                            labelText: 'shop_name'.tr,
+                            controller: addServiceController.shopNameController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return "enter_shop_name".tr;
@@ -285,7 +286,7 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                           ],),
                           const SizedBox(height: 25),
                           MyTextFieldForm(
-                            hintText: 'contact_person_name'.tr,
+                            labelText: 'contact_person_name'.tr,
                             controller: addServiceController
                                 .contactPersonNameController.value,
                             validator: (value) {
@@ -307,7 +308,7 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                           ],),
                           const SizedBox(height: 25),
                           MyTextFieldForm(
-                            hintText: 'contact_person_number'.tr,
+                            labelText: 'contact_person_number'.tr,
                             controller: addServiceController
                                 .contactPersonNoController.value,
                             validator: (value) {
@@ -329,7 +330,7 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                           ],),
                           const SizedBox(height: 25),
                           MyTextFieldForm(
-                            hintText: 'pincode'.tr,
+                            labelText: 'pincode'.tr,
                             controller:
                             addServiceController.pinCodeController.value,
                             validator: (value) {
@@ -352,7 +353,7 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                           ],),
                           const SizedBox(height: 25),
                           MyTextFieldForm(
-                            hintText: 'city'.tr,
+                            labelText: 'city'.tr,
                             controller:
                             addServiceController.cityController.value,
                             validator: (value) {
@@ -374,7 +375,7 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                           ],),
                           const SizedBox(height: 25),
                           MyTextFieldForm(
-                            hintText: 'state'.tr,
+                            labelText: 'state'.tr,
                             controller:
                             addServiceController.stateController.value,
                             validator: (value) {
@@ -396,7 +397,7 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                           ],),
                           const SizedBox(height: 25),
                           MyTextFieldForm(
-                            hintText: 'address'.tr,
+                            labelText: 'address'.tr,
                             controller:
                             addServiceController.addressController.value,
                             validator: (value) {
@@ -421,7 +422,7 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             children: <Widget>[
                               Flexible(
                                 child: MyTextFieldForm(
-                                  hintText: 'working_from'.tr,
+                                  labelText: 'working_from'.tr,
                                   controller: addServiceController
                                       .workingFromController.value,
                                   validator: (value) {
@@ -444,7 +445,7 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                               const SizedBox(width: 10),
                               Flexible(
                                 child: MyTextFieldForm(
-                                  hintText: 'working_to'.tr,
+                                  labelText: 'working_to'.tr,
                                   controller: addServiceController
                                       .workingToController.value,
                                   validator: (value) {
@@ -466,7 +467,7 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                           ),
                           const SizedBox(height: 25),
                           MyTextFieldForm(
-                            hintText: 'select_working_day'.tr,
+                            labelText: 'select_working_day'.tr,
                             controller: addServiceController
                                 .selectWorkingDayController.value,
                             validator: (value) {
@@ -485,7 +486,7 @@ class _ServiceRegistrationFormState extends State<ServiceRegistrationForm> {
                             keyboardType: TextInputType.text, inputFormatters: [],),
                           const SizedBox(height: 25),
                           MyTextFieldForm(
-                            hintText: 'registration_no'.tr,
+                            labelText : 'registration_no'.tr,
                             controller: addServiceController
                                 .registrationNoController.value,
                             validator: (value) {

@@ -155,10 +155,10 @@ class _HomePageState extends State<SelectAddressMap> {
         ),
         MyButton(press: (){
           print("Click on next");
-          print(address = placemarks![0]);
+         // print(address = placemarks![0]);
           print( "latLng:"+ _draggedLatlng.toString()+"  action:"+widget.action);
 
-          Get.to(SelectServiceScreen(placemark:  address = placemarks![0], latLng: _draggedLatlng,action: widget.action));
+          Get.to(SelectServiceScreen(placemark:  address = placemarks![0], latLng: _draggedLatlng, action: widget.action));
         }, buttonText: 'next'.tr),
       ],
     );

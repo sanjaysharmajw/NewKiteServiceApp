@@ -121,7 +121,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                         const SizedBox(height: 25),
 
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'first_name'.tr, controller: updateProfileController.firstNameController.value,
+                        MyTextFieldForm(labelText: 'first_name'.tr, controller: updateProfileController.firstNameController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return "enter_first_name".tr;
@@ -138,7 +138,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                             FilteringTextInputFormatter.deny('  '),
                           ], ),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'last_name'.tr, controller: updateProfileController.lastNameController.value,
+                        MyTextFieldForm(labelText: 'last_name'.tr, controller: updateProfileController.lastNameController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return "enter_last_name".tr;
@@ -155,7 +155,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                             FilteringTextInputFormatter.deny('  '),
                           ], ),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'mobile_number'.tr, controller: updateProfileController.mobileController.value,
+                        MyTextFieldForm(labelText: 'mobile_number'.tr, controller: updateProfileController.mobileController.value,
                             validator: (value) {
                               if (value.toString().length!=10) {
                                 return "enter_mobile_number".tr;
@@ -186,6 +186,9 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                           // textCapitalization: TextCapitalization.none,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
+                            labelText: 'Email Id',
+                            labelStyle: TextStyle(
+                                color: appBlack, fontFamily: 'Gilroy', fontWeight: FontWeight.w500),
                             border: const UnderlineInputBorder(),
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
@@ -210,7 +213,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                           },
                         ),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'address'.tr, controller: updateProfileController.addressController.value,
+                        MyTextFieldForm(labelText: 'address'.tr, controller: updateProfileController.addressController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return "enter_your_address".tr;
@@ -227,7 +230,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                             FilteringTextInputFormatter.deny('  ')
                           ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'emergency_contact_number'.tr, controller: updateProfileController.emergencyController.value,
+                        MyTextFieldForm(labelText: 'emergency_contact_number'.tr, controller: updateProfileController.emergencyController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return "enter_emergency_contact_number".tr;
@@ -244,7 +247,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                             LengthLimitingTextInputFormatter(10),
                           ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'select_DOB'.tr, controller: updateProfileController.selectDobController.value,
+                        MyTextFieldForm(labelText: 'select_DOB'.tr, controller: updateProfileController.selectDobController.value,
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return "select_dob".tr;
@@ -273,17 +276,17 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: Row(
                         mainAxisAlignment:
-                        MainAxisAlignment.spaceBetween,
+                        MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Row(
                             children: [
                               Radio(
                                 fillColor:
                                 MaterialStateColor.resolveWith(
-                                        (states) => appBlack),
+                                        (states) => appBlue),
                                 focusColor:
                                 MaterialStateColor.resolveWith(
-                                        (states) => appBlack),
+                                        (states) => appBlue),
                                 value: 1,
                                 groupValue: genderId, //=='female'?1:null,
                                 onChanged: (val) {
@@ -304,10 +307,10 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               Radio(
                                 fillColor:
                                 MaterialStateColor.resolveWith(
-                                        (states) => appBlack),
+                                        (states) => appBlue),
                                 focusColor:
                                 MaterialStateColor.resolveWith(
-                                        (states) => appBlack),
+                                        (states) => appBlue),
                                 value: 2,
                                 groupValue: genderId, //=='male'?2:radioButtonItem,
                                 onChanged: (val) {
@@ -328,10 +331,10 @@ class EditProfileScreenState extends State<EditProfileScreen> {
                               Radio(
                                 fillColor:
                                 MaterialStateColor.resolveWith(
-                                        (states) => appBlack),
+                                        (states) => appBlue),
                                 focusColor:
                                 MaterialStateColor.resolveWith(
-                                        (states) => appBlack),
+                                        (states) => appBlue),
                                 value: 3,
                                 groupValue:  genderId, //=='other'?3:radioButtonItem,
                                 onChanged: (val) {
@@ -495,6 +498,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
     updateProfileController.updateProfile(gender).then((value){
       if(value!=null){
           if(value.status==true){
+            CustomLoader.showToast(value.message.toString());
             CustomLoader.message(value.message.toString());
             Get.to(const CustomBottomNav());
           }else{

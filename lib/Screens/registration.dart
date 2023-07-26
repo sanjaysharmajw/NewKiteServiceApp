@@ -71,14 +71,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         const MyText(text: 'Registration', fontName: 'Gilroy',
                             fontSize: 20, fontWeight: FontWeight.w800, textColor: appBlack),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'First Name', controller: firstNameController,
-                            validator: (value) {
-                              if (value.toString().isEmpty) {
-                                return "Enter your first name";
-                              }else{
-                                return null;
-                              }
-                            }, fontSize: 16, readOnly: false, onTap: () {  },
+                        MyTextFieldForm(labelText: 'First Name', controller: firstNameController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your first name';
+                            }
+                            return value.length < 3 ? 'Name must be greater than two characters' : null;
+                          }, fontSize: 16, readOnly: false, onTap: () {  },
                           textCapitalization: TextCapitalization.words,
                             keyboardType: TextInputType.text,
                           inputFormatters: [
@@ -87,14 +86,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             FilteringTextInputFormatter.deny('  '),
                           ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Last Name', controller: lastNameController,
+                        MyTextFieldForm(labelText: 'Last Name', controller: lastNameController,
                           validator: (value) {
-                            if (value.toString().isEmpty) {
-                              return "Enter your last name";
-                            }else{
-                              return null;
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your last name';
                             }
-                          }, fontSize: 16, readOnly: false, onTap: () {  },
+                            return value.length < 3 ? 'Name must be greater than two characters' : null;
+                          },fontSize: 16, readOnly: false, onTap: () {  },
                           textCapitalization: TextCapitalization.words,
                           keyboardType: TextInputType.text,
                           inputFormatters: [
@@ -103,7 +101,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             FilteringTextInputFormatter.deny('  '),
                           ], ),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Mobile Number', controller: mobileController,
+                        MyTextFieldForm(labelText: 'Mobile Number', controller: mobileController,
                             validator: (value) {
                               if (value.toString().length!=10) {
                                 return "Enter 10 digits Mobile Number";
@@ -159,7 +157,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           },
                         ),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Address', controller: addressController,
+                        MyTextFieldForm(labelText: 'Address', controller: addressController,
                           validator: (value) {
                             if (value.toString().isEmpty) {
                               return "Enter Your Address";
@@ -176,7 +174,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
                           ], ),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Emergency Contact Number', controller: emergencyController,
+                        MyTextFieldForm(
+                          labelText: 'Emergency Contact Number', controller: emergencyController,
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return "Enter Your Emergency Contact Number";
@@ -194,7 +193,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
                         ),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Select DOB', controller: selectDobController,
+                        MyTextFieldForm(labelText: 'Select DOB', controller: selectDobController,
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return "Enter your date of birth";

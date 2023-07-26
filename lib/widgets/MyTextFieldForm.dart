@@ -4,7 +4,7 @@ import 'package:nirbhaya_service/Utils/validators.dart';
 import 'package:nirbhaya_service/color_constant.dart';
 
 class MyTextFieldForm extends StatelessWidget {
-  final String hintText;
+  final String? labelText;
   final TextEditingController controller;
   final FormFieldValidator validator;
   final double fontSize;
@@ -16,7 +16,7 @@ class MyTextFieldForm extends StatelessWidget {
   final TextCapitalization textCapitalization;
    MyTextFieldForm(
       {Key? key,
-      required this.hintText,
+       this.labelText,
       required this.controller,
       required this.validator, required this.fontSize, required this.readOnly, required this.onTap,
         required this.keyboardType, this.maxLength, required this.inputFormatters, required this.textCapitalization})
@@ -36,11 +36,11 @@ class MyTextFieldForm extends StatelessWidget {
       keyboardType: keyboardType,
       decoration: InputDecoration(
         counterText: '',
-        hintText: hintText,
+        labelText: labelText,
         hintStyle:
             const TextStyle(fontWeight: FontWeight.w500, fontFamily: 'Gilroy'),
         labelStyle: const TextStyle(
-            color: appBlue, fontFamily: 'Gilroy', fontWeight: FontWeight.w500),
+            color: appBlack, fontFamily: 'Gilroy', fontWeight: FontWeight.w500),
       ),
       validator: validator,
     );

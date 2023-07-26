@@ -48,7 +48,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         const MyText(text: 'Registration', fontName: 'Gilroy',
                             fontSize: 20, fontWeight: FontWeight.w800, textColor: appWhiteColor),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Full Name', controller: fullNameController,
+                        MyTextFieldForm(labelText: 'Full Name', controller: fullNameController,
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return "Enter Full Name";
@@ -64,7 +64,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             FilteringTextInputFormatter.deny('  '),
                           ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Mobile Number', controller: mobileController,
+                        MyTextFieldForm(labelText: 'Mobile Number', controller: mobileController,
                             validator: (value) {
                               if (value.toString().length!=10) {
                                 return "Enter 10 digits Mobile Number";
@@ -81,7 +81,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             LengthLimitingTextInputFormatter(10),
                           ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Email ID', controller: emailController,
+                        MyTextFieldForm(labelText: 'Email ID', controller: emailController,
                             validator: (value) {
                               Pattern pattern = r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+';
                               RegExp regex = RegExp(pattern as String);
@@ -97,7 +97,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             FilteringTextInputFormatter.deny('  '),
                           ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Address', controller: addressController,
+                        MyTextFieldForm(labelText: 'Address', controller: addressController,
                             validator: (value) {
                               if (value.toString().isEmpty) {
                                 return "Enter Your Address";
@@ -112,7 +112,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             FilteringTextInputFormatter.deny('  ')
                           ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Emergency Number', controller: emergencyController,
+                        MyTextFieldForm(labelText: 'Emergency Number', controller: emergencyController,
                             validator: (value) {
                               if (value.toString().length!=10) {
                                 return "Enter Your Emergency Contact Number";
@@ -127,7 +127,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             LengthLimitingTextInputFormatter(10),
                           ],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Select DOB', controller: selectDobController,
+                        MyTextFieldForm(labelText: 'Select DOB', controller: selectDobController,
                             validator: (value) {
                               if (value.toString().length!=10) {
                                 return "Enter 10 digits Mobile Number";

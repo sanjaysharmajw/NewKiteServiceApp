@@ -71,7 +71,7 @@ class _ServiceRegistrationState extends State<ServiceRegistration> {
                         const MyText(text: 'Add Service', fontName: 'Gilroy',
                             fontSize: 20, fontWeight: FontWeight.w800, textColor: appWhiteColor),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Shop Name', controller: fullNameController,
+                        MyTextFieldForm(labelText: 'Shop Name', controller: fullNameController,
                           validator: (value) {
                             if (value.toString().isEmpty) {
                               return "Enter Shop Name";
@@ -100,7 +100,7 @@ class _ServiceRegistrationState extends State<ServiceRegistration> {
                           },
                         ),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Select Service', controller: emergencyController,
+                        MyTextFieldForm(labelText: 'Select Service', controller: emergencyController,
                           validator: (value) {
                             if (value.toString().length!=10) {
                               return "Select Service";
@@ -111,7 +111,7 @@ class _ServiceRegistrationState extends State<ServiceRegistration> {
                           textCapitalization: TextCapitalization.words,
                           keyboardType: TextInputType.text, inputFormatters: [],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Registration Number', controller: emergencyController,
+                        MyTextFieldForm(labelText: 'Registration Number', controller: emergencyController,
                           validator: (value) {
                             if (value.toString().length!=10) {
                               return "Enter Your Registration Number";
@@ -121,7 +121,7 @@ class _ServiceRegistrationState extends State<ServiceRegistration> {
                           }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.number, textCapitalization: TextCapitalization.words,
                           inputFormatters: [],),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Work Timing (To)', controller: emergencyController,
+                        MyTextFieldForm(labelText: 'Work Timing (To)', controller: emergencyController,
                           validator: (value) {
                             if (value.toString().length!=10) {
                               return "Enter Your Registration Number";
@@ -130,7 +130,7 @@ class _ServiceRegistrationState extends State<ServiceRegistration> {
                             }
                           }, fontSize: 16,readOnly: false, onTap: () {  }, keyboardType: TextInputType.text, inputFormatters: [], textCapitalization: TextCapitalization.words,),
                         const SizedBox(height: 25),
-                        MyTextFieldForm(hintText: 'Work Timing (From)', controller: emergencyController,
+                        MyTextFieldForm(labelText: 'Work Timing (From)', controller: emergencyController,
                           validator: (value) {
                             if (value.toString().length!=10) {
                               return "Enter Your Registration Number";

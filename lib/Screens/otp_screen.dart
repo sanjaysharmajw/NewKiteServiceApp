@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:nirbhaya_service/Screens/registration.dart';
+import 'package:nirbhaya_service/Utils/toast.dart';
 import 'package:nirbhaya_service/contoller/loginController.dart';
 import 'package:otp_timer_button/otp_timer_button.dart';
 import '../Utils/custom_bottom_nav.dart';
@@ -143,11 +144,12 @@ class _OTPScreenState extends State<OTPScreen> {
             }else{
               share(value.token!, value.data![0].id.toString(), value.data![0].mobileNumber.toString());
               //share(value.token!,'','');
-
               Get.to(const CustomBottomNav());
             }
           }else{
+
             CustomLoader.message(value.message.toString());
+            CustomLoader.showToast(value.message);
           }
 
 

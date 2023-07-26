@@ -97,7 +97,7 @@ class _UploadDocumentScreenState extends State<UploadDocumentScreen> with Single
                     const MyText(text: 'Upload Document', fontName: 'Gilroy',
                         fontSize: 20, fontWeight: FontWeight.w800, textColor: appBlack),
                     const SizedBox(height: 25),
-                    MyTextFieldForm(hintText: 'Enter Your Document ID', controller: uploadDocController,
+                    MyTextFieldForm(labelText: 'Enter Your Document ID', controller: uploadDocController,
                         validator: (value) {
                           if (value.toString().isEmpty) {
                             return "Enter Your Document ID";

@@ -31,11 +31,11 @@ class _SelectServiceScreenState extends State<SelectServiceScreen> {
   void initState() {
     super.initState();
 
-    if(widget.action=="Edit"){
+    if(widget.action=="Add"){
+      print("ADD "+widget.action);
+    }else{
       print("Edit "+widget.action);
       serviceDetails();
-    }else{
-      print("ADD "+widget.action);
     }
   }
 

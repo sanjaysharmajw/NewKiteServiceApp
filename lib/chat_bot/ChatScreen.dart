@@ -64,32 +64,34 @@ class ChatState extends State<ChatBot> {
                ],
              ),
            ),
-            const Divider(
-              color: appBlack,
-            ),
+           // const Divider(color: appBlack,),
             Expanded(child: MessagesScreen(messages: messages)),
             const SizedBox(
               width: 5,
             ),
             Row(
+
               children: [
                 Expanded(
-                    child: Container(
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(50)),
-                          color: appBlack
-                      ),
-                      child: TextField(
-                        inputFormatters: [
-                          UpperCaseTextFormatter(),
-                        ],
-                        controller: _controller,
-                        style: const TextStyle(color: appWhiteColor,fontFamily: 'Gilroy'),
-                        decoration:  InputDecoration(
-                          border: InputBorder.none,
-                          hintStyle: TextStyle(color: appWhiteColor),
-                          hintText: 'enter_something'.tr,
-                          contentPadding: EdgeInsets.only(right: 20,left: 20),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 15),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(50)),
+                            color: appBlue
+                        ),
+                        child: TextField(
+                          inputFormatters: [
+                            UpperCaseTextFormatter(),
+                          ],
+                          controller: _controller,
+                          style: const TextStyle(color: appWhiteColor,fontFamily: 'Gilroy'),
+                          decoration:  InputDecoration(
+                            border: InputBorder.none,
+                            hintStyle: TextStyle(color: appWhiteColor),
+                            hintText: 'enter_something'.tr,
+                            contentPadding: EdgeInsets.only(right: 20,left: 20),
+                          ),
                         ),
                       ),
                     )),
@@ -101,7 +103,7 @@ class ChatState extends State<ChatBot> {
                   child: Container(
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(50)),
-                        color: appBlack
+                        color: appBlue
                     ),
                     child: IconButton(
                         onPressed: () {

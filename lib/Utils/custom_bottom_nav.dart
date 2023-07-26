@@ -33,10 +33,10 @@ class UserDashBoardScreenState extends State<CustomBottomNav> {
   ];
 
   List<BottomNavigationBarItem> icons = const [
-    BottomNavigationBarItem(icon: Icon(FeatherIcons.home), label: ''),
-    BottomNavigationBarItem(icon: Icon(FeatherIcons.server), label: ''),
-    BottomNavigationBarItem(icon: Icon(Icons.work_outline_sharp), label: ''),
-    BottomNavigationBarItem(icon: Icon(FeatherIcons.user), label: '')
+    BottomNavigationBarItem(icon: Icon(FeatherIcons.home), label: 'Home'),
+    BottomNavigationBarItem(icon: Icon(FeatherIcons.server), label: 'Service List'),
+    BottomNavigationBarItem(icon: Icon(Icons.work_outline_sharp), label: 'Service Registration'),
+    BottomNavigationBarItem(icon: Icon(FeatherIcons.user), label: 'Profile')
   ];
 
   @override
