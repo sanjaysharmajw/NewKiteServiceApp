@@ -71,7 +71,7 @@ class ServiceRequestItems extends StatelessWidget {
               Expanded(
                 child: Text(
                         serviceListData.providername == ""
-                        ? "N/A"
+                        ? ""
                         : serviceListData.providername.toString(),
                     style: const TextStyle(
                         fontFamily: 'Gilroy',
