@@ -1,6 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nb_utils/nb_utils.dart';
 import 'package:nirbhaya_service/BodyRequest/accept_reject_body_request.dart';
 import 'package:nirbhaya_service/BodyRequest/notification_request_body.dart';
 import 'package:badges/badges.dart' as badges;
@@ -8,6 +9,7 @@ import 'package:nirbhaya_service/BodyRequest/service_list_body_request.dart';
 import 'package:nirbhaya_service/BodyRequest/service_list_request_body.dart';
 import 'package:nirbhaya_service/Screens/notification_screen.dart';
 import 'package:nirbhaya_service/Utils/preference.dart';
+import 'package:nirbhaya_service/Utils/tools.dart';
 import 'package:nirbhaya_service/chat_module/chat_controller/chat_token_controller.dart';
 import 'package:nirbhaya_service/chat_module/chat_screen.dart';
 import 'package:nirbhaya_service/chat_module/models/get_token_request_body.dart';
@@ -113,6 +115,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Tools.setStatusBarColor(appBlue);
     WidgetsFlutterBinding.ensureInitialized();
     return SafeArea(
       child: Scaffold(

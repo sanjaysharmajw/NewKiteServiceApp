@@ -1,6 +1,8 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nb_utils/nb_utils.dart';
+import 'package:nirbhaya_service/Utils/tools.dart';
 import 'package:nirbhaya_service/chat_module/chat_controller/chat_controller.dart';
 import 'package:nirbhaya_service/chat_module/chat_widgets/chat_textfield.dart';
 import 'package:nirbhaya_service/chat_module/chat_widgets/empty_chat.dart';
@@ -48,11 +50,12 @@ class _RealtimeChatScreenState extends State<RealtimeChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    //Tools.setStatusBarColor(blueColor);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black),
-        backgroundColor: Colors.white,
+        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: appBlue,
         elevation: 0,
         centerTitle: false,
         title:  Column(
@@ -60,9 +63,9 @@ class _RealtimeChatScreenState extends State<RealtimeChatScreen> {
           children: [
             Text(chatController.messages.isEmpty?"Chat":chatController.messages[0].userName==null?"Chat":
             chatController.messages[0].userName.toString(),style:
-            const TextStyle(color: Colors.black)),
+            const TextStyle(color: Colors.white)),
             const Text('Typing...',style:
-            TextStyle(color: applightBlack,fontSize: 12)),
+            TextStyle(color: Colors.white,fontSize: 12)),
           ],
         ),
       ),
