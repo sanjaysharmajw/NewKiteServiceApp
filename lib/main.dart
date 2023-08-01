@@ -44,7 +44,6 @@ Future<void> main() async {
     badge: true,
     sound: true,
   );
-
   await FirebaseMessaging.instance.requestPermission(
     alert: true,
     announcement: false,
@@ -54,7 +53,6 @@ Future<void> main() async {
     provisional: false,
     sound: true,
   );
-
   runApp(const MyApp());
 }
 

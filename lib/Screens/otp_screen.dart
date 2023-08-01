@@ -142,7 +142,8 @@ class _OTPScreenState extends State<OTPScreen> {
             if(value.data.toString()=="[]"){
               Get.to(const RegistrationScreen());
             }else{
-              share(value.token!, value.data![0].id.toString(), value.data![0].mobileNumber.toString());
+              share(value.token!, value.data![0].id.toString(),
+                  value.data![0].mobileNumber.toString(),value.data![0].firstName.toString());
               //share(value.token!,'','');
               Get.to(const CustomBottomNav());
             }
@@ -171,11 +172,12 @@ class _OTPScreenState extends State<OTPScreen> {
     });
   }
 
-  void share(String token,String userId,String mobileNumber) async {
+  void share(String token,String userId,String mobileNumber,String firstName) async {
     await Preferences.setPreferences();
     Preferences.setToken(token).toString();
     Preferences.setUserId(userId).toString();
     Preferences.setMobileNo(mobileNumber).toString();
+    Preferences.setFirstName(firstName.toString());
 
   }
 

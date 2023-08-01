@@ -8,6 +8,9 @@ import 'package:nirbhaya_service/BodyRequest/service_list_body_request.dart';
 import 'package:nirbhaya_service/BodyRequest/service_list_request_body.dart';
 import 'package:nirbhaya_service/Screens/notification_screen.dart';
 import 'package:nirbhaya_service/Utils/preference.dart';
+import 'package:nirbhaya_service/chat_module/chat_controller/chat_token_controller.dart';
+import 'package:nirbhaya_service/chat_module/chat_screen.dart';
+import 'package:nirbhaya_service/chat_module/models/get_token_request_body.dart';
 import 'package:nirbhaya_service/color_constant.dart';
 import 'package:nirbhaya_service/contoller/notification_controller.dart';
 import 'package:nirbhaya_service/contoller/permission_controller.dart';
@@ -44,18 +47,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-
     firebaseTokenMethod();
     super.initState();
     serviceApi();
-   userDetailsApi();
+    userDetailsApi();
     listApi();
     setState(() {});
   }
 
   void firebaseTokenMethod() async {
     FirebaseMessaging.instance.requestPermission();
-   String? firebaseToken = await FirebaseMessaging.instance.getToken();
+    String? firebaseToken = await FirebaseMessaging.instance.getToken();
     debugPrint("firebaseOTPVerify:....   $firebaseToken   ........");
     debugPrint("firebaseOTPVerifyIOS:....   $firebaseToken   ........");
     debugPrint("loginId:....   ${Preferences.getUserId()}   ........");
@@ -72,11 +74,12 @@ class _HomePageState extends State<HomePage> {
       userId: Preferences.getUserId().toString(),
       lat: permissionController.locationData?.latitude,
       lng: permissionController.locationData?.longitude,
-     // id: userServiceListController.getUserServiceListData[0].id,
-     //  serviceId: userServiceListController.getUserServiceListData[0].serviceId
+      // id: userServiceListController.getUserServiceListData[0].id,
+      //  serviceId: userServiceListController.getUserServiceListData[0].serviceId
     );
     await userServiceListController.getUserServiceList(request);
-    NotificationRequestBody notificationModels = NotificationRequestBody(count: true, unread: true, userId: Preferences.getUserId().toString());
+    NotificationRequestBody notificationModels = NotificationRequestBody(
+        count: true, unread: true, userId: Preferences.getUserId().toString());
     await notificationController
         .notificationApi(notificationModels)
         .then((value) {
@@ -90,21 +93,20 @@ class _HomePageState extends State<HomePage> {
       }
     });
   }
+
   void listApi() async {
-    ServiceListRequestBody requestBody=ServiceListRequestBody(
+    ServiceListRequestBody requestBody = ServiceListRequestBody(
       serviceProviderId: Preferences.getUserId().toString(),
-        status:'',
-        lng:permissionController.locationData!.longitude,
-        lat:permissionController.locationData!.latitude,
+      status: '',
+      lng: permissionController.locationData!.longitude,
+      lat: permissionController.locationData!.latitude,
     );
     await serviceListController.getServiceList(requestBody);
-    setState(() {
-
-    });
+    setState(() {});
   }
 
-  Future<void> _refresh(){
-    return Future.delayed(const Duration(seconds: 2)).then((value){
+  Future<void> _refresh() {
+    return Future.delayed(const Duration(seconds: 2)).then((value) {
       listApi();
     });
   }
@@ -140,32 +142,48 @@ class _HomePageState extends State<HomePage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const MyText(text: "TS Service", fontName: 'Gilroy', fontSize: 24, fontWeight: FontWeight.w600, textColor: appWhiteColor),
-                                // const ImageSets(
-                                //     imagePath: 'assets/servicenow_logo.png',
-                                //     width: 150,
-                                //     height: 50,
-                                //     color: appWhiteColor),
-                                InkWell(
-                                  onTap: (){
-                                    Get.to(const NotificationScreen());
-                                  },
-                                  child: badges.Badge(
-                                    position: badges.BadgePosition.topEnd(
-                                        top: -10, end: -12),
-                                    badgeContent: MyText(
-                                        text: notificationCount!.toString(),
-                                        fontName: 'Gilroy',
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                        textColor: appWhiteColor),
-                                    child: const ImageSets(
-                                        imagePath: 'assets/ring_bell.png',
-                                        width: 25,
-                                        height: 25,
-                                        color: appWhiteColor),
-                                  ),
+                                const MyText(
+                                    text: "TS Service",
+                                    fontName: 'Gilroy',
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w600,
+                                    textColor: appWhiteColor),
+                                Row(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        chatTokenApi();
+                                      },
+                                      child: const ImageSets(
+                                          imagePath: 'assets/chat_icon.png',
+                                          width: 25,
+                                          height: 25,
+                                          color: appWhiteColor),
+                                    ),
+                                    const SizedBox(width: 15),
+                                    InkWell(
+                                      onTap: () {
+                                        Get.to(const NotificationScreen());
+                                      },
+                                      child: badges.Badge(
+                                        position: badges.BadgePosition.topEnd(
+                                            top: -10, end: -12),
+                                        badgeContent: MyText(
+                                            text: notificationCount!.toString(),
+                                            fontName: 'Gilroy',
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                            textColor: appWhiteColor),
+                                        child: const ImageSets(
+                                            imagePath: 'assets/ring_bell.png',
+                                            width: 25,
+                                            height: 25,
+                                            color: appWhiteColor),
+                                      ),
+                                    ),
+                                  ],
                                 ),
+
                               ],
                             ),
                           ),
@@ -222,13 +240,16 @@ class _HomePageState extends State<HomePage> {
                             ? CustomLoader.loader()
                             : serviceListController.getServiceData.isEmpty
                                 ? const Center(
-                                    child: EmptyScreen(text: 'Service Not Found'),
+                                    child:
+                                        EmptyScreen(text: 'Service Not Found'),
                                   )
                                 : ListView.builder(
-                                    itemCount: serviceListController.getServiceData.length,
+                                    itemCount: serviceListController
+                                        .getServiceData.length,
                                     itemBuilder: (context, index) {
                                       return ServiceRequestItems(
-                                        serviceListData: serviceListController.getServiceData[index],
+                                        serviceListData: serviceListController
+                                            .getServiceData[index],
                                         acceptClick: () {
                                           dialog(index, "Accept");
                                         },
@@ -250,10 +271,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   void dialog(int index, String status) {
-    exitShowDialog(context, 'Confirmation', 'No', 'Yes', 'Are you sure you want to $status?', () {
+    exitShowDialog(context, 'Confirmation', 'No', 'Yes',
+        'Are you sure you want to $status?', () {
       Get.back();
     }, () {
-      acceptRejectApi(serviceListController.getServiceData[index].id.toString(), status);
+      acceptRejectApi(
+          serviceListController.getServiceData[index].id.toString(), status);
     });
   }
 
@@ -276,4 +299,16 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void chatTokenApi() {
+    final chatController = Get.put(ChatTokenController());
+    GetTokenRequestBody requestBody = GetTokenRequestBody(
+        userName: Preferences.getFirstName().toString(),
+        userId: Preferences.getUserId().toString(),
+        userRole: 'Service');
+    chatController.chatTokenApi(requestBody).then((value) {
+      if (value != null) {
+        Get.to(RealtimeChatScreen(socketToken: value.token.toString()));
+      }
+    });
+  }
 }

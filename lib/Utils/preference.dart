@@ -18,6 +18,7 @@ class Preferences {
   static const String serviceId = 'ServiceId';
   static const String mobileNumber = 'MobileNumber';
   static const String volunteer = 'volunteer';
+  static const String firstName = 'FIRSTNAME';
 
   static Future<void> setPreferences() async {
     instance = await SharedPreferences.getInstance();
@@ -37,6 +38,14 @@ class Preferences {
 
   static Future<bool> setUserId(String value) {
     return Preferences.instance!.setString(userId, value);
+  }
+
+  static Future<bool> setFirstName(String value) {
+    return Preferences.instance!.setString(firstName, value);
+  }
+
+  static dynamic getFirstName() {
+    return Preferences.instance!.get(firstName);
   }
 
   static Future<bool> setMobileNo(String value) {

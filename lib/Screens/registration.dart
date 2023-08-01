@@ -412,6 +412,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           Preferences.setUserId(value.data![0].id.toString());
           Preferences.setMobileNo(value.data![0].mobileNumber.toString());
           Preferences.setToken(value.data![0].logintoken.toString());
+          Preferences.setFirstName(value.data![0].firstName.toString());
 
           Get.to(const UploadDocumentScreen());
         }else{
