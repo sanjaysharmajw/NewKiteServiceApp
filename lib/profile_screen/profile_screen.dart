@@ -316,7 +316,9 @@ class ProfileScreenState extends State<ProfileScreen> {
                     }),
                 const Divider(),
                 _buildSingleSetting('Log Out', 'Exit from your account',
-                    FeatherIcons.logOut, appBlack,(){logoutPopup(context);}),
+                    FeatherIcons.logOut, appBlack,(){
+                  logoutPopup(context);
+                }),
               ],
             ),
           ),

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
-
 import '../color_constant.dart';
 
 class OTPPin extends StatelessWidget {
@@ -33,11 +32,9 @@ class OTPPin extends StatelessWidget {
       ),
       borderRadius: BorderRadius.circular(5.r),
     );
-    return  Center(
+    return Center(
       child: Pinput(
-        inputFormatters: [
-          FilteringTextInputFormatter.digitsOnly,
-        ],
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         defaultPinTheme: defaultPinTheme,
         controller: otpController,
         length: 4,
@@ -46,7 +43,6 @@ class OTPPin extends StatelessWidget {
         androidSmsAutofillMethod:
         AndroidSmsAutofillMethod.smsUserConsentApi,
         listenForMultipleSmsOnAndroid: true,
-        // submittedPinTheme: submittedPinTheme,
         pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
         showCursor: true,
       ),

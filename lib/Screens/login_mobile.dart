@@ -53,8 +53,6 @@ class _LoginMobileState extends State<LoginMobile> {
                   Padding(
                     padding: const EdgeInsets.all(30),
                     child: TextFormField(
-
-
                       inputFormatters: [
                         FilteringTextInputFormatter.allow(
                             RegExp("[0-9]")),
